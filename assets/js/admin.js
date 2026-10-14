@@ -1,5 +1,5 @@
 /**
- * Devansh.blog - Admin Dashboard Management Logic
+ * Everygyan - Admin Dashboard Management Logic
  * Handles Authentication, Articles CRUD, Media Library, Quill.js Integration, and Metrics
  */
 

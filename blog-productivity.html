@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productivity &amp; Habits — Everygyan</title>
+  <meta name="description" content="Slow productivity, deep work routines, focus systems, and sustainable high-performance habits.">
+  <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar with Dropdown Submenus -->
+  <nav class="navbar" id="navbar">
+    <div class="container flex-between">
+      <a href="index.html" class="navbar-brand">
+        <div class="navbar-brand-icon">
+          <i data-lucide="sparkles"></i>
+        </div>
+        <span class="navbar-brand-text">Every<span class="gradient-text">gyan</span></span>
+      </a>
+
+      <div class="navbar-links" id="navLinks">
+        <a href="index.html">Home</a>
+
+        <!-- Blog Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="blog.html" class="nav-link-parent active">
+            Blog <i data-lucide="chevron-down" class="chevron"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="blog-essays.html" class="dropdown-item">
+              <div class="dropdown-icon blog"><i data-lucide="feather"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Essays &amp; Reflections</span>
+                <span class="dropdown-desc">Mindful perspectives &amp; life philosophy</span>
+              </div>
+            </a>
+            <a href="blog-productivity.html" class="dropdown-item active">
+              <div class="dropdown-icon blog"><i data-lucide="zap"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Productivity &amp; Habits</span>
+                <span class="dropdown-desc">Slow focus, systems &amp; deep work</span>
+              </div>
+            </a>
+            <a href="blog-books.html" class="dropdown-item">
+              <div class="dropdown-icon blog"><i data-lucide="book-open"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Book Summaries</span>
+                <span class="dropdown-desc">Key takeaways from timeless reads</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Travel Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="travel.html" class="nav-link-parent">
+            Travel <i data-lucide="chevron-down" class="chevron"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="travel-asia.html" class="dropdown-item">
+              <div class="dropdown-icon travel"><i data-lucide="compass"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Asia Adventures</span>
+                <span class="dropdown-desc">Japan, Kyoto, Southeast Asia</span>
+              </div>
+            </a>
+            <a href="travel-europe.html" class="dropdown-item">
+              <div class="dropdown-icon travel"><i data-lucide="map-pin"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">European Escapes</span>
+                <span class="dropdown-desc">Swiss Alps, Norway fjords, Lisbon</span>
+              </div>
+            </a>
+            <a href="travel-hiking.html" class="dropdown-item">
+              <div class="dropdown-icon travel"><i data-lucide="mountain"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Hiking &amp; Treks</span>
+                <span class="dropdown-desc">High alpine routes &amp; wilderness trails</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Learning Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="learning.html" class="nav-link-parent">
+            Learning <i data-lucide="chevron-down" class="chevron"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="learning-webdev.html" class="dropdown-item">
+              <div class="dropdown-icon learning"><i data-lucide="code"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Web Architecture</span>
+                <span class="dropdown-desc">Fullstack engineering &amp; scale</span>
+              </div>
+            </a>
+            <a href="learning-databases.html" class="dropdown-item">
+              <div class="dropdown-icon learning"><i data-lucide="database"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Database Engineering</span>
+                <span class="dropdown-desc">SQL, indexing &amp; performance</span>
+              </div>
+            </a>
+            <a href="learning-devops.html" class="dropdown-item">
+              <div class="dropdown-icon learning"><i data-lucide="cloud"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">DevOps &amp; Cloud</span>
+                <span class="dropdown-desc">Docker, Git internals &amp; CI/CD</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-actions">
+        <button class="theme-toggle btn-icon" id="themeToggle" aria-label="Toggle theme">
+          <i data-lucide="sun" class="theme-icon-light"></i>
+          <i data-lucide="moon" class="theme-icon-dark"></i>
+        </button>
+        <a href="admin/login.html" class="btn btn-sm btn-outline">
+          <i data-lucide="layout-dashboard"></i> Dashboard
+        </a>
+        <button class="navbar-toggle btn-icon" id="navToggle" aria-label="Toggle navigation">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page-header">
+      <div class="container">
+        <div class="page-header-icon" style="background-color: var(--primary-light); color: var(--primary);">
+          <i data-lucide="zap"></i>
+        </div>
+        <div class="breadcrumb" style="justify-content: center; margin-bottom: 12px; padding-top: 0;">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="blog.html">Blog</a>
+          <span class="breadcrumb-separator">/</span>
+          <span>Productivity &amp; Habits</span>
+        </div>
+        <h1 class="page-header-title">Productivity &amp; Habits</h1>
+        <p class="page-header-text">
+          Practical systems for deep work, sustainable creative output, and eliminating friction from your daily craft.
+        </p>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container">
+        <div class="filter-bar">
+          <div class="filter-pills">
+            <button class="filter-btn active" data-filter="all">All Systems</button>
+            <button class="filter-btn" data-filter="deep-work">Deep Work</button>
+            <button class="filter-btn" data-filter="routines">Routines</button>
+            <button class="filter-btn" data-filter="focus">Attention &amp; Focus</button>
+          </div>
+          <div class="search-bar">
+            <span class="search-icon"><i data-lucide="search"></i></span>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search productivity guides...">
+          </div>
+        </div>
+
+        <div class="grid grid-3" id="articlesGrid">
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600" alt="Writing setup" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category blog">Blog</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=the-art-of-slow-productivity">The Art of Slow Productivity in a Hyperactive World</a>
+              </h3>
+              <p class="card-excerpt">
+                Why working at a natural cadence and committing to fewer projects leads to monumental creative quality.
+              </p>
+              <div class="card-meta">
+                <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 11, 2026</span>
+                <span class="card-meta-item"><i data-lucide="clock"></i> 5 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?w=600" alt="Morning coffee journal" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category blog">Blog</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=the-morning-ritual-that-stuck">The Morning Ritual That Stuck: 500 Words Before Sunrise</a>
+              </h3>
+              <p class="card-excerpt">
+                How a low-friction morning habit created an unshakeable creative foundation before the workday inbox awoke.
+              </p>
+              <div class="card-meta">
+                <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 28, 2026</span>
+                <span class="card-meta-item"><i data-lucide="clock"></i> 4 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?w=600" alt="Craftsmanship" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category blog">Blog</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=craftsmanship-over-speed">Craftsmanship Over Speed: The Value of Unhurried Mastery</a>
+              </h3>
+              <p class="card-excerpt">
+                Exploring why slowing down to obsess over quality yields greater compound returns than shipping hasty compromises.
+              </p>
+              <div class="card-meta">
+                <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 08, 2026</span>
+                <span class="card-meta-item"><i data-lucide="clock"></i> 5 min read</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="container">
+      <div class="newsletter animate-on-scroll">
+        <h2 class="newsletter-title">Subscribe to Productivity Playbooks</h2>
+        <p class="newsletter-text">Actionable frameworks on focus and habit architecture sent every fortnight.</p>
+        <form class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Your email address" required>
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content grid-4">
+        <div class="footer-col">
+          <a href="index.html" class="navbar-brand">
+            <div class="navbar-brand-icon"><i data-lucide="sparkles"></i></div>
+            <span class="navbar-brand-text">Every<span class="gradient-text">gyan</span></span>
+          </a>
+          <p class="mt-2" style="color:var(--text-secondary);font-size:0.925rem;">
+            Empowering curious minds through words, world adventures, and technical craftsmanship.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Blog</h4>
+          <div class="footer-links">
+            <a href="blog-essays.html">Essays &amp; Reflections</a>
+            <a href="blog-productivity.html">Productivity &amp; Habits</a>
+            <a href="blog-books.html">Book Summaries</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Explore</h4>
+          <div class="footer-links">
+            <a href="travel.html">Travel Diaries</a>
+            <a href="learning.html">Learning Hub</a>
+            <a href="admin/login.html">Author Portal</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Newsletter</h4>
+          <p style="color:var(--text-secondary);font-size:0.9rem;">Join 5,000+ readers.</p>
+          <form class="newsletter-form mt-2" id="footerNewsletter">
+            <input type="email" class="newsletter-input" placeholder="Your email address" required>
+            <button type="submit" class="newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Everygyan. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

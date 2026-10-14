@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Devansh.blog — Personal Stories, Travel Diaries & Learning Hub</title>
-  <meta name="description" content="A modern personal blog exploring life, technology, world travels, and continuous learning. Written and curated by Devansh.">
+  <title>Everygyan — Personal Stories, Travel Diaries &amp; Technical Learning</title>
+  <meta name="description" content="A curated universe where personal reflections, global expeditions, and software engineering craftsmanship converge. Curated by Everygyan.">
   <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
 
   <!-- Google Fonts & CDN Dependencies -->
@@ -15,21 +15,110 @@
 </head>
 <body>
 
-  <!-- Top Navigation Bar -->
+  <!-- Top Navigation Bar with Interactive Dropdown Submenus -->
   <nav class="navbar" id="navbar">
     <div class="container flex-between">
       <a href="index.html" class="navbar-brand">
         <div class="navbar-brand-icon">
-          <i data-lucide="pen-line"></i>
+          <i data-lucide="sparkles"></i>
         </div>
-        <span class="navbar-brand-text">Devansh<span class="text-primary">.blog</span></span>
+        <span class="navbar-brand-text">Every<span class="gradient-text">gyan</span></span>
       </a>
+
       <div class="navbar-links" id="navLinks">
         <a href="index.html" class="active">Home</a>
-        <a href="blog.html">Blog</a>
-        <a href="travel.html">Travel</a>
-        <a href="learning.html">Learning</a>
+
+        <!-- Blog Submenu Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="blog.html" class="nav-link-parent">
+            Blog <i data-lucide="chevron-down" class="chevron"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="blog-essays.html" class="dropdown-item">
+              <div class="dropdown-icon blog"><i data-lucide="feather"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Essays &amp; Reflections</span>
+                <span class="dropdown-desc">Mindful perspectives &amp; life philosophy</span>
+              </div>
+            </a>
+            <a href="blog-productivity.html" class="dropdown-item">
+              <div class="dropdown-icon blog"><i data-lucide="zap"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Productivity &amp; Habits</span>
+                <span class="dropdown-desc">Slow focus, systems &amp; deep work</span>
+              </div>
+            </a>
+            <a href="blog-books.html" class="dropdown-item">
+              <div class="dropdown-icon blog"><i data-lucide="book-open"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Book Summaries</span>
+                <span class="dropdown-desc">Key takeaways from timeless reads</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Travel Submenu Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="travel.html" class="nav-link-parent">
+            Travel <i data-lucide="chevron-down" class="chevron"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="travel-asia.html" class="dropdown-item">
+              <div class="dropdown-icon travel"><i data-lucide="compass"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Asia Adventures</span>
+                <span class="dropdown-desc">Japan, Kyoto, Southeast Asia</span>
+              </div>
+            </a>
+            <a href="travel-europe.html" class="dropdown-item">
+              <div class="dropdown-icon travel"><i data-lucide="map-pin"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">European Escapes</span>
+                <span class="dropdown-desc">Swiss Alps, Norway fjords, Lisbon</span>
+              </div>
+            </a>
+            <a href="travel-hiking.html" class="dropdown-item">
+              <div class="dropdown-icon travel"><i data-lucide="mountain"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Hiking &amp; Treks</span>
+                <span class="dropdown-desc">High alpine routes &amp; wilderness trails</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Learning Submenu Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="learning.html" class="nav-link-parent">
+            Learning <i data-lucide="chevron-down" class="chevron"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="learning-webdev.html" class="dropdown-item">
+              <div class="dropdown-icon learning"><i data-lucide="code"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Web Architecture</span>
+                <span class="dropdown-desc">Fullstack engineering &amp; scale</span>
+              </div>
+            </a>
+            <a href="learning-databases.html" class="dropdown-item">
+              <div class="dropdown-icon learning"><i data-lucide="database"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Database Engineering</span>
+                <span class="dropdown-desc">SQL, indexing &amp; performance</span>
+              </div>
+            </a>
+            <a href="learning-devops.html" class="dropdown-item">
+              <div class="dropdown-icon learning"><i data-lucide="cloud"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">DevOps &amp; Cloud</span>
+                <span class="dropdown-desc">Docker, Git internals &amp; CI/CD</span>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
+
       <div class="navbar-actions">
         <button class="theme-toggle btn-icon" id="themeToggle" aria-label="Toggle theme">
           <i data-lucide="sun" class="theme-icon-light"></i>
@@ -46,40 +135,48 @@
   </nav>
 
   <main>
-    <!-- Hero Banner -->
+    <!-- Ultra-Modern Hero Banner -->
     <section class="hero">
+      <div class="hero-glow-1"></div>
+      <div class="hero-grid-pattern"></div>
+      
       <div class="container">
         <div class="hero-content">
-          <div class="hero-badge animate-on-scroll">
-            <span>✍️ Welcome to my digital garden</span>
+          <div class="live-pill animate-on-scroll">
+            <span class="pulse-dot"></span>
+            <span>Everygyan • Digital Garden &amp; Knowledge Base</span>
           </div>
+
           <h1 class="hero-title animate-on-scroll">
-            Stories, <span class="gradient-text">Adventures</span> &amp;<br>Endless Learning
+            Explore Ideas, <span class="gradient-text">Adventures</span> &amp;<br>Endless Learning
           </h1>
+
           <p class="hero-subtitle animate-on-scroll">
-            A personal space where I reflect on life and technology, document my travels across the globe, and compile everything I learn along the journey.
+            A curated universe where personal reflections, world expeditions, and software engineering craftsmanship converge.
           </p>
+
           <div class="hero-cta animate-on-scroll">
             <a href="blog.html" class="btn btn-primary btn-lg">
-              <span>Explore Articles</span>
+              <span>Read Latest Posts</span>
               <i data-lucide="arrow-right"></i>
             </a>
-            <a href="#categories" class="btn btn-secondary btn-lg">
-              <i data-lucide="compass"></i> Browse Topics
+            <a href="#topics" class="btn btn-secondary btn-lg">
+              <i data-lucide="compass"></i> Explore Channels
             </a>
           </div>
+
           <div class="hero-stats animate-on-scroll">
             <div class="hero-stat">
               <div class="hero-stat-value">150+</div>
-              <div class="hero-stat-label">Articles Published</div>
+              <div class="hero-stat-label">Thought Pieces</div>
             </div>
             <div class="hero-stat">
               <div class="hero-stat-value">30+</div>
-              <div class="hero-stat-label">Countries Visited</div>
+              <div class="hero-stat-label">Countries Explored</div>
             </div>
             <div class="hero-stat">
               <div class="hero-stat-value">50+</div>
-              <div class="hero-stat-label">Tutorials Shared</div>
+              <div class="hero-stat-label">Engineering Guides</div>
             </div>
           </div>
         </div>
@@ -91,10 +188,10 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <span class="section-badge">⭐️ Editor's Pick</span>
-            <h2 class="section-title">Featured Story</h2>
+            <span class="section-badge">⭐️ Featured Spotlight</span>
+            <h2 class="section-title">Editor's Selection</h2>
           </div>
-          <a href="blog.html" class="btn btn-ghost">
+          <a href="travel.html" class="btn btn-ghost">
             View all stories <i data-lucide="arrow-right"></i>
           </a>
         </div>
@@ -118,7 +215,7 @@
                   <i data-lucide="calendar"></i> Oct 12, 2026
                 </span>
                 <span class="card-meta-item">
-                  <i data-lucide="user"></i> Devansh
+                  <i data-lucide="user"></i> Everygyan Author
                 </span>
               </div>
               <div class="card-meta-right">
@@ -132,50 +229,65 @@
       </div>
     </section>
 
-    <!-- Explore by Category -->
-    <section class="section" id="categories" style="background-color: var(--bg-alt);">
+    <!-- Explore by Category Channels -->
+    <section class="section" id="topics" style="background-color: var(--bg-alt);">
       <div class="container">
         <div class="section-header center">
-          <span class="section-badge">📂 Categories</span>
-          <h2 class="section-title">Explore by Topic</h2>
-          <p class="section-subtitle">Dive into dedicated corners covering thoughts, wanderlust, and technical craftsmanship.</p>
+          <span class="section-badge">📂 Knowledge Pillars</span>
+          <h2 class="section-title">Explore by Channel</h2>
+          <p class="section-subtitle">Navigate through focused channels curated for curious thinkers, creators, and builders.</p>
         </div>
 
         <div class="grid grid-3">
-          <!-- Blog -->
-          <a href="blog.html" class="category-card animate-on-scroll">
+          <!-- Channel 1 -->
+          <div class="category-card animate-on-scroll">
             <div class="category-card-icon blog">
-              <i data-lucide="pen-line"></i>
+              <i data-lucide="pen-tool"></i>
             </div>
             <h3 class="category-card-title">Personal Blog</h3>
-            <p class="category-card-text">Essays, opinions, deep work reflections, and mindful thoughts on everyday life.</p>
-            <span class="category-card-count">Browse 60+ essays <i data-lucide="chevron-right"></i></span>
-          </a>
+            <p class="category-card-text">Mindful reflections, essays on slow productivity, habit architecture, and book notes.</p>
+            <div class="flex gap-1 flex-wrap mt-2" style="justify-content: center;">
+              <a href="blog-essays.html" class="tag">Essays</a>
+              <a href="blog-productivity.html" class="tag">Productivity</a>
+              <a href="blog-books.html" class="tag">Book Notes</a>
+            </div>
+            <a href="blog.html" class="btn btn-outline btn-sm mt-3 w-full">Explore All Blog Posts →</a>
+          </div>
 
-          <!-- Travel -->
-          <a href="travel.html" class="category-card animate-on-scroll">
+          <!-- Channel 2 -->
+          <div class="category-card animate-on-scroll">
             <div class="category-card-icon travel">
-              <i data-lucide="plane"></i>
+              <i data-lucide="compass"></i>
             </div>
             <h3 class="category-card-title">Travel Diaries</h3>
-            <p class="category-card-text">Itineraries, photo essays, packing guides, and honest stories from international backpacking.</p>
-            <span class="category-card-count">Browse 40+ destinations <i data-lucide="chevron-right"></i></span>
-          </a>
+            <p class="category-card-text">High-altitude hiking guides, road trips across Europe, and cultural walks in Asia.</p>
+            <div class="flex gap-1 flex-wrap mt-2" style="justify-content: center;">
+              <a href="travel-asia.html" class="tag">Asia</a>
+              <a href="travel-europe.html" class="tag">Europe</a>
+              <a href="travel-hiking.html" class="tag">Mountain Treks</a>
+            </div>
+            <a href="travel.html" class="btn btn-outline btn-sm mt-3 w-full">Explore All Travel Posts →</a>
+          </div>
 
-          <!-- Learning -->
-          <a href="learning.html" class="category-card animate-on-scroll">
+          <!-- Channel 3 -->
+          <div class="category-card animate-on-scroll">
             <div class="category-card-icon learning">
-              <i data-lucide="graduation-cap"></i>
+              <i data-lucide="cpu"></i>
             </div>
             <h3 class="category-card-title">Learning Hub</h3>
-            <p class="category-card-text">Hands-on tutorials, software engineering guides, product architecture, and productivity frameworks.</p>
-            <span class="category-card-count">Browse 50+ tutorials <i data-lucide="chevron-right"></i></span>
-          </a>
+            <p class="category-card-text">Fullstack engineering, distributed systems, SQL performance, and cloud deployment guides.</p>
+            <div class="flex gap-1 flex-wrap mt-2" style="justify-content: center;">
+              <a href="learning-webdev.html" class="tag">Architecture</a>
+              <a href="learning-databases.html" class="tag">Databases</a>
+              <a href="learning-devops.html" class="tag">DevOps</a>
+            </div>
+            <a href="learning.html" class="btn btn-outline btn-sm mt-3 w-full">Explore All Tutorials →</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Latest Articles -->
+    <!-- Latest Stories Grid -->
     <section class="section">
       <div class="container">
         <div class="section-header">
@@ -184,7 +296,7 @@
             <h2 class="section-title">Latest Articles</h2>
           </div>
           <a href="blog.html" class="btn btn-ghost">
-            View archive <i data-lucide="arrow-right"></i>
+            View full library <i data-lucide="arrow-right"></i>
           </a>
         </div>
 
@@ -192,7 +304,7 @@
           <!-- Card 1 (Blog) -->
           <article class="card animate-on-scroll">
             <div class="card-img">
-              <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600" alt="Writing on a desk" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600" alt="Writing on desk" loading="lazy">
               <div class="card-img-overlay"></div>
             </div>
             <div class="card-body">
@@ -204,12 +316,8 @@
                 Why working at a natural cadence and focusing on fewer projects leads to meaningful creative breakthroughs.
               </p>
               <div class="card-meta">
-                <div class="card-meta-left">
-                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 11, 2026</span>
-                </div>
-                <div class="card-meta-right">
-                  <span class="card-meta-item"><i data-lucide="clock"></i> 5 min read</span>
-                </div>
+                <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 11, 2026</span>
+                <span class="card-meta-item"><i data-lucide="clock"></i> 5 min read</span>
               </div>
             </div>
           </article>
@@ -229,12 +337,8 @@
                 A mindful walking guide through Japan's cultural capital, featuring early morning shrines and serene zen rock gardens.
               </p>
               <div class="card-meta">
-                <div class="card-meta-left">
-                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 09, 2026</span>
-                </div>
-                <div class="card-meta-right">
-                  <span class="card-meta-item"><i data-lucide="clock"></i> 7 min read</span>
-                </div>
+                <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 09, 2026</span>
+                <span class="card-meta-item"><i data-lucide="clock"></i> 7 min read</span>
               </div>
             </div>
           </article>
@@ -254,12 +358,8 @@
                 A practical guide to database indexing, reverse proxies, and caching layers to ensure 99.99% uptime under load.
               </p>
               <div class="card-meta">
-                <div class="card-meta-left">
-                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 08, 2026</span>
-                </div>
-                <div class="card-meta-right">
-                  <span class="card-meta-item"><i data-lucide="clock"></i> 9 min read</span>
-                </div>
+                <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 08, 2026</span>
+                <span class="card-meta-item"><i data-lucide="clock"></i> 9 min read</span>
               </div>
             </div>
           </article>
@@ -279,12 +379,8 @@
                 What happens to your focus, attention span, and mental clarity when you cut out infinite scroll feeds entirely.
               </p>
               <div class="card-meta">
-                <div class="card-meta-left">
-                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 06, 2026</span>
-                </div>
-                <div class="card-meta-right">
-                  <span class="card-meta-item"><i data-lucide="clock"></i> 6 min read</span>
-                </div>
+                <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 06, 2026</span>
+                <span class="card-meta-item"><i data-lucide="clock"></i> 6 min read</span>
               </div>
             </div>
           </article>
@@ -304,12 +400,8 @@
                 Navigating serpentine mountain passes, electric ferries, and dramatic cliff views along the Atlantic coastline.
               </p>
               <div class="card-meta">
-                <div class="card-meta-left">
-                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 04, 2026</span>
-                </div>
-                <div class="card-meta-right">
-                  <span class="card-meta-item"><i data-lucide="clock"></i> 8 min read</span>
-                </div>
+                <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 04, 2026</span>
+                <span class="card-meta-item"><i data-lucide="clock"></i> 8 min read</span>
               </div>
             </div>
           </article>
@@ -329,12 +421,8 @@
                 Demystifying conditional types, mapped types, and constraints to build bulletproof type-safe libraries.
               </p>
               <div class="card-meta">
-                <div class="card-meta-left">
-                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 02, 2026</span>
-                </div>
-                <div class="card-meta-right">
-                  <span class="card-meta-item"><i data-lucide="clock"></i> 10 min read</span>
-                </div>
+                <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 02, 2026</span>
+                <span class="card-meta-item"><i data-lucide="clock"></i> 10 min read</span>
               </div>
             </div>
           </article>
@@ -342,12 +430,12 @@
       </div>
     </section>
 
-    <!-- Newsletter CTA -->
+    <!-- Modern Newsletter -->
     <section class="container">
       <div class="newsletter animate-on-scroll">
-        <h2 class="newsletter-title">Never Miss a Post</h2>
+        <h2 class="newsletter-title">Stay Ahead with Everygyan</h2>
         <p class="newsletter-text">
-          Join over 5,000 curious minds. Subscribe to receive thoughtful essays, travel guides, and coding tutorials directly in your inbox.
+          Join over 5,000 curious minds. Receive thoughtful essays, curated travel guides, and software engineering deep dives.
         </p>
         <form class="newsletter-form">
           <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
@@ -363,11 +451,11 @@
       <div class="footer-content grid-4">
         <div class="footer-col">
           <a href="index.html" class="navbar-brand">
-            <div class="navbar-brand-icon"><i data-lucide="pen-line"></i></div>
-            <span class="navbar-brand-text">Devansh<span class="text-primary">.blog</span></span>
+            <div class="navbar-brand-icon"><i data-lucide="sparkles"></i></div>
+            <span class="navbar-brand-text">Every<span class="gradient-text">gyan</span></span>
           </a>
           <p class="mt-2" style="color:var(--text-secondary);font-size:0.925rem;">
-            Exploring the world through words, code, and curiosity. Join me on this journey of continuous discovery.
+            Empowering curious minds through words, world adventures, and technical craftsmanship.
           </p>
           <div class="footer-social mt-2">
             <a href="#" class="btn-icon" aria-label="GitHub"><i data-lucide="github"></i></a>
@@ -377,39 +465,40 @@
           </div>
         </div>
         <div class="footer-col">
-          <h4 class="footer-title">Navigation</h4>
+          <h4 class="footer-title">Blog</h4>
           <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="blog.html">Personal Blog</a>
-            <a href="travel.html">Travel Diaries</a>
-            <a href="learning.html">Learning Hub</a>
+            <a href="blog.html">All Blog Posts</a>
+            <a href="blog-essays.html">Essays &amp; Reflections</a>
+            <a href="blog-productivity.html">Productivity &amp; Habits</a>
+            <a href="blog-books.html">Book Summaries</a>
           </div>
         </div>
         <div class="footer-col">
-          <h4 class="footer-title">Categories</h4>
+          <h4 class="footer-title">Travel</h4>
           <div class="footer-links">
-            <a href="blog.html">Personal Reflections</a>
-            <a href="travel.html">Global Adventures</a>
-            <a href="learning.html">Technical Guides</a>
-            <a href="admin/login.html">Author Portal</a>
+            <a href="travel.html">All Travel Diaries</a>
+            <a href="travel-asia.html">Asia Adventures</a>
+            <a href="travel-europe.html">European Escapes</a>
+            <a href="travel-hiking.html">Hiking &amp; Treks</a>
           </div>
         </div>
         <div class="footer-col">
-          <h4 class="footer-title">Stay Connected</h4>
-          <p style="color:var(--text-secondary);font-size:0.9rem;">Receive monthly recaps and exclusive insights.</p>
-          <form class="newsletter-form mt-2" id="footerNewsletter">
-            <input type="email" class="newsletter-input" placeholder="Your email address" required>
-            <button type="submit" class="newsletter-btn">Join</button>
-          </form>
+          <h4 class="footer-title">Learning Hub</h4>
+          <div class="footer-links">
+            <a href="learning.html">All Tutorials</a>
+            <a href="learning-webdev.html">Web Architecture</a>
+            <a href="learning-databases.html">Database Systems</a>
+            <a href="learning-devops.html">DevOps &amp; Cloud</a>
+            <a href="admin/login.html" class="text-primary" style="margin-top: 6px;">Author Dashboard →</a>
+          </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Devansh.blog. All rights reserved. Built with modern web standards for fast, seamless reading.</p>
+        <p>&copy; 2026 Everygyan. All rights reserved. Built with modern web standards for fast, seamless reading.</p>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="assets/js/api.js"></script>
   <script src="assets/js/app.js"></script>

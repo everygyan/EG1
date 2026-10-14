@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>European Escapes &amp; Road Trips — Everygyan</title>
+  <meta name="description" content="Road trips, alpine lakes, coastal train routes, and historic city guides across Europe.">
+  <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar with Dropdown Submenus -->
+  <nav class="navbar" id="navbar">
+    <div class="container flex-between">
+      <a href="index.html" class="navbar-brand">
+        <div class="navbar-brand-icon"><i data-lucide="sparkles"></i></div>
+        <span class="navbar-brand-text">Every<span class="gradient-text">gyan</span></span>
+      </a>
+
+      <div class="navbar-links" id="navLinks">
+        <a href="index.html">Home</a>
+
+        <!-- Blog Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="blog.html" class="nav-link-parent">
+            Blog <i data-lucide="chevron-down" class="chevron"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="blog-essays.html" class="dropdown-item">
+              <div class="dropdown-icon blog"><i data-lucide="feather"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Essays &amp; Reflections</span>
+                <span class="dropdown-desc">Mindful perspectives &amp; life philosophy</span>
+              </div>
+            </a>
+            <a href="blog-productivity.html" class="dropdown-item">
+              <div class="dropdown-icon blog"><i data-lucide="zap"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Productivity &amp; Habits</span>
+                <span class="dropdown-desc">Slow focus, systems &amp; deep work</span>
+              </div>
+            </a>
+            <a href="blog-books.html" class="dropdown-item">
+              <div class="dropdown-icon blog"><i data-lucide="book-open"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Book Summaries</span>
+                <span class="dropdown-desc">Key takeaways from timeless reads</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Travel Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="travel.html" class="nav-link-parent active">
+            Travel <i data-lucide="chevron-down" class="chevron"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="travel-asia.html" class="dropdown-item">
+              <div class="dropdown-icon travel"><i data-lucide="compass"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Asia Adventures</span>
+                <span class="dropdown-desc">Japan, Kyoto, Southeast Asia</span>
+              </div>
+            </a>
+            <a href="travel-europe.html" class="dropdown-item active">
+              <div class="dropdown-icon travel"><i data-lucide="map-pin"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">European Escapes</span>
+                <span class="dropdown-desc">Swiss Alps, Norway fjords, Lisbon</span>
+              </div>
+            </a>
+            <a href="travel-hiking.html" class="dropdown-item">
+              <div class="dropdown-icon travel"><i data-lucide="mountain"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Hiking &amp; Treks</span>
+                <span class="dropdown-desc">High alpine routes &amp; wilderness trails</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Learning Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="learning.html" class="nav-link-parent">
+            Learning <i data-lucide="chevron-down" class="chevron"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="learning-webdev.html" class="dropdown-item">
+              <div class="dropdown-icon learning"><i data-lucide="code"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Web Architecture</span>
+                <span class="dropdown-desc">Fullstack engineering &amp; scale</span>
+              </div>
+            </a>
+            <a href="learning-databases.html" class="dropdown-item">
+              <div class="dropdown-icon learning"><i data-lucide="database"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Database Engineering</span>
+                <span class="dropdown-desc">SQL, indexing &amp; performance</span>
+              </div>
+            </a>
+            <a href="learning-devops.html" class="dropdown-item">
+              <div class="dropdown-icon learning"><i data-lucide="cloud"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">DevOps &amp; Cloud</span>
+                <span class="dropdown-desc">Docker, Git internals &amp; CI/CD</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-actions">
+        <button class="theme-toggle btn-icon" id="themeToggle" aria-label="Toggle theme">
+          <i data-lucide="sun" class="theme-icon-light"></i>
+          <i data-lucide="moon" class="theme-icon-dark"></i>
+        </button>
+        <a href="admin/login.html" class="btn btn-sm btn-outline">
+          <i data-lucide="layout-dashboard"></i> Dashboard
+        </a>
+        <button class="navbar-toggle btn-icon" id="navToggle" aria-label="Toggle navigation">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page-header">
+      <div class="container">
+        <div class="page-header-icon" style="background-color: var(--accent-light); color: var(--accent);">
+          <i data-lucide="map-pin"></i>
+        </div>
+        <div class="breadcrumb" style="justify-content: center; margin-bottom: 12px; padding-top: 0;">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="travel.html">Travel</a>
+          <span class="breadcrumb-separator">/</span>
+          <span>European Escapes</span>
+        </div>
+        <h1 class="page-header-title">European Escapes &amp; Road Trips</h1>
+        <p class="page-header-text">
+          Dramatic fjords, cobblestone alleyways, high mountain passes, and tranquil Mediterranean sunsets.
+        </p>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-3" id="articlesGrid">
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600" alt="Norwegian fjords" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category travel">Travel</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=road-tripping-norway-fjords">Road Tripping the Norwegian Fjords: The Route of Waterfalls</a>
+              </h3>
+              <p class="card-excerpt">
+                Serpentine mountain passes, electric car charging in the Arctic circle, and sheer cliff waterfalls.
+              </p>
+              <div class="card-meta">
+                <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 04, 2026</span>
+                <span class="card-meta-item"><i data-lucide="clock"></i> 8 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=600" alt="Lisbon miradouro" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category travel">Travel</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=lisbon-neighborhoods-guide">Pastéis, Hills, and Fado: The Neighborhoods of Lisbon</a>
+              </h3>
+              <p class="card-excerpt">
+                Wandering through Alfama and Graça with a camera, catching sunset over the Tagus river.
+              </p>
+              <div class="card-meta">
+                <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 16, 2026</span>
+                <span class="card-meta-item"><i data-lucide="clock"></i> 6 min read</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="Zermatt Switzerland" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category travel">Travel</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=chasing-silence-in-the-swiss-alps">Chasing Silence in the Swiss Alps: A Solitary Trek Above the Clouds</a>
+              </h3>
+              <p class="card-excerpt">
+                Trekking across high alpine trails, navigating glaciers, and discovering refuge in historic mountain huts.
+              </p>
+              <div class="card-meta">
+                <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 12, 2026</span>
+                <span class="card-meta-item"><i data-lucide="clock"></i> 8 min read</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bottom" style="border:none; padding: 24px 0;">
+          <p>&copy; 2026 Everygyan. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

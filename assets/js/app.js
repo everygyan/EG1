@@ -1,5 +1,5 @@
 /**
- * Devansh.blog - Main Frontend Application Logic
+ * Everygyan - Main Frontend Application Logic
  * Supports Theme Switcher, Mobile Navigation, API Integration, and Dynamic Article Rendering
  */
 
@@ -69,8 +69,21 @@ function initNavbar() {
             navLinks.classList.toggle('active');
         });
 
-        // Close on link click
-        navLinks.querySelectorAll('a').forEach(link => {
+        // Dropdown toggle on mobile
+        navLinks.querySelectorAll('.nav-link-parent').forEach(parent => {
+            parent.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    const dropdown = parent.closest('.nav-item-dropdown');
+                    if (dropdown) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('open');
+                    }
+                }
+            });
+        });
+
+        // Close on link click (only standard links or dropdown items)
+        navLinks.querySelectorAll('a:not(.nav-link-parent)').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
@@ -89,10 +102,13 @@ function initNavbar() {
     if (navLinks) {
         navLinks.querySelectorAll('a').forEach(link => {
             const href = link.getAttribute('href');
-            if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+            if (href && (href === currentPath || (currentPath === '' && href === 'index.html'))) {
                 link.classList.add('active');
-            } else if (href !== 'index.html' && currentPath.startsWith(href.replace('.html', ''))) {
-                link.classList.add('active');
+                const parentDropdown = link.closest('.nav-item-dropdown');
+                if (parentDropdown) {
+                    const parentLink = parentDropdown.querySelector('.nav-link-parent');
+                    if (parentLink) parentLink.classList.add('active');
+                }
             }
         });
     }
@@ -363,7 +379,7 @@ async function loadSingleArticle() {
         const res = await API.getArticle(slug || id);
         if (res && res.success && res.data) {
             const article = res.data;
-            document.title = `${article.title} — Devansh.blog`;
+            document.title = `${article.title} — Everygyan`;
 
             // Breadcrumb & Category
             const categorySlug = (article.category_slug || (article.category && article.category.slug) || 'blog').toLowerCase();

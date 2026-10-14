@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Learning Hub — Devansh.blog</title>
+  <title>Learning Hub — Everygyan</title>
   <meta name="description" content="Technical tutorials, software architecture guides, coding best practices, and career advice for engineers.">
   <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
 
@@ -14,21 +14,108 @@
 </head>
 <body>
 
-  <!-- Top Navigation Bar -->
+  <!-- Navigation Bar with Dropdown Submenus -->
   <nav class="navbar" id="navbar">
     <div class="container flex-between">
       <a href="index.html" class="navbar-brand">
-        <div class="navbar-brand-icon">
-          <i data-lucide="pen-line"></i>
-        </div>
-        <span class="navbar-brand-text">Devansh<span class="text-primary">.blog</span></span>
+        <div class="navbar-brand-icon"><i data-lucide="sparkles"></i></div>
+        <span class="navbar-brand-text">Every<span class="gradient-text">gyan</span></span>
       </a>
+
       <div class="navbar-links" id="navLinks">
         <a href="index.html">Home</a>
-        <a href="blog.html">Blog</a>
-        <a href="travel.html">Travel</a>
-        <a href="learning.html" class="active">Learning</a>
+
+        <!-- Blog Submenu Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="blog.html" class="nav-link-parent">
+            Blog <i data-lucide="chevron-down" class="chevron"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="blog-essays.html" class="dropdown-item">
+              <div class="dropdown-icon blog"><i data-lucide="feather"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Essays &amp; Reflections</span>
+                <span class="dropdown-desc">Mindful perspectives &amp; life philosophy</span>
+              </div>
+            </a>
+            <a href="blog-productivity.html" class="dropdown-item">
+              <div class="dropdown-icon blog"><i data-lucide="zap"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Productivity &amp; Habits</span>
+                <span class="dropdown-desc">Slow focus, systems &amp; deep work</span>
+              </div>
+            </a>
+            <a href="blog-books.html" class="dropdown-item">
+              <div class="dropdown-icon blog"><i data-lucide="book-open"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Book Summaries</span>
+                <span class="dropdown-desc">Key takeaways from timeless reads</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Travel Submenu Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="travel.html" class="nav-link-parent">
+            Travel <i data-lucide="chevron-down" class="chevron"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="travel-asia.html" class="dropdown-item">
+              <div class="dropdown-icon travel"><i data-lucide="compass"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Asia Adventures</span>
+                <span class="dropdown-desc">Japan, Kyoto, Southeast Asia</span>
+              </div>
+            </a>
+            <a href="travel-europe.html" class="dropdown-item">
+              <div class="dropdown-icon travel"><i data-lucide="map-pin"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">European Escapes</span>
+                <span class="dropdown-desc">Swiss Alps, Norway fjords, Lisbon</span>
+              </div>
+            </a>
+            <a href="travel-hiking.html" class="dropdown-item">
+              <div class="dropdown-icon travel"><i data-lucide="mountain"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Hiking &amp; Treks</span>
+                <span class="dropdown-desc">High alpine routes &amp; wilderness trails</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Learning Submenu Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="learning.html" class="nav-link-parent active">
+            Learning <i data-lucide="chevron-down" class="chevron"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="learning-webdev.html" class="dropdown-item">
+              <div class="dropdown-icon learning"><i data-lucide="code"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Web Architecture</span>
+                <span class="dropdown-desc">Fullstack engineering &amp; scale</span>
+              </div>
+            </a>
+            <a href="learning-databases.html" class="dropdown-item">
+              <div class="dropdown-icon learning"><i data-lucide="database"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Database Engineering</span>
+                <span class="dropdown-desc">SQL, indexing &amp; performance</span>
+              </div>
+            </a>
+            <a href="learning-devops.html" class="dropdown-item">
+              <div class="dropdown-icon learning"><i data-lucide="cloud"></i></div>
+              <div class="dropdown-text">
+                <span class="dropdown-title">DevOps &amp; Cloud</span>
+                <span class="dropdown-desc">Docker, Git internals &amp; CI/CD</span>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
+
       <div class="navbar-actions">
         <button class="theme-toggle btn-icon" id="themeToggle" aria-label="Toggle theme">
           <i data-lucide="sun" class="theme-icon-light"></i>
@@ -45,22 +132,45 @@
   </nav>
 
   <main>
-    <!-- Page Header -->
     <header class="page-header">
       <div class="container">
         <div class="page-header-icon" style="background-color: var(--success-light); color: var(--success);">
           <i data-lucide="graduation-cap"></i>
         </div>
-        <h1 class="page-header-title">Learning Hub</h1>
+        <h1 class="page-header-title">Technical Learning Hub</h1>
         <p class="page-header-text">
           Deep dives, technical roadmaps, and actionable code tutorials. Designed to turn complex concepts into practical engineering skills.
         </p>
       </div>
     </header>
 
-    <!-- Articles Section -->
     <section class="section">
       <div class="container">
+        <!-- Subchannel Quick Cards -->
+        <div class="grid grid-3 mb-4">
+          <a href="learning-webdev.html" class="card" style="padding: 18px 20px; flex-direction: row; align-items: center; gap: 14px;">
+            <div class="dropdown-icon learning"><i data-lucide="code"></i></div>
+            <div>
+              <h4 style="font-size: 1rem; font-weight: 700; color: var(--text);">Web Architecture</h4>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">Scale, APIs &amp; TypeScript</p>
+            </div>
+          </a>
+          <a href="learning-databases.html" class="card" style="padding: 18px 20px; flex-direction: row; align-items: center; gap: 14px;">
+            <div class="dropdown-icon learning"><i data-lucide="database"></i></div>
+            <div>
+              <h4 style="font-size: 1rem; font-weight: 700; color: var(--text);">Database Systems</h4>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">B-Trees, indexing &amp; SQL</p>
+            </div>
+          </a>
+          <a href="learning-devops.html" class="card" style="padding: 18px 20px; flex-direction: row; align-items: center; gap: 14px;">
+            <div class="dropdown-icon learning"><i data-lucide="cloud"></i></div>
+            <div>
+              <h4 style="font-size: 1rem; font-weight: 700; color: var(--text);">DevOps &amp; Cloud</h4>
+              <p style="font-size: 0.8rem; color: var(--text-muted);">Docker, Git &amp; CI/CD</p>
+            </div>
+          </a>
+        </div>
+
         <!-- Filter and Search Bar -->
         <div class="filter-bar">
           <div class="filter-pills">
@@ -68,8 +178,6 @@
             <button class="filter-btn" data-filter="architecture">Architecture</button>
             <button class="filter-btn" data-filter="typescript">TypeScript</button>
             <button class="filter-btn" data-filter="databases">Databases</button>
-            <button class="filter-btn" data-filter="devops">DevOps &amp; Cloud</button>
-            <button class="filter-btn" data-filter="career">Engineering Career</button>
           </div>
           <div class="search-bar">
             <span class="search-icon"><i data-lucide="search"></i></span>
@@ -79,14 +187,13 @@
 
         <!-- Article Grid -->
         <div class="grid grid-3" id="articlesGrid">
-          <!-- Guide 1 -->
           <article class="card animate-on-scroll">
             <div class="card-img">
               <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600" alt="Cloud servers and network" loading="lazy">
               <div class="card-img-overlay"></div>
             </div>
             <div class="card-body">
-              <span class="card-category learning">Learning</span>
+              <span class="card-category learning">Architecture</span>
               <h3 class="card-title">
                 <a href="article.html?slug=building-scalable-web-architectures">Building Resilient Web Architectures: From Zero to Scale</a>
               </h3>
@@ -94,24 +201,19 @@
                 A practical guide to database indexing, reverse proxies, and caching layers to ensure 99.99% uptime under high traffic.
               </p>
               <div class="card-meta">
-                <div class="card-meta-left">
-                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 08, 2026</span>
-                </div>
-                <div class="card-meta-right">
-                  <span class="card-meta-item"><i data-lucide="clock"></i> 9 min read</span>
-                </div>
+                <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 08, 2026</span>
+                <span class="card-meta-item"><i data-lucide="clock"></i> 9 min read</span>
               </div>
             </div>
           </article>
 
-          <!-- Guide 2 -->
           <article class="card animate-on-scroll">
             <div class="card-img">
               <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=600" alt="Code IDE syntax" loading="lazy">
               <div class="card-img-overlay"></div>
             </div>
             <div class="card-body">
-              <span class="card-category learning">Learning</span>
+              <span class="card-category learning">TypeScript</span>
               <h3 class="card-title">
                 <a href="article.html?slug=mastering-typescript-generics">Mastering TypeScript Generics for Real-World Applications</a>
               </h3>
@@ -119,24 +221,19 @@
                 Demystifying conditional types, mapped types, and constraints to build bulletproof type-safe libraries.
               </p>
               <div class="card-meta">
-                <div class="card-meta-left">
-                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 02, 2026</span>
-                </div>
-                <div class="card-meta-right">
-                  <span class="card-meta-item"><i data-lucide="clock"></i> 10 min read</span>
-                </div>
+                <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 02, 2026</span>
+                <span class="card-meta-item"><i data-lucide="clock"></i> 10 min read</span>
               </div>
             </div>
           </article>
 
-          <!-- Guide 3 -->
           <article class="card animate-on-scroll">
             <div class="card-img">
               <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?w=600" alt="Terminal debugging" loading="lazy">
               <div class="card-img-overlay"></div>
             </div>
             <div class="card-body">
-              <span class="card-category learning">Learning</span>
+              <span class="card-category learning">Databases</span>
               <h3 class="card-title">
                 <a href="article.html?slug=demystifying-database-indexing">Demystifying Database Indexing: B-Trees, Hash, and Execution Plans</a>
               </h3>
@@ -144,98 +241,14 @@
                 Understand what actually happens under the hood when you query MySQL or PostgreSQL, and how to eliminate slow queries.
               </p>
               <div class="card-meta">
-                <div class="card-meta-left">
-                  <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 26, 2026</span>
-                </div>
-                <div class="card-meta-right">
-                  <span class="card-meta-item"><i data-lucide="clock"></i> 8 min read</span>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Guide 4 -->
-          <article class="card animate-on-scroll">
-            <div class="card-img">
-              <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=600" alt="Developer with dual screens" loading="lazy">
-              <div class="card-img-overlay"></div>
-            </div>
-            <div class="card-body">
-              <span class="card-category learning">Learning</span>
-              <h3 class="card-title">
-                <a href="article.html?slug=git-internals-explained">Git Internals Explained: Objects, Blobs, Trees, and Commits</a>
-              </h3>
-              <p class="card-excerpt">
-                Never fear a detached HEAD again. Explore how Git stores snapshots as content-addressable graphs.
-              </p>
-              <div class="card-meta">
-                <div class="card-meta-left">
-                  <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 18, 2026</span>
-                </div>
-                <div class="card-meta-right">
-                  <span class="card-meta-item"><i data-lucide="clock"></i> 7 min read</span>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Guide 5 -->
-          <article class="card animate-on-scroll">
-            <div class="card-img">
-              <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600" alt="System diagram on notebook" loading="lazy">
-              <div class="card-img-overlay"></div>
-            </div>
-            <div class="card-body">
-              <span class="card-category learning">Learning</span>
-              <h3 class="card-title">
-                <a href="article.html?slug=api-design-patterns-rest-to-graphql">Clean RESTful API Design: Idempotency, Versioning, and Errors</a>
-              </h3>
-              <p class="card-excerpt">
-                Guidelines for designing APIs developers love to integrate with: predictable contracts, standard codes, and smooth migrations.
-              </p>
-              <div class="card-meta">
-                <div class="card-meta-left">
-                  <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 11, 2026</span>
-                </div>
-                <div class="card-meta-right">
-                  <span class="card-meta-item"><i data-lucide="clock"></i> 6 min read</span>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Guide 6 -->
-          <article class="card animate-on-scroll">
-            <div class="card-img">
-              <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600" alt="Open book and laptop" loading="lazy">
-              <div class="card-img-overlay"></div>
-            </div>
-            <div class="card-body">
-              <span class="card-category learning">Learning</span>
-              <h3 class="card-title">
-                <a href="article.html?slug=the-staff-engineer-reading-list">The Staff Engineer Roadmap: Systems Thinking &amp; Influence</a>
-              </h3>
-              <p class="card-excerpt">
-                Moving beyond code output to technical strategy, cross-team alignment, and organizational impact.
-              </p>
-              <div class="card-meta">
-                <div class="card-meta-left">
-                  <span class="card-meta-item"><i data-lucide="calendar"></i> Aug 29, 2026</span>
-                </div>
-                <div class="card-meta-right">
-                  <span class="card-meta-item"><i data-lucide="clock"></i> 11 min read</span>
-                </div>
+                <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 26, 2026</span>
+                <span class="card-meta-item"><i data-lucide="clock"></i> 8 min read</span>
               </div>
             </div>
           </article>
         </div>
 
-        <!-- Pagination -->
-        <div class="pagination" id="pagination">
-          <button class="page-btn active">1</button>
-          <button class="page-btn">2</button>
-          <button class="page-btn"><i data-lucide="chevron-right"></i></button>
-        </div>
+        <div class="pagination" id="pagination"></div>
       </div>
     </section>
 
@@ -243,9 +256,7 @@
     <section class="container">
       <div class="newsletter animate-on-scroll">
         <h2 class="newsletter-title">Subscribe to Engineering Field Notes</h2>
-        <p class="newsletter-text">
-          Zero fluff. Deep architectural case studies, performance tips, and software tutorials sent twice a month.
-        </p>
+        <p class="newsletter-text">Architectural case studies, performance tips, and software tutorials sent twice a month.</p>
         <form class="newsletter-form">
           <input type="email" class="newsletter-input" placeholder="Your developer email" required>
           <button type="submit" class="newsletter-btn">Subscribe</button>
@@ -254,54 +265,10 @@
     </section>
   </main>
 
-  <!-- Global Footer -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-content grid-4">
-        <div class="footer-col">
-          <a href="index.html" class="navbar-brand">
-            <div class="navbar-brand-icon"><i data-lucide="pen-line"></i></div>
-            <span class="navbar-brand-text">Devansh<span class="text-primary">.blog</span></span>
-          </a>
-          <p class="mt-2" style="color:var(--text-secondary);font-size:0.925rem;">
-            Exploring the world through words, code, and curiosity.
-          </p>
-          <div class="footer-social mt-2">
-            <a href="#" class="btn-icon" aria-label="GitHub"><i data-lucide="github"></i></a>
-            <a href="#" class="btn-icon" aria-label="Twitter"><i data-lucide="twitter"></i></a>
-            <a href="#" class="btn-icon" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
-            <a href="#" class="btn-icon" aria-label="Instagram"><i data-lucide="instagram"></i></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4 class="footer-title">Navigation</h4>
-          <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="blog.html">Personal Blog</a>
-            <a href="travel.html">Travel Diaries</a>
-            <a href="learning.html">Learning Hub</a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4 class="footer-title">Categories</h4>
-          <div class="footer-links">
-            <a href="blog.html">Personal Reflections</a>
-            <a href="travel.html">Global Adventures</a>
-            <a href="learning.html">Technical Guides</a>
-            <a href="admin/login.html">Author Portal</a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4 class="footer-title">Stay Connected</h4>
-          <p style="color:var(--text-secondary);font-size:0.9rem;">Join 5,000+ readers.</p>
-          <form class="newsletter-form mt-2" id="footerNewsletter">
-            <input type="email" class="newsletter-input" placeholder="Your email address" required>
-            <button type="submit" class="newsletter-btn">Join</button>
-          </form>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Devansh.blog. All rights reserved.</p>
+      <div class="footer-bottom" style="border:none; padding: 24px 0;">
+        <p>&copy; 2026 Everygyan. All rights reserved.</p>
       </div>
     </div>
   </footer>
