@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Diaries — Devansh.blog</title>
+  <meta name="description" content="Visual stories, backpacking itineraries, hiking guides, and cultural experiences from across 30+ countries.">
+  <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container flex-between">
+      <a href="index.html" class="navbar-brand">
+        <div class="navbar-brand-icon">
+          <i data-lucide="pen-line"></i>
+        </div>
+        <span class="navbar-brand-text">Devansh<span class="text-primary">.blog</span></span>
+      </a>
+      <div class="navbar-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="travel.html" class="active">Travel</a>
+        <a href="learning.html">Learning</a>
+      </div>
+      <div class="navbar-actions">
+        <button class="theme-toggle btn-icon" id="themeToggle" aria-label="Toggle theme">
+          <i data-lucide="sun" class="theme-icon-light"></i>
+          <i data-lucide="moon" class="theme-icon-dark"></i>
+        </button>
+        <a href="admin/login.html" class="btn btn-sm btn-outline">
+          <i data-lucide="layout-dashboard"></i> Dashboard
+        </a>
+        <button class="navbar-toggle btn-icon" id="navToggle" aria-label="Toggle navigation">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Page Header -->
+    <header class="page-header">
+      <div class="container">
+        <div class="page-header-icon" style="background-color: var(--accent-light); color: var(--accent);">
+          <i data-lucide="plane"></i>
+        </div>
+        <h1 class="page-header-title">Travel Diaries</h1>
+        <p class="page-header-text">
+          Chronicling journeys across mountain summits, ancient alleys, and quiet coastlines. Visual guides for the curious traveler.
+        </p>
+      </div>
+    </header>
+
+    <!-- Articles Section -->
+    <section class="section">
+      <div class="container">
+        <!-- Filter and Search Bar -->
+        <div class="filter-bar">
+          <div class="filter-pills">
+            <button class="filter-btn active" data-filter="all">All Continents</button>
+            <button class="filter-btn" data-filter="asia">Asia</button>
+            <button class="filter-btn" data-filter="europe">Europe</button>
+            <button class="filter-btn" data-filter="americas">Americas</button>
+            <button class="filter-btn" data-filter="hiking">Mountain Treks</button>
+            <button class="filter-btn" data-filter="guides">City Guides</button>
+          </div>
+          <div class="search-bar">
+            <span class="search-icon"><i data-lucide="search"></i></span>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search travel diaries...">
+          </div>
+        </div>
+
+        <!-- Article Grid -->
+        <div class="grid grid-3" id="articlesGrid">
+          <!-- Story 1 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="Swiss Alps" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category travel">Travel</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=chasing-silence-in-the-swiss-alps">Chasing Silence in the Swiss Alps: A Solitary Trek Above the Clouds</a>
+              </h3>
+              <p class="card-excerpt">
+                Trekking across high alpine trails, navigating glaciers, and discovering refuge in historic mountain huts.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 12, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 8 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Story 2 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600" alt="Kyoto Shrine" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category travel">Travel</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=seven-days-in-kyoto">Seven Days in Kyoto: Temples, Matcha, and Ancient Alleys</a>
+              </h3>
+              <p class="card-excerpt">
+                A mindful walking guide through Japan's cultural capital, featuring dawn visits to Fushimi Inari and quiet gardens.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 09, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 7 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Story 3 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600" alt="Norway Fjords" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category travel">Travel</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=road-tripping-norway-fjords">Road Tripping the Norwegian Fjords: The Route of Waterfalls</a>
+              </h3>
+              <p class="card-excerpt">
+                Navigating serpentine mountain passes, electric ferries, and dramatic cliff views along the Atlantic coastline.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 04, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 8 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Story 4 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600" alt="Alpine lake in New Zealand" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category travel">Travel</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=new-zealand-south-island-campervan">Wild Camping New Zealand's South Island in Autumn</a>
+              </h3>
+              <p class="card-excerpt">
+                Two weeks in a converted campervan chasing turquoise glacial lakes, starry skies, and dramatic fiord vistas.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 24, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 9 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Story 5 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=600" alt="Lisbon Tram" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category travel">Travel</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=lisbon-neighborhoods-guide">Pastéis, Hills, and Fado: The Neighborhoods of Lisbon</a>
+              </h3>
+              <p class="card-excerpt">
+                Wandering through Alfama, Chiado, and Graça with a camera, catching golden hour from Lisbon’s legendary miradouros.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 16, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 6 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Story 6 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600" alt="Desert highway" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category travel">Travel</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=crossing-the-american-southwest">The Red Rock Odyssey: Crossing the American Southwest</a>
+              </h3>
+              <p class="card-excerpt">
+                From Zion's towering canyon walls to the surreal sandstones of Sedona, a journey across geological millennia.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 04, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 8 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn"><i data-lucide="chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="container">
+      <div class="newsletter animate-on-scroll">
+        <h2 class="newsletter-title">Get Travel Itineraries &amp; Guides</h2>
+        <p class="newsletter-text">
+          Receive detailed PDF route maps, gear checklists, and hidden spot recommendations directly in your inbox.
+        </p>
+        <form class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content grid-4">
+        <div class="footer-col">
+          <a href="index.html" class="navbar-brand">
+            <div class="navbar-brand-icon"><i data-lucide="pen-line"></i></div>
+            <span class="navbar-brand-text">Devansh<span class="text-primary">.blog</span></span>
+          </a>
+          <p class="mt-2" style="color:var(--text-secondary);font-size:0.925rem;">
+            Exploring the world through words, code, and curiosity.
+          </p>
+          <div class="footer-social mt-2">
+            <a href="#" class="btn-icon" aria-label="GitHub"><i data-lucide="github"></i></a>
+            <a href="#" class="btn-icon" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+            <a href="#" class="btn-icon" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+            <a href="#" class="btn-icon" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Personal Blog</a>
+            <a href="travel.html">Travel Diaries</a>
+            <a href="learning.html">Learning Hub</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Categories</h4>
+          <div class="footer-links">
+            <a href="blog.html">Personal Reflections</a>
+            <a href="travel.html">Global Adventures</a>
+            <a href="learning.html">Technical Guides</a>
+            <a href="admin/login.html">Author Portal</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Stay Connected</h4>
+          <p style="color:var(--text-secondary);font-size:0.9rem;">Join 5,000+ readers.</p>
+          <form class="newsletter-form mt-2" id="footerNewsletter">
+            <input type="email" class="newsletter-input" placeholder="Your email address" required>
+            <button type="submit" class="newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Devansh.blog. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

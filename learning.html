@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Hub — Devansh.blog</title>
+  <meta name="description" content="Technical tutorials, software architecture guides, coding best practices, and career advice for engineers.">
+  <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container flex-between">
+      <a href="index.html" class="navbar-brand">
+        <div class="navbar-brand-icon">
+          <i data-lucide="pen-line"></i>
+        </div>
+        <span class="navbar-brand-text">Devansh<span class="text-primary">.blog</span></span>
+      </a>
+      <div class="navbar-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="travel.html">Travel</a>
+        <a href="learning.html" class="active">Learning</a>
+      </div>
+      <div class="navbar-actions">
+        <button class="theme-toggle btn-icon" id="themeToggle" aria-label="Toggle theme">
+          <i data-lucide="sun" class="theme-icon-light"></i>
+          <i data-lucide="moon" class="theme-icon-dark"></i>
+        </button>
+        <a href="admin/login.html" class="btn btn-sm btn-outline">
+          <i data-lucide="layout-dashboard"></i> Dashboard
+        </a>
+        <button class="navbar-toggle btn-icon" id="navToggle" aria-label="Toggle navigation">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Page Header -->
+    <header class="page-header">
+      <div class="container">
+        <div class="page-header-icon" style="background-color: var(--success-light); color: var(--success);">
+          <i data-lucide="graduation-cap"></i>
+        </div>
+        <h1 class="page-header-title">Learning Hub</h1>
+        <p class="page-header-text">
+          Deep dives, technical roadmaps, and actionable code tutorials. Designed to turn complex concepts into practical engineering skills.
+        </p>
+      </div>
+    </header>
+
+    <!-- Articles Section -->
+    <section class="section">
+      <div class="container">
+        <!-- Filter and Search Bar -->
+        <div class="filter-bar">
+          <div class="filter-pills">
+            <button class="filter-btn active" data-filter="all">All Topics</button>
+            <button class="filter-btn" data-filter="architecture">Architecture</button>
+            <button class="filter-btn" data-filter="typescript">TypeScript</button>
+            <button class="filter-btn" data-filter="databases">Databases</button>
+            <button class="filter-btn" data-filter="devops">DevOps &amp; Cloud</button>
+            <button class="filter-btn" data-filter="career">Engineering Career</button>
+          </div>
+          <div class="search-bar">
+            <span class="search-icon"><i data-lucide="search"></i></span>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search technical guides...">
+          </div>
+        </div>
+
+        <!-- Article Grid -->
+        <div class="grid grid-3" id="articlesGrid">
+          <!-- Guide 1 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600" alt="Cloud servers and network" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category learning">Learning</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=building-scalable-web-architectures">Building Resilient Web Architectures: From Zero to Scale</a>
+              </h3>
+              <p class="card-excerpt">
+                A practical guide to database indexing, reverse proxies, and caching layers to ensure 99.99% uptime under high traffic.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 08, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 9 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Guide 2 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=600" alt="Code IDE syntax" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category learning">Learning</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=mastering-typescript-generics">Mastering TypeScript Generics for Real-World Applications</a>
+              </h3>
+              <p class="card-excerpt">
+                Demystifying conditional types, mapped types, and constraints to build bulletproof type-safe libraries.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 02, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 10 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Guide 3 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?w=600" alt="Terminal debugging" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category learning">Learning</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=demystifying-database-indexing">Demystifying Database Indexing: B-Trees, Hash, and Execution Plans</a>
+              </h3>
+              <p class="card-excerpt">
+                Understand what actually happens under the hood when you query MySQL or PostgreSQL, and how to eliminate slow queries.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 26, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 8 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Guide 4 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=600" alt="Developer with dual screens" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category learning">Learning</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=git-internals-explained">Git Internals Explained: Objects, Blobs, Trees, and Commits</a>
+              </h3>
+              <p class="card-excerpt">
+                Never fear a detached HEAD again. Explore how Git stores snapshots as content-addressable graphs.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 18, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 7 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Guide 5 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600" alt="System diagram on notebook" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category learning">Learning</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=api-design-patterns-rest-to-graphql">Clean RESTful API Design: Idempotency, Versioning, and Errors</a>
+              </h3>
+              <p class="card-excerpt">
+                Guidelines for designing APIs developers love to integrate with: predictable contracts, standard codes, and smooth migrations.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 11, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 6 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Guide 6 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600" alt="Open book and laptop" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category learning">Learning</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=the-staff-engineer-reading-list">The Staff Engineer Roadmap: Systems Thinking &amp; Influence</a>
+              </h3>
+              <p class="card-excerpt">
+                Moving beyond code output to technical strategy, cross-team alignment, and organizational impact.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Aug 29, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 11 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn"><i data-lucide="chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="container">
+      <div class="newsletter animate-on-scroll">
+        <h2 class="newsletter-title">Subscribe to Engineering Field Notes</h2>
+        <p class="newsletter-text">
+          Zero fluff. Deep architectural case studies, performance tips, and software tutorials sent twice a month.
+        </p>
+        <form class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Your developer email" required>
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content grid-4">
+        <div class="footer-col">
+          <a href="index.html" class="navbar-brand">
+            <div class="navbar-brand-icon"><i data-lucide="pen-line"></i></div>
+            <span class="navbar-brand-text">Devansh<span class="text-primary">.blog</span></span>
+          </a>
+          <p class="mt-2" style="color:var(--text-secondary);font-size:0.925rem;">
+            Exploring the world through words, code, and curiosity.
+          </p>
+          <div class="footer-social mt-2">
+            <a href="#" class="btn-icon" aria-label="GitHub"><i data-lucide="github"></i></a>
+            <a href="#" class="btn-icon" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+            <a href="#" class="btn-icon" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+            <a href="#" class="btn-icon" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Personal Blog</a>
+            <a href="travel.html">Travel Diaries</a>
+            <a href="learning.html">Learning Hub</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Categories</h4>
+          <div class="footer-links">
+            <a href="blog.html">Personal Reflections</a>
+            <a href="travel.html">Global Adventures</a>
+            <a href="learning.html">Technical Guides</a>
+            <a href="admin/login.html">Author Portal</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Stay Connected</h4>
+          <p style="color:var(--text-secondary);font-size:0.9rem;">Join 5,000+ readers.</p>
+          <form class="newsletter-form mt-2" id="footerNewsletter">
+            <input type="email" class="newsletter-input" placeholder="Your email address" required>
+            <button type="submit" class="newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Devansh.blog. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

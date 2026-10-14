@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — Devansh.blog</title>
+  <link rel="icon" type="image/svg+xml" href="../public/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="admin-layout">
+
+  <!-- Admin Sidebar -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="admin-sidebar-header">
+      <a href="../index.html" class="navbar-brand">
+        <div class="navbar-brand-icon">
+          <i data-lucide="pen-line"></i>
+        </div>
+        <span class="navbar-brand-text">Devansh<span class="text-primary">.blog</span></span>
+      </a>
+    </div>
+
+    <nav class="admin-sidebar-nav">
+      <a href="index.html" class="admin-sidebar-item">
+        <i data-lucide="layout-dashboard"></i> Dashboard
+      </a>
+      <a href="editor.html" class="admin-sidebar-item">
+        <i data-lucide="plus-circle"></i> New Article
+      </a>
+
+      <div class="admin-sidebar-section">
+        <span class="admin-sidebar-section-title">Content</span>
+        <a href="index.html?view=articles" class="admin-sidebar-item">
+          <i data-lucide="file-text"></i> All Articles
+        </a>
+        <a href="index.html?view=media" class="admin-sidebar-item">
+          <i data-lucide="image"></i> Media Library
+        </a>
+      </div>
+
+      <div class="admin-sidebar-section">
+        <span class="admin-sidebar-section-title">System</span>
+        <a href="index.html?view=profile" class="admin-sidebar-item">
+          <i data-lucide="user"></i> Author Profile
+        </a>
+        <a href="../api/setup.php" target="_blank" class="admin-sidebar-item">
+          <i data-lucide="database"></i> Database Diagnostics
+        </a>
+      </div>
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      <button class="btn btn-ghost btn-sm w-full" id="logoutBtn" style="justify-content: flex-start;">
+        <i data-lucide="log-out"></i> Sign Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- Admin Main Area -->
+  <main class="admin-main">
+    <!-- Topbar -->
+    <header class="admin-topbar">
+      <div class="flex items-center gap-2">
+        <button class="btn-icon" id="sidebarToggle" aria-label="Toggle navigation drawer">
+          <i data-lucide="menu"></i>
+        </button>
+        <h1 class="admin-topbar-title" id="adminTopbarTitle">Dashboard</h1>
+      </div>
+
+      <div class="admin-topbar-actions">
+        <button class="theme-toggle btn-icon" id="themeToggle" aria-label="Toggle dark mode">
+          <i data-lucide="sun" class="theme-icon-light"></i>
+          <i data-lucide="moon" class="theme-icon-dark"></i>
+        </button>
+        <a href="../index.html" target="_blank" class="btn btn-secondary btn-sm">
+          <i data-lucide="globe"></i> View Site
+        </a>
+        <a href="editor.html" class="btn btn-primary btn-sm">
+          <i data-lucide="plus"></i> New Post
+        </a>
+      </div>
+    </header>
+
+    <!-- Content Workspace -->
+    <div class="admin-content">
+
+      <!-- VIEW 1: MAIN DASHBOARD -->
+      <section id="view-dashboard">
+        <!-- Stat Cards -->
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-icon primary">
+              <i data-lucide="file-text"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-value" id="statTotalArticles">8</span>
+              <span class="stat-label">Total Articles</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon accent">
+              <i data-lucide="eye"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-value" id="statTotalViews">12,450</span>
+              <span class="stat-label">Total Page Views</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon success">
+              <i data-lucide="check-circle"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-value" id="statPublished">7</span>
+              <span class="stat-label">Published Stories</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon warning">
+              <i data-lucide="edit-3"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-value" id="statDrafts">1</span>
+              <span class="stat-label">Drafts in Progress</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Articles Table -->
+        <div class="data-table-container">
+          <div class="data-table-header">
+            <div>
+              <h2 style="font-size: 1.15rem; font-weight: 700;">Recent Articles</h2>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">Your latest authored pieces across all categories</p>
+            </div>
+            <div class="flex gap-2">
+              <a href="index.html?view=articles" class="btn btn-secondary btn-sm">View All</a>
+              <a href="editor.html" class="btn btn-primary btn-sm"><i data-lucide="plus"></i> Create Post</a>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Title &amp; Slug</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                  <th>Published</th>
+                  <th>Views</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="recentArticlesTbody">
+                <!-- Row 1 -->
+                <tr>
+                  <td>
+                    <a href="editor.html?id=1" class="table-article-title">Chasing Silence in the Swiss Alps: A Solitary Trek Above the Clouds</a>
+                    <span style="font-size:0.8rem;color:var(--text-muted);">chasing-silence-in-the-swiss-alps</span>
+                  </td>
+                  <td><span class="card-category travel">Travel</span></td>
+                  <td><span class="status-badge status-published">Published</span></td>
+                  <td>Oct 12, 2026</td>
+                  <td>1,240</td>
+                  <td>
+                    <div class="table-actions">
+                      <a href="editor.html?id=1" class="btn-icon" title="Edit Article"><i data-lucide="edit-3"></i></a>
+                      <a href="../article.html?slug=chasing-silence-in-the-swiss-alps" target="_blank" class="btn-icon" title="View"><i data-lucide="external-link"></i></a>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 2 -->
+                <tr>
+                  <td>
+                    <a href="editor.html?id=2" class="table-article-title">The Art of Slow Productivity in a Hyperactive World</a>
+                    <span style="font-size:0.8rem;color:var(--text-muted);">the-art-of-slow-productivity</span>
+                  </td>
+                  <td><span class="card-category blog">Blog</span></td>
+                  <td><span class="status-badge status-published">Published</span></td>
+                  <td>Oct 11, 2026</td>
+                  <td>980</td>
+                  <td>
+                    <div class="table-actions">
+                      <a href="editor.html?id=2" class="btn-icon" title="Edit Article"><i data-lucide="edit-3"></i></a>
+                      <a href="../article.html?slug=the-art-of-slow-productivity" target="_blank" class="btn-icon" title="View"><i data-lucide="external-link"></i></a>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 3 -->
+                <tr>
+                  <td>
+                    <a href="editor.html?id=3" class="table-article-title">Building Resilient Web Architectures: From Zero to Scale</a>
+                    <span style="font-size:0.8rem;color:var(--text-muted);">building-scalable-web-architectures</span>
+                  </td>
+                  <td><span class="card-category learning">Learning</span></td>
+                  <td><span class="status-badge status-published">Published</span></td>
+                  <td>Oct 08, 2026</td>
+                  <td>2,150</td>
+                  <td>
+                    <div class="table-actions">
+                      <a href="editor.html?id=3" class="btn-icon" title="Edit Article"><i data-lucide="edit-3"></i></a>
+                      <a href="../article.html?slug=building-scalable-web-architectures" target="_blank" class="btn-icon" title="View"><i data-lucide="external-link"></i></a>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 4 -->
+                <tr>
+                  <td>
+                    <a href="editor.html?id=4" class="table-article-title">Embracing Digital Minimalism: 30 Days Without Social Media</a>
+                    <span style="font-size:0.8rem;color:var(--text-muted);">embracing-digital-minimalism</span>
+                  </td>
+                  <td><span class="card-category blog">Blog</span></td>
+                  <td><span class="status-badge status-published">Published</span></td>
+                  <td>Oct 06, 2026</td>
+                  <td>1,430</td>
+                  <td>
+                    <div class="table-actions">
+                      <a href="editor.html?id=4" class="btn-icon" title="Edit Article"><i data-lucide="edit-3"></i></a>
+                      <a href="../article.html?slug=embracing-digital-minimalism" target="_blank" class="btn-icon" title="View"><i data-lucide="external-link"></i></a>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Row 5 -->
+                <tr>
+                  <td>
+                    <a href="editor.html?id=5" class="table-article-title">Draft: The Next Wave of AI Agents in Web Engineering</a>
+                    <span style="font-size:0.8rem;color:var(--text-muted);">ai-agents-web-engineering</span>
+                  </td>
+                  <td><span class="card-category learning">Learning</span></td>
+                  <td><span class="status-badge status-draft">Draft</span></td>
+                  <td>Unpublished</td>
+                  <td>0</td>
+                  <td>
+                    <div class="table-actions">
+                      <a href="editor.html?id=5" class="btn-icon" title="Edit Article"><i data-lucide="edit-3"></i></a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 2: ALL ARTICLES -->
+      <section id="view-articles" class="hidden">
+        <div class="data-table-container">
+          <div class="data-table-header">
+            <div class="flex items-center gap-2 flex-wrap" style="flex: 1;">
+              <div class="search-bar" style="min-width: 240px;">
+                <span class="search-icon"><i data-lucide="search"></i></span>
+                <input type="text" class="search-input" id="tableSearchInput" placeholder="Filter articles...">
+              </div>
+              <select class="form-select" id="tableStatusFilter" style="width: auto; padding: 10px 16px;">
+                <option value="">All Statuses</option>
+                <option value="published">Published</option>
+                <option value="draft">Drafts</option>
+                <option value="archived">Archived</option>
+              </select>
+              <select class="form-select" id="tableCategoryFilter" style="width: auto; padding: 10px 16px;">
+                <option value="">All Categories</option>
+                <option value="blog">Blog</option>
+                <option value="travel">Travel</option>
+                <option value="learning">Learning</option>
+              </select>
+            </div>
+            <a href="editor.html" class="btn btn-primary btn-sm"><i data-lucide="plus"></i> New Post</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Title &amp; Slug</th>
+                  <th>Category</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Views</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="allArticlesTbody">
+                <!-- Dynamically populated or uses fallback -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pagination" id="tablePagination" style="margin: 24px 0 20px;"></div>
+        </div>
+      </section>
+
+      <!-- VIEW 3: MEDIA LIBRARY -->
+      <section id="view-media" class="hidden">
+        <div class="upload-zone" id="mediaUploadZone">
+          <i data-lucide="upload-cloud" class="upload-zone-icon"></i>
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 6px;">Drop images here or click to upload</h3>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">JPEG, PNG, GIF, WEBP, or SVG up to 5MB each</p>
+          <input type="file" id="mediaFileInput" multiple accept="image/*" class="hidden">
+        </div>
+
+        <div class="media-grid" id="mediaGrid">
+          <div class="media-item" data-url="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="Alps">
+            <div class="media-overlay">
+              <button class="btn btn-primary btn-sm btn-copy-media"><i data-lucide="copy"></i></button>
+            </div>
+          </div>
+          <div class="media-item" data-url="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800">
+            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600" alt="Writing desk">
+            <div class="media-overlay">
+              <button class="btn btn-primary btn-sm btn-copy-media"><i data-lucide="copy"></i></button>
+            </div>
+          </div>
+          <div class="media-item" data-url="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800">
+            <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600" alt="Kyoto">
+            <div class="media-overlay">
+              <button class="btn btn-primary btn-sm btn-copy-media"><i data-lucide="copy"></i></button>
+            </div>
+          </div>
+          <div class="media-item" data-url="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600" alt="Tech servers">
+            <div class="media-overlay">
+              <button class="btn btn-primary btn-sm btn-copy-media"><i data-lucide="copy"></i></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 4: PROFILE & SETTINGS -->
+      <section id="view-profile" class="hidden">
+        <div style="max-width: 680px; margin: 0 auto;">
+          <div class="editor-card">
+            <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 24px;">Author Profile &amp; Preferences</h2>
+            <form id="profileForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="profileName">Full Display Name</label>
+                  <input type="text" class="form-input" id="profileName" value="Devansh" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profileUsername">Username</label>
+                  <input type="text" class="form-input" id="profileUsername" value="admin" required readonly style="background-color:var(--bg-alt);">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="profileEmail">Email Address</label>
+                <input type="email" class="form-input" id="profileEmail" value="admin@example.com" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="profileBio">Author Bio (shown on articles)</label>
+                <textarea class="form-textarea" id="profileBio">Engineer, storyteller, and backpacker exploring the intersection of craftsmanship, technology, and intentional living.</textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="profileNewPass">Change Password</label>
+                <input type="password" class="form-input" id="profileNewPass" placeholder="Leave blank to keep current password">
+                <span class="form-hint">Must be at least 8 characters if changing.</span>
+              </div>
+
+              <div style="margin-top: 28px; display: flex; justify-content: flex-end;">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

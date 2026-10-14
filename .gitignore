@@ -1,0 +1,38 @@
+# Environment
+.env
+*.env.*
+api/config.php
+
+# Dependencies and build outputs
+node_modules/
+vendor/
+dist/
+
+# Uploads (keep directory, ignore files)
+assets/uploads/*
+!assets/uploads/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-*
+
+# Logs
+*.log
+error_log
+php_errors.log
+
+# Database backups
+*.sql.bak
+*.sql.gz
+
+# Temp files
+*.tmp
+*.bak

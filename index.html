@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devansh.blog — Personal Stories, Travel Diaries & Learning Hub</title>
+  <meta name="description" content="A modern personal blog exploring life, technology, world travels, and continuous learning. Written and curated by Devansh.">
+  <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
+
+  <!-- Google Fonts & CDN Dependencies -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container flex-between">
+      <a href="index.html" class="navbar-brand">
+        <div class="navbar-brand-icon">
+          <i data-lucide="pen-line"></i>
+        </div>
+        <span class="navbar-brand-text">Devansh<span class="text-primary">.blog</span></span>
+      </a>
+      <div class="navbar-links" id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="travel.html">Travel</a>
+        <a href="learning.html">Learning</a>
+      </div>
+      <div class="navbar-actions">
+        <button class="theme-toggle btn-icon" id="themeToggle" aria-label="Toggle theme">
+          <i data-lucide="sun" class="theme-icon-light"></i>
+          <i data-lucide="moon" class="theme-icon-dark"></i>
+        </button>
+        <a href="admin/login.html" class="btn btn-sm btn-outline">
+          <i data-lucide="layout-dashboard"></i> Dashboard
+        </a>
+        <button class="navbar-toggle btn-icon" id="navToggle" aria-label="Toggle navigation">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Banner -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge animate-on-scroll">
+            <span>✍️ Welcome to my digital garden</span>
+          </div>
+          <h1 class="hero-title animate-on-scroll">
+            Stories, <span class="gradient-text">Adventures</span> &amp;<br>Endless Learning
+          </h1>
+          <p class="hero-subtitle animate-on-scroll">
+            A personal space where I reflect on life and technology, document my travels across the globe, and compile everything I learn along the journey.
+          </p>
+          <div class="hero-cta animate-on-scroll">
+            <a href="blog.html" class="btn btn-primary btn-lg">
+              <span>Explore Articles</span>
+              <i data-lucide="arrow-right"></i>
+            </a>
+            <a href="#categories" class="btn btn-secondary btn-lg">
+              <i data-lucide="compass"></i> Browse Topics
+            </a>
+          </div>
+          <div class="hero-stats animate-on-scroll">
+            <div class="hero-stat">
+              <div class="hero-stat-value">150+</div>
+              <div class="hero-stat-label">Articles Published</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value">30+</div>
+              <div class="hero-stat-label">Countries Visited</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value">50+</div>
+              <div class="hero-stat-label">Tutorials Shared</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Story -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-badge">⭐️ Editor's Pick</span>
+            <h2 class="section-title">Featured Story</h2>
+          </div>
+          <a href="blog.html" class="btn btn-ghost">
+            View all stories <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="card-featured animate-on-scroll">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000" alt="Mountain Expedition in the Alps" loading="lazy">
+            <div class="card-img-overlay"></div>
+          </div>
+          <div class="card-body">
+            <span class="card-category travel">Travel Diaries</span>
+            <h3 class="card-title">
+              <a href="article.html?slug=chasing-silence-in-the-swiss-alps">Chasing Silence in the Swiss Alps: A Solitary Trek Above the Clouds</a>
+            </h3>
+            <p class="card-excerpt">
+              There is an intoxicating stillness at 3,000 meters that recalibrates the human spirit. Here is my raw chronicle of trekking through Zermatt, navigating glaciers, and finding peace away from the modern noise.
+            </p>
+            <div class="card-meta">
+              <div class="card-meta-left">
+                <span class="card-meta-item">
+                  <i data-lucide="calendar"></i> Oct 12, 2026
+                </span>
+                <span class="card-meta-item">
+                  <i data-lucide="user"></i> Devansh
+                </span>
+              </div>
+              <div class="card-meta-right">
+                <span class="card-meta-item">
+                  <i data-lucide="clock"></i> 8 min read
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Explore by Category -->
+    <section class="section" id="categories" style="background-color: var(--bg-alt);">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-badge">📂 Categories</span>
+          <h2 class="section-title">Explore by Topic</h2>
+          <p class="section-subtitle">Dive into dedicated corners covering thoughts, wanderlust, and technical craftsmanship.</p>
+        </div>
+
+        <div class="grid grid-3">
+          <!-- Blog -->
+          <a href="blog.html" class="category-card animate-on-scroll">
+            <div class="category-card-icon blog">
+              <i data-lucide="pen-line"></i>
+            </div>
+            <h3 class="category-card-title">Personal Blog</h3>
+            <p class="category-card-text">Essays, opinions, deep work reflections, and mindful thoughts on everyday life.</p>
+            <span class="category-card-count">Browse 60+ essays <i data-lucide="chevron-right"></i></span>
+          </a>
+
+          <!-- Travel -->
+          <a href="travel.html" class="category-card animate-on-scroll">
+            <div class="category-card-icon travel">
+              <i data-lucide="plane"></i>
+            </div>
+            <h3 class="category-card-title">Travel Diaries</h3>
+            <p class="category-card-text">Itineraries, photo essays, packing guides, and honest stories from international backpacking.</p>
+            <span class="category-card-count">Browse 40+ destinations <i data-lucide="chevron-right"></i></span>
+          </a>
+
+          <!-- Learning -->
+          <a href="learning.html" class="category-card animate-on-scroll">
+            <div class="category-card-icon learning">
+              <i data-lucide="graduation-cap"></i>
+            </div>
+            <h3 class="category-card-title">Learning Hub</h3>
+            <p class="category-card-text">Hands-on tutorials, software engineering guides, product architecture, and productivity frameworks.</p>
+            <span class="category-card-count">Browse 50+ tutorials <i data-lucide="chevron-right"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Articles -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-badge">🔥 Fresh Perspectives</span>
+            <h2 class="section-title">Latest Articles</h2>
+          </div>
+          <a href="blog.html" class="btn btn-ghost">
+            View archive <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-3" id="latestArticlesGrid">
+          <!-- Card 1 (Blog) -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600" alt="Writing on a desk" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category blog">Blog</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=the-art-of-slow-productivity">The Art of Slow Productivity in a Hyperactive World</a>
+              </h3>
+              <p class="card-excerpt">
+                Why working at a natural cadence and focusing on fewer projects leads to meaningful creative breakthroughs.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 11, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 5 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 (Travel) -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600" alt="Kyoto Bamboo Forest" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category travel">Travel</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=seven-days-in-kyoto">Seven Days in Kyoto: Temples, Matcha, and Ancient Alleys</a>
+              </h3>
+              <p class="card-excerpt">
+                A mindful walking guide through Japan's cultural capital, featuring early morning shrines and serene zen rock gardens.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 09, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 7 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 (Learning) -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600" alt="Code on modern screen" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category learning">Learning</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=building-scalable-web-architectures">Building Resilient Web Architectures: From Zero to Scale</a>
+              </h3>
+              <p class="card-excerpt">
+                A practical guide to database indexing, reverse proxies, and caching layers to ensure 99.99% uptime under load.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 08, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 9 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 (Blog) -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702?w=600" alt="Cozy workspace" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category blog">Blog</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=embracing-digital-minimalism">Embracing Digital Minimalism: 30 Days Without Social Media</a>
+              </h3>
+              <p class="card-excerpt">
+                What happens to your focus, attention span, and mental clarity when you cut out infinite scroll feeds entirely.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 06, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 6 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5 (Travel) -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600" alt="Norwegian fjords" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category travel">Travel</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=road-tripping-norway-fjords">Road Tripping the Norwegian Fjords: The Route of Waterfalls</a>
+              </h3>
+              <p class="card-excerpt">
+                Navigating serpentine mountain passes, electric ferries, and dramatic cliff views along the Atlantic coastline.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 04, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 8 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6 (Learning) -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=600" alt="Code editor" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category learning">Learning</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=mastering-typescript-generics">Mastering TypeScript Generics for Real-World Applications</a>
+              </h3>
+              <p class="card-excerpt">
+                Demystifying conditional types, mapped types, and constraints to build bulletproof type-safe libraries.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 02, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 10 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="container">
+      <div class="newsletter animate-on-scroll">
+        <h2 class="newsletter-title">Never Miss a Post</h2>
+        <p class="newsletter-text">
+          Join over 5,000 curious minds. Subscribe to receive thoughtful essays, travel guides, and coding tutorials directly in your inbox.
+        </p>
+        <form class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content grid-4">
+        <div class="footer-col">
+          <a href="index.html" class="navbar-brand">
+            <div class="navbar-brand-icon"><i data-lucide="pen-line"></i></div>
+            <span class="navbar-brand-text">Devansh<span class="text-primary">.blog</span></span>
+          </a>
+          <p class="mt-2" style="color:var(--text-secondary);font-size:0.925rem;">
+            Exploring the world through words, code, and curiosity. Join me on this journey of continuous discovery.
+          </p>
+          <div class="footer-social mt-2">
+            <a href="#" class="btn-icon" aria-label="GitHub"><i data-lucide="github"></i></a>
+            <a href="#" class="btn-icon" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+            <a href="#" class="btn-icon" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+            <a href="#" class="btn-icon" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Personal Blog</a>
+            <a href="travel.html">Travel Diaries</a>
+            <a href="learning.html">Learning Hub</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Categories</h4>
+          <div class="footer-links">
+            <a href="blog.html">Personal Reflections</a>
+            <a href="travel.html">Global Adventures</a>
+            <a href="learning.html">Technical Guides</a>
+            <a href="admin/login.html">Author Portal</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Stay Connected</h4>
+          <p style="color:var(--text-secondary);font-size:0.9rem;">Receive monthly recaps and exclusive insights.</p>
+          <form class="newsletter-form mt-2" id="footerNewsletter">
+            <input type="email" class="newsletter-input" placeholder="Your email address" required>
+            <button type="submit" class="newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Devansh.blog. All rights reserved. Built with modern web standards for fast, seamless reading.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

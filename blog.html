@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Blog — Devansh.blog</title>
+  <meta name="description" content="Essays, reflections, personal thoughts, and observations on slow productivity, mindfulness, and everyday living.">
+  <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container flex-between">
+      <a href="index.html" class="navbar-brand">
+        <div class="navbar-brand-icon">
+          <i data-lucide="pen-line"></i>
+        </div>
+        <span class="navbar-brand-text">Devansh<span class="text-primary">.blog</span></span>
+      </a>
+      <div class="navbar-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="travel.html">Travel</a>
+        <a href="learning.html">Learning</a>
+      </div>
+      <div class="navbar-actions">
+        <button class="theme-toggle btn-icon" id="themeToggle" aria-label="Toggle theme">
+          <i data-lucide="sun" class="theme-icon-light"></i>
+          <i data-lucide="moon" class="theme-icon-dark"></i>
+        </button>
+        <a href="admin/login.html" class="btn btn-sm btn-outline">
+          <i data-lucide="layout-dashboard"></i> Dashboard
+        </a>
+        <button class="navbar-toggle btn-icon" id="navToggle" aria-label="Toggle navigation">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Page Header -->
+    <header class="page-header">
+      <div class="container">
+        <div class="page-header-icon" style="background-color: var(--primary-light); color: var(--primary);">
+          <i data-lucide="pen-tool"></i>
+        </div>
+        <h1 class="page-header-title">Personal Blog</h1>
+        <p class="page-header-text">
+          Reflections, long-form essays, and candid perspectives on living intentionally in an age of constant distraction.
+        </p>
+      </div>
+    </header>
+
+    <!-- Articles Section -->
+    <section class="section">
+      <div class="container">
+        <!-- Filter and Search Bar -->
+        <div class="filter-bar">
+          <div class="filter-pills">
+            <button class="filter-btn active" data-filter="all">All Stories</button>
+            <button class="filter-btn" data-filter="productivity">Productivity</button>
+            <button class="filter-btn" data-filter="philosophy">Philosophy</button>
+            <button class="filter-btn" data-filter="mindfulness">Mindfulness</button>
+            <button class="filter-btn" data-filter="books">Book Notes</button>
+          </div>
+          <div class="search-bar">
+            <span class="search-icon"><i data-lucide="search"></i></span>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search blog articles...">
+          </div>
+        </div>
+
+        <!-- Article Grid -->
+        <div class="grid grid-3" id="articlesGrid">
+          <!-- Story 1 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600" alt="Desk setup" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category blog">Blog</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=the-art-of-slow-productivity">The Art of Slow Productivity in a Hyperactive World</a>
+              </h3>
+              <p class="card-excerpt">
+                Why working at a natural cadence and focusing on fewer projects leads to meaningful creative breakthroughs.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 11, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 5 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Story 2 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702?w=600" alt="Coffee and notebook" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category blog">Blog</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=embracing-digital-minimalism">Embracing Digital Minimalism: 30 Days Without Social Media</a>
+              </h3>
+              <p class="card-excerpt">
+                What happens to your focus, attention span, and mental clarity when you cut out infinite scroll feeds entirely.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Oct 06, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 6 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Story 3 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?w=600" alt="Journaling" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category blog">Blog</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=the-morning-ritual-that-stuck">The Morning Ritual That Stuck: 500 Words Before Sunrise</a>
+              </h3>
+              <p class="card-excerpt">
+                How a simple low-friction morning writing habit unlocked clarity, reduced anxiety, and reshaped my daily workflow.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 28, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 4 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Story 4 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600" alt="Books stacked" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category blog">Blog</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=lessons-from-stoic-philosophy">Five Stoic Lessons for Navigating Modern Career Uncertainty</a>
+              </h3>
+              <p class="card-excerpt">
+                Marcus Aurelius and Seneca had more to say about startup burnout and career pivots than modern life coaches.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 20, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 7 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Story 5 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600" alt="Reading by window" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category blog">Blog</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=why-i-stopped-optimizing-everything">Why I Stopped Optimizing Every Minute of My Life</a>
+              </h3>
+              <p class="card-excerpt">
+                Reclaiming downtime, spontaneity, and daydreaming as essential pillars of genuine creativity and joy.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 14, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 6 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Story 6 -->
+          <article class="card animate-on-scroll">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?w=600" alt="Artisan pottery" loading="lazy">
+              <div class="card-img-overlay"></div>
+            </div>
+            <div class="card-body">
+              <span class="card-category blog">Blog</span>
+              <h3 class="card-title">
+                <a href="article.html?slug=craftsmanship-over-speed">The Revival of Craftsmanship: Why Doing Less Better Matters</a>
+              </h3>
+              <p class="card-excerpt">
+                Exploring the psychology of mastery and why taking pride in detail elevates both creator and observer.
+              </p>
+              <div class="card-meta">
+                <div class="card-meta-left">
+                  <span class="card-meta-item"><i data-lucide="calendar"></i> Sep 08, 2026</span>
+                </div>
+                <div class="card-meta-right">
+                  <span class="card-meta-item"><i data-lucide="clock"></i> 5 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn"><i data-lucide="chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="container">
+      <div class="newsletter animate-on-scroll">
+        <h2 class="newsletter-title">Subscribe to Weekly Reflections</h2>
+        <p class="newsletter-text">
+          Direct, ad-free essays delivered to your inbox every Sunday morning. No spam, ever.
+        </p>
+        <form class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Your best email address" required>
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content grid-4">
+        <div class="footer-col">
+          <a href="index.html" class="navbar-brand">
+            <div class="navbar-brand-icon"><i data-lucide="pen-line"></i></div>
+            <span class="navbar-brand-text">Devansh<span class="text-primary">.blog</span></span>
+          </a>
+          <p class="mt-2" style="color:var(--text-secondary);font-size:0.925rem;">
+            Exploring the world through words, code, and curiosity.
+          </p>
+          <div class="footer-social mt-2">
+            <a href="#" class="btn-icon" aria-label="GitHub"><i data-lucide="github"></i></a>
+            <a href="#" class="btn-icon" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+            <a href="#" class="btn-icon" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+            <a href="#" class="btn-icon" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Personal Blog</a>
+            <a href="travel.html">Travel Diaries</a>
+            <a href="learning.html">Learning Hub</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Categories</h4>
+          <div class="footer-links">
+            <a href="blog.html">Personal Reflections</a>
+            <a href="travel.html">Global Adventures</a>
+            <a href="learning.html">Technical Guides</a>
+            <a href="admin/login.html">Author Portal</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Stay Connected</h4>
+          <p style="color:var(--text-secondary);font-size:0.9rem;">Join 5,000+ readers.</p>
+          <form class="newsletter-form mt-2" id="footerNewsletter">
+            <input type="email" class="newsletter-input" placeholder="Your email address" required>
+            <button type="submit" class="newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Devansh.blog. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article Editor — Devansh.blog Admin</title>
+  <link rel="icon" type="image/svg+xml" href="../public/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Quill.js Rich Text Editor CSS -->
+  <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="admin-layout">
+
+  <!-- Admin Sidebar -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="admin-sidebar-header">
+      <a href="../index.html" class="navbar-brand">
+        <div class="navbar-brand-icon">
+          <i data-lucide="pen-line"></i>
+        </div>
+        <span class="navbar-brand-text">Devansh<span class="text-primary">.blog</span></span>
+      </a>
+    </div>
+
+    <nav class="admin-sidebar-nav">
+      <a href="index.html" class="admin-sidebar-item">
+        <i data-lucide="layout-dashboard"></i> Dashboard
+      </a>
+      <a href="editor.html" class="admin-sidebar-item active">
+        <i data-lucide="plus-circle"></i> New Article
+      </a>
+
+      <div class="admin-sidebar-section">
+        <span class="admin-sidebar-section-title">Content</span>
+        <a href="index.html?view=articles" class="admin-sidebar-item">
+          <i data-lucide="file-text"></i> All Articles
+        </a>
+        <a href="index.html?view=media" class="admin-sidebar-item">
+          <i data-lucide="image"></i> Media Library
+        </a>
+      </div>
+
+      <div class="admin-sidebar-section">
+        <span class="admin-sidebar-section-title">System</span>
+        <a href="index.html?view=profile" class="admin-sidebar-item">
+          <i data-lucide="user"></i> Author Profile
+        </a>
+      </div>
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      <button class="btn btn-ghost btn-sm w-full" id="logoutBtn" style="justify-content: flex-start;">
+        <i data-lucide="log-out"></i> Sign Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- Admin Main Editor Area -->
+  <main class="admin-main">
+    <!-- Topbar -->
+    <header class="admin-topbar">
+      <div class="flex items-center gap-2">
+        <button class="btn-icon" id="sidebarToggle" aria-label="Toggle navigation drawer">
+          <i data-lucide="menu"></i>
+        </button>
+        <h1 class="admin-topbar-title" id="editorTopbarTitle">New Article</h1>
+      </div>
+
+      <div class="admin-topbar-actions">
+        <button class="theme-toggle btn-icon" id="themeToggle" aria-label="Toggle dark mode">
+          <i data-lucide="sun" class="theme-icon-light"></i>
+          <i data-lucide="moon" class="theme-icon-dark"></i>
+        </button>
+        <button type="button" class="btn btn-danger btn-sm hidden" id="btnDeleteArticle">
+          <i data-lucide="trash-2"></i> Delete
+        </button>
+        <button type="button" class="btn btn-secondary btn-sm" id="btnSaveDraft">
+          <i data-lucide="save"></i> Save Draft
+        </button>
+        <button type="button" class="btn btn-primary btn-sm" id="btnPublish">
+          <i data-lucide="send"></i> Publish
+        </button>
+      </div>
+    </header>
+
+    <!-- Content Workspace -->
+    <div class="admin-content">
+      <div class="editor-layout">
+        
+        <!-- Left: Prose & Rich Text Editor -->
+        <div class="flex-col gap-3">
+          <div class="editor-card" style="padding: 16px 20px;">
+            <input 
+              type="text" 
+              id="articleTitleInput" 
+              class="form-input" 
+              placeholder="Enter an evocative article title..." 
+              style="font-size: 1.5rem; font-weight: 800; border: none; padding: 10px 0; background: transparent;"
+            >
+          </div>
+
+          <div class="editor-card" style="padding: 0; overflow: hidden;">
+            <div id="editorBody"></div>
+          </div>
+        </div>
+
+        <!-- Right: Publishing Options Sidebar -->
+        <div class="flex-col gap-3">
+          
+          <!-- Publishing & Category Panel -->
+          <div class="editor-card">
+            <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+              <i data-lucide="sliders" style="width: 18px; height: 18px; color: var(--primary);"></i> Publishing Details
+            </h3>
+
+            <div class="form-group">
+              <label class="form-label" for="articleStatus">Status</label>
+              <select class="form-select" id="articleStatus">
+                <option value="draft">Draft (Private)</option>
+                <option value="published" selected>Published (Public)</option>
+                <option value="archived">Archived</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="articleCategorySelect">Category</label>
+              <select class="form-select" id="articleCategorySelect">
+                <option value="1">Blog (Personal Thoughts)</option>
+                <option value="2">Travel (Diaries &amp; Guides)</option>
+                <option value="3">Learning (Tech &amp; Tutorials)</option>
+              </select>
+            </div>
+
+            <div class="form-group mb-1">
+              <label class="form-checkbox">
+                <input type="checkbox" id="articleFeatured">
+                <span>Feature this article on homepage</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Cover Image Panel -->
+          <div class="editor-card">
+            <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+              <i data-lucide="image" style="width: 18px; height: 18px; color: var(--accent);"></i> Cover Image
+            </h3>
+
+            <input type="hidden" id="coverImageUrl" value="">
+            <input type="file" id="coverFileInput" accept="image/*" class="hidden">
+
+            <div class="upload-zone" id="coverUploadZone" style="padding: 28px 16px;">
+              <i data-lucide="image" class="upload-zone-icon" style="width: 32px; height: 32px; margin-bottom: 8px;"></i>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 600;">Click to upload cover image</p>
+              <span style="font-size: 0.75rem; color: var(--text-muted);">PNG, JPG, WEBP up to 5MB</span>
+            </div>
+          </div>
+
+          <!-- Summary & Metadata -->
+          <div class="editor-card">
+            <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+              <i data-lucide="tag" style="width: 18px; height: 18px; color: var(--success);"></i> Metadata &amp; Tags
+            </h3>
+
+            <div class="form-group">
+              <label class="form-label" for="articleExcerpt">Short Excerpt</label>
+              <textarea class="form-textarea" id="articleExcerpt" rows="3" placeholder="A compelling 1-2 sentence hook for cards and previews..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="articleTagInput">Tags (Press Enter or Comma)</label>
+              <input type="text" class="form-input" id="articleTagInput" placeholder="Add tag and press Enter">
+              <div id="tagPillsContainer" style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;"></div>
+            </div>
+
+            <div class="form-group mb-1">
+              <label class="form-label" for="articleMetaDesc">SEO Description</label>
+              <textarea class="form-textarea" id="articleMetaDesc" rows="2" placeholder="Search engine snippet..."></textarea>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- CDNs & Scripts -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+  <script src="../assets/js/api.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>
