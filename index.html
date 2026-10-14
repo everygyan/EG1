@@ -135,96 +135,234 @@
   </nav>
 
   <main>
-    <!-- Ultra-Modern Hero Banner -->
-    <section class="hero">
+    <!-- Ultra-Modern Hero: Two-Halves Magazine Split (Left: Featured Carousel | Right: Latest Stories) -->
+    <section class="hero hero-magazine">
       <div class="hero-glow-1"></div>
       <div class="hero-grid-pattern"></div>
       
       <div class="container">
-        <div class="hero-content">
-          <div class="live-pill animate-on-scroll">
+        <!-- Hero Top Bar -->
+        <div class="hero-top-bar animate-on-scroll">
+          <div class="live-pill">
             <span class="pulse-dot"></span>
             <span>Everygyan • Digital Garden &amp; Knowledge Base</span>
           </div>
-
-          <h1 class="hero-title animate-on-scroll">
-            Explore Ideas, <span class="gradient-text">Adventures</span> &amp;<br>Endless Learning
-          </h1>
-
-          <p class="hero-subtitle animate-on-scroll">
-            A curated universe where personal reflections, world expeditions, and software engineering craftsmanship converge.
-          </p>
-
-          <div class="hero-cta animate-on-scroll">
-            <a href="blog.html" class="btn btn-primary btn-lg">
-              <span>Read Latest Posts</span>
-              <i data-lucide="arrow-right"></i>
-            </a>
-            <a href="#topics" class="btn btn-secondary btn-lg">
-              <i data-lucide="compass"></i> Explore Channels
-            </a>
-          </div>
-
-          <div class="hero-stats animate-on-scroll">
-            <div class="hero-stat">
-              <div class="hero-stat-value">150+</div>
-              <div class="hero-stat-label">Thought Pieces</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-value">30+</div>
-              <div class="hero-stat-label">Countries Explored</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-value">50+</div>
-              <div class="hero-stat-label">Engineering Guides</div>
-            </div>
+          <div class="hero-quick-meta">
+            <span class="hero-quick-tag"><i data-lucide="sparkles"></i> Curated Daily</span>
+            <span class="hero-quick-divider">•</span>
+            <span class="hero-quick-tag"><i data-lucide="compass"></i> Blog • Travel • Learning</span>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Featured Story -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <span class="section-badge">⭐️ Featured Spotlight</span>
-            <h2 class="section-title">Editor's Selection</h2>
-          </div>
-          <a href="travel.html" class="btn btn-ghost">
-            View all stories <i data-lucide="arrow-right"></i>
-          </a>
-        </div>
-
-        <div class="card-featured animate-on-scroll">
-          <div class="card-img">
-            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000" alt="Mountain Expedition in the Alps" loading="lazy">
-            <div class="card-img-overlay"></div>
-          </div>
-          <div class="card-body">
-            <span class="card-category travel">Travel Diaries</span>
-            <h3 class="card-title">
-              <a href="article.html?slug=chasing-silence-in-the-swiss-alps">Chasing Silence in the Swiss Alps: A Solitary Trek Above the Clouds</a>
-            </h3>
-            <p class="card-excerpt">
-              There is an intoxicating stillness at 3,000 meters that recalibrates the human spirit. Here is my raw chronicle of trekking through Zermatt, navigating glaciers, and finding peace away from the modern noise.
-            </p>
-            <div class="card-meta">
-              <div class="card-meta-left">
-                <span class="card-meta-item">
-                  <i data-lucide="calendar"></i> Oct 12, 2026
-                </span>
-                <span class="card-meta-item">
-                  <i data-lucide="user"></i> Everygyan Author
-                </span>
+        <!-- Two-Halves Hero Grid -->
+        <div class="hero-split-grid animate-on-scroll">
+          
+          <!-- LEFT HALF: Featured Stories Carousel -->
+          <div class="hero-carousel-wrap">
+            <div class="hero-block-header">
+              <div class="hero-block-title-group">
+                <span class="section-badge"><i data-lucide="star"></i> Featured Stories</span>
               </div>
-              <div class="card-meta-right">
-                <span class="card-meta-item">
-                  <i data-lucide="clock"></i> 8 min read
-                </span>
+              <!-- Carousel Controls -->
+              <div class="carousel-nav-arrows">
+                <button class="carousel-arrow-btn" id="heroPrevBtn" aria-label="Previous Slide">
+                  <i data-lucide="chevron-left"></i>
+                </button>
+                <button class="carousel-arrow-btn" id="heroNextBtn" aria-label="Next Slide">
+                  <i data-lucide="chevron-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Carousel Frame -->
+            <div class="hero-carousel" id="heroFeaturedCarousel">
+              <div class="hero-carousel-track" id="heroCarouselTrack">
+
+                <!-- Slide 1: Travel -->
+                <div class="hero-slide active">
+                  <div class="hero-slide-bg">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200" alt="Swiss Alps Trek" loading="eager">
+                    <div class="hero-slide-overlay"></div>
+                  </div>
+                  <div class="hero-slide-content">
+                    <span class="card-category travel">Travel Diaries</span>
+                    <h2 class="hero-slide-title">
+                      <a href="article.html?slug=chasing-silence-in-the-swiss-alps">Chasing Silence in the Swiss Alps: A Solitary Trek Above the Clouds</a>
+                    </h2>
+                    <p class="hero-slide-excerpt">
+                      There is an intoxicating stillness at 3,000 meters that recalibrates the human spirit. A raw chronicle of trekking through Zermatt, high glaciers, and alpine solitude.
+                    </p>
+                    <div class="hero-slide-meta">
+                      <div class="slide-author">
+                        <span class="author-avatar-chip">EG</span>
+                        <span>Everygyan</span>
+                      </div>
+                      <span class="meta-dot">•</span>
+                      <span>Oct 12, 2026</span>
+                      <span class="meta-dot">•</span>
+                      <span>8 min read</span>
+                      <a href="article.html?slug=chasing-silence-in-the-swiss-alps" class="slide-read-btn">
+                        Read Story <i data-lucide="arrow-up-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 2: Blog -->
+                <div class="hero-slide">
+                  <div class="hero-slide-bg">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200" alt="Slow Productivity" loading="lazy">
+                    <div class="hero-slide-overlay"></div>
+                  </div>
+                  <div class="hero-slide-content">
+                    <span class="card-category blog">Personal Blog</span>
+                    <h2 class="hero-slide-title">
+                      <a href="article.html?slug=the-art-of-slow-living-in-a-fast-paced-world">The Art of Slow Living &amp; Deep Productivity in a Hyperactive World</a>
+                    </h2>
+                    <p class="hero-slide-excerpt">
+                      Why intentionally stepping back from relentless hustle culture dramatically elevates mental clarity, personal creativity, and daily happiness.
+                    </p>
+                    <div class="hero-slide-meta">
+                      <div class="slide-author">
+                        <span class="author-avatar-chip">EG</span>
+                        <span>Everygyan</span>
+                      </div>
+                      <span class="meta-dot">•</span>
+                      <span>Oct 11, 2026</span>
+                      <span class="meta-dot">•</span>
+                      <span>5 min read</span>
+                      <a href="article.html?slug=the-art-of-slow-living-in-a-fast-paced-world" class="slide-read-btn">
+                        Read Story <i data-lucide="arrow-up-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 3: Learning -->
+                <div class="hero-slide">
+                  <div class="hero-slide-bg">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200" alt="Modern CSS Architecture" loading="lazy">
+                    <div class="hero-slide-overlay"></div>
+                  </div>
+                  <div class="hero-slide-content">
+                    <span class="card-category learning">Learning Hub</span>
+                    <h2 class="hero-slide-title">
+                      <a href="article.html?slug=mastering-modern-css-subgrid-container-queries-and-beyond">Mastering Modern CSS: Subgrid, Container Queries, and Beyond</a>
+                    </h2>
+                    <p class="hero-slide-excerpt">
+                      A comprehensive architectural breakdown of next-generation layout primitives that eliminate styling hacks and make component design intuitive.
+                    </p>
+                    <div class="hero-slide-meta">
+                      <div class="slide-author">
+                        <span class="author-avatar-chip">EG</span>
+                        <span>Everygyan</span>
+                      </div>
+                      <span class="meta-dot">•</span>
+                      <span>Oct 13, 2026</span>
+                      <span class="meta-dot">•</span>
+                      <span>7 min read</span>
+                      <a href="article.html?slug=mastering-modern-css-subgrid-container-queries-and-beyond" class="slide-read-btn">
+                        Read Story <i data-lucide="arrow-up-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Carousel Indicators -->
+              <div class="hero-carousel-dots" id="heroCarouselDots">
+                <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
+                <button class="carousel-dot" data-index="1" aria-label="Slide 2"></button>
+                <button class="carousel-dot" data-index="2" aria-label="Slide 3"></button>
               </div>
             </div>
           </div>
+
+          <!-- RIGHT HALF: Latest Stories List -->
+          <div class="hero-latest-wrap">
+            <div class="hero-block-header">
+              <div class="hero-block-title-group">
+                <span class="section-badge"><i data-lucide="clock"></i> Latest Stories</span>
+              </div>
+              <a href="blog.html" class="hero-view-all-link">
+                View All <i data-lucide="arrow-right"></i>
+              </a>
+            </div>
+
+            <div class="hero-latest-list" id="heroLatestList">
+              
+              <!-- Item 1 -->
+              <a href="article.html?slug=seven-days-in-kyoto" class="latest-feed-item">
+                <div class="latest-feed-thumb">
+                  <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=300" alt="Kyoto Temples" loading="lazy">
+                </div>
+                <div class="latest-feed-body">
+                  <div class="latest-feed-tag-row">
+                    <span class="card-category travel">Travel</span>
+                    <span class="latest-feed-time">Oct 11, 2026</span>
+                  </div>
+                  <h4 class="latest-feed-title">Seven Days in Kyoto: Temples, Matcha, and Ancient Alleys</h4>
+                  <div class="latest-feed-meta">
+                    <span><i data-lucide="clock"></i> 6 min read</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Item 2 -->
+              <a href="article.html?slug=demystifying-asynchronous-programming-in-typescript" class="latest-feed-item">
+                <div class="latest-feed-thumb">
+                  <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=300" alt="TypeScript Code" loading="lazy">
+                </div>
+                <div class="latest-feed-body">
+                  <div class="latest-feed-tag-row">
+                    <span class="card-category learning">Learning</span>
+                    <span class="latest-feed-time">Oct 10, 2026</span>
+                  </div>
+                  <h4 class="latest-feed-title">Demystifying Asynchronous Programming &amp; Event Loop in TypeScript</h4>
+                  <div class="latest-feed-meta">
+                    <span><i data-lucide="clock"></i> 8 min read</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Item 3 -->
+              <a href="article.html?slug=why-deep-work-is-the-superpower-of-the-21st-century" class="latest-feed-item">
+                <div class="latest-feed-thumb">
+                  <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702?w=300" alt="Deep Work Focus" loading="lazy">
+                </div>
+                <div class="latest-feed-body">
+                  <div class="latest-feed-tag-row">
+                    <span class="card-category blog">Blog</span>
+                    <span class="latest-feed-time">Oct 09, 2026</span>
+                  </div>
+                  <h4 class="latest-feed-title">Why Deep Work is the Unfair Superpower of Modern Knowledge Work</h4>
+                  <div class="latest-feed-meta">
+                    <span><i data-lucide="clock"></i> 5 min read</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Item 4 -->
+              <a href="article.html?slug=sailing-the-norwegian-fjords-chasing-waterfalls-and-solitude" class="latest-feed-item">
+                <div class="latest-feed-thumb">
+                  <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=300" alt="Norwegian Fjords" loading="lazy">
+                </div>
+                <div class="latest-feed-body">
+                  <div class="latest-feed-tag-row">
+                    <span class="card-category travel">Travel</span>
+                    <span class="latest-feed-time">Oct 07, 2026</span>
+                  </div>
+                  <h4 class="latest-feed-title">Sailing the Norwegian Fjords: Chasing Waterfalls &amp; Solitude</h4>
+                  <div class="latest-feed-meta">
+                    <span><i data-lucide="clock"></i> 7 min read</span>
+                  </div>
+                </div>
+              </a>
+
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

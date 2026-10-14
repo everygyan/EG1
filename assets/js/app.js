@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initNavbar();
+    initHeroCarousel();
     initScrollAnimations();
     initNewsletterForms();
     initPageContent();
@@ -251,20 +252,215 @@ function renderArticleCard(article) {
 }
 
 /* --------------------------------------------------------------------------
+   8B. Hero Magazine Featured Carousel Controller
+   -------------------------------------------------------------------------- */
+let heroCarouselTimer = null;
+
+function initHeroCarousel() {
+    const track = document.getElementById('heroCarouselTrack');
+    const container = document.getElementById('heroFeaturedCarousel');
+    const prevBtn = document.getElementById('heroPrevBtn');
+    const nextBtn = document.getElementById('heroNextBtn');
+    const dotsContainer = document.getElementById('heroCarouselDots');
+
+    if (!track || !container) return;
+
+    let slides = track.querySelectorAll('.hero-slide');
+    if (slides.length <= 1) return;
+
+    let currentIndex = 0;
+
+    function updateSlide(index) {
+        slides = track.querySelectorAll('.hero-slide');
+        if (slides.length === 0) return;
+        if (index < 0) {
+            index = slides.length - 1;
+        } else if (index >= slides.length) {
+            index = 0;
+        }
+        currentIndex = index;
+
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === currentIndex);
+        });
+
+        if (dotsContainer) {
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+    }
+
+    function startAutoPlay() {
+        stopAutoPlay();
+        heroCarouselTimer = setInterval(() => {
+            updateSlide(currentIndex + 1);
+        }, 5500);
+    }
+
+    function stopAutoPlay() {
+        if (heroCarouselTimer) {
+            clearInterval(heroCarouselTimer);
+            heroCarouselTimer = null;
+        }
+    }
+
+    if (prevBtn) {
+        prevBtn.onclick = () => {
+            updateSlide(currentIndex - 1);
+            startAutoPlay();
+        };
+    }
+
+    if (nextBtn) {
+        nextBtn.onclick = () => {
+            updateSlide(currentIndex + 1);
+            startAutoPlay();
+        };
+    }
+
+    if (dotsContainer) {
+        dotsContainer.onclick = (e) => {
+            const dot = e.target.closest('.carousel-dot');
+            if (dot && dot.dataset.index !== undefined) {
+                updateSlide(parseInt(dot.dataset.index, 10));
+                startAutoPlay();
+            }
+        };
+    }
+
+    container.onmouseenter = stopAutoPlay;
+    container.onmouseleave = startAutoPlay;
+
+    // Mobile Touch Swipe Handling
+    let touchStartX = 0;
+    container.ontouchstart = (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoPlay();
+    };
+
+    container.ontouchend = (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 40) {
+            if (diff > 0) {
+                updateSlide(currentIndex + 1);
+            } else {
+                updateSlide(currentIndex - 1);
+            }
+        }
+        startAutoPlay();
+    };
+
+    startAutoPlay();
+}
+
+/* --------------------------------------------------------------------------
    9. Homepage Loader
    -------------------------------------------------------------------------- */
 async function loadHomepageData() {
+    initHeroCarousel();
+
     if (typeof API === 'undefined') return;
 
     try {
-        const response = await API.getArticles({ limit: 6, status: 'published' });
+        const response = await API.getArticles({ limit: 10, status: 'published' });
         if (response && response.success && Array.isArray(response.data) && response.data.length > 0) {
+            const articles = response.data;
+
+            // 1. Featured Carousel (articles marked featured, or top 3)
+            const featured = articles.filter(a => a.featured == 1 || a.is_featured);
+            const carouselArticles = featured.length >= 2 ? featured.slice(0, 4) : articles.slice(0, 3);
+            
+            const track = document.getElementById('heroCarouselTrack');
+            const dots = document.getElementById('heroCarouselDots');
+            if (track && carouselArticles.length > 0) {
+                track.innerHTML = carouselArticles.map((article, idx) => {
+                    const categorySlug = (article.category_slug || (article.category && article.category.slug) || 'blog').toLowerCase();
+                    const categoryName = article.category_name || (article.category && article.category.name) || 'Blog';
+                    const cover = article.cover_image || 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200';
+                    const dateStr = formatDate(article.published_at || article.created_at);
+                    const readTime = article.reading_time || Math.max(3, Math.ceil((article.content || '').split(/\s+/).length / 200));
+
+                    return `
+                    <div class="hero-slide ${idx === 0 ? 'active' : ''}">
+                      <div class="hero-slide-bg">
+                        <img src="${escapeHtml(cover)}" alt="${escapeHtml(article.title)}" loading="${idx === 0 ? 'eager' : 'lazy'}">
+                        <div class="hero-slide-overlay"></div>
+                      </div>
+                      <div class="hero-slide-content">
+                        <span class="card-category ${escapeHtml(categorySlug)}">${escapeHtml(categoryName)}</span>
+                        <h2 class="hero-slide-title">
+                          <a href="article.html?slug=${encodeURIComponent(article.slug)}">${escapeHtml(article.title)}</a>
+                        </h2>
+                        <p class="hero-slide-excerpt">${escapeHtml(article.excerpt || '')}</p>
+                        <div class="hero-slide-meta">
+                          <div class="slide-author">
+                            <span class="author-avatar-chip">EG</span>
+                            <span>Everygyan</span>
+                          </div>
+                          <span class="meta-dot">•</span>
+                          <span>${dateStr}</span>
+                          <span class="meta-dot">•</span>
+                          <span>${readTime} min read</span>
+                          <a href="article.html?slug=${encodeURIComponent(article.slug)}" class="slide-read-btn">
+                            Read Story <i data-lucide="arrow-up-right"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>`;
+                }).join('');
+
+                if (dots) {
+                    dots.innerHTML = carouselArticles.map((_, idx) => `
+                        <button class="carousel-dot ${idx === 0 ? 'active' : ''}" data-index="${idx}" aria-label="Slide ${idx + 1}"></button>
+                    `).join('');
+                }
+
+                initHeroCarousel();
+            }
+
+            // 2. Right Half: Latest Stories List (top 4 latest)
+            const latestListContainer = document.getElementById('heroLatestList');
+            if (latestListContainer && articles.length > 0) {
+                const latestFour = articles.slice(0, 4);
+                latestListContainer.innerHTML = latestFour.map(article => {
+                    const categorySlug = (article.category_slug || (article.category && article.category.slug) || 'blog').toLowerCase();
+                    const categoryName = article.category_name || (article.category && article.category.name) || 'Blog';
+                    const cover = article.cover_image || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=300';
+                    const dateStr = formatDate(article.published_at || article.created_at);
+                    const readTime = article.reading_time || Math.max(3, Math.ceil((article.content || '').split(/\s+/).length / 200));
+
+                    return `
+                    <a href="article.html?slug=${encodeURIComponent(article.slug)}" class="latest-feed-item">
+                      <div class="latest-feed-thumb">
+                        <img src="${escapeHtml(cover)}" alt="${escapeHtml(article.title)}" loading="lazy">
+                      </div>
+                      <div class="latest-feed-body">
+                        <div class="latest-feed-tag-row">
+                          <span class="card-category ${escapeHtml(categorySlug)}">${escapeHtml(categoryName)}</span>
+                          <span class="latest-feed-time">${dateStr}</span>
+                        </div>
+                        <h4 class="latest-feed-title">${escapeHtml(article.title)}</h4>
+                        <div class="latest-feed-meta">
+                          <span><i data-lucide="clock"></i> ${readTime} min read</span>
+                        </div>
+                      </div>
+                    </a>`;
+                }).join('');
+            }
+
+            // 3. Grid: Latest Articles
             const articlesContainer = document.getElementById('latestArticlesGrid');
             if (articlesContainer) {
-                articlesContainer.innerHTML = response.data.map(renderArticleCard).join('');
-                renderLucideIcons();
-                initScrollAnimations();
+                articlesContainer.innerHTML = articles.slice(0, 6).map(renderArticleCard).join('');
             }
+
+            renderLucideIcons();
+            initScrollAnimations();
         }
     } catch {
         // Fallback to static cards if server is not configured yet
