@@ -252,7 +252,7 @@ function renderArticleCard(article) {
 }
 
 /* --------------------------------------------------------------------------
-   8B. Hero Magazine Featured Carousel Controller
+   8B. Hero Magazine / Editorial Top Story Carousel Controller
    -------------------------------------------------------------------------- */
 let heroCarouselTimer = null;
 
@@ -261,17 +261,17 @@ function initHeroCarousel() {
     const container = document.getElementById('heroFeaturedCarousel');
     const prevBtn = document.getElementById('heroPrevBtn');
     const nextBtn = document.getElementById('heroNextBtn');
-    const dotsContainer = document.getElementById('heroCarouselDots');
+    const dashesContainer = document.getElementById('heroCarouselDashes') || document.getElementById('heroCarouselDots');
 
     if (!track || !container) return;
 
-    let slides = track.querySelectorAll('.hero-slide');
+    let slides = track.querySelectorAll('.top-story-slide, .hero-slide');
     if (slides.length <= 1) return;
 
     let currentIndex = 0;
 
     function updateSlide(index) {
-        slides = track.querySelectorAll('.hero-slide');
+        slides = track.querySelectorAll('.top-story-slide, .hero-slide');
         if (slides.length === 0) return;
         if (index < 0) {
             index = slides.length - 1;
@@ -286,10 +286,10 @@ function initHeroCarousel() {
             slide.classList.toggle('active', i === currentIndex);
         });
 
-        if (dotsContainer) {
-            const dots = dotsContainer.querySelectorAll('.carousel-dot');
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentIndex);
+        if (dashesContainer) {
+            const dashes = dashesContainer.querySelectorAll('.card-dash, .carousel-dot');
+            dashes.forEach((dash, i) => {
+                dash.classList.toggle('active', i === currentIndex);
             });
         }
     }
@@ -309,24 +309,28 @@ function initHeroCarousel() {
     }
 
     if (prevBtn) {
-        prevBtn.onclick = () => {
+        prevBtn.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             updateSlide(currentIndex - 1);
             startAutoPlay();
         };
     }
 
     if (nextBtn) {
-        nextBtn.onclick = () => {
+        nextBtn.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             updateSlide(currentIndex + 1);
             startAutoPlay();
         };
     }
 
-    if (dotsContainer) {
-        dotsContainer.onclick = (e) => {
-            const dot = e.target.closest('.carousel-dot');
-            if (dot && dot.dataset.index !== undefined) {
-                updateSlide(parseInt(dot.dataset.index, 10));
+    if (dashesContainer) {
+        dashesContainer.onclick = (e) => {
+            const dash = e.target.closest('.card-dash, .carousel-dot');
+            if (dash && dash.dataset.index !== undefined) {
+                updateSlide(parseInt(dash.dataset.index, 10));
                 startAutoPlay();
             }
         };
@@ -367,87 +371,78 @@ async function loadHomepageData() {
     if (typeof API === 'undefined') return;
 
     try {
-        const response = await API.getArticles({ limit: 10, status: 'published' });
+        const response = await API.getArticles({ limit: 12, status: 'published' });
         if (response && response.success && Array.isArray(response.data) && response.data.length > 0) {
             const articles = response.data;
 
-            // 1. Featured Carousel (articles marked featured, or top 3)
+            // 1. Featured Top Story Carousel (Top 5 stories)
             const featured = articles.filter(a => a.featured == 1 || a.is_featured);
-            const carouselArticles = featured.length >= 2 ? featured.slice(0, 4) : articles.slice(0, 3);
+            const carouselArticles = featured.length >= 3 ? featured.slice(0, 5) : articles.slice(0, 5);
             
             const track = document.getElementById('heroCarouselTrack');
-            const dots = document.getElementById('heroCarouselDots');
+            const dashes = document.getElementById('heroCarouselDashes');
             if (track && carouselArticles.length > 0) {
                 track.innerHTML = carouselArticles.map((article, idx) => {
-                    const categorySlug = (article.category_slug || (article.category && article.category.slug) || 'blog').toLowerCase();
-                    const categoryName = article.category_name || (article.category && article.category.name) || 'Blog';
-                    const cover = article.cover_image || 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200';
+                    const categorySlug = (article.category_slug || (article.category && article.category.slug) || 'tech').toLowerCase();
+                    const categoryName = (article.category_name || (article.category && article.category.name) || 'Tech').toUpperCase();
+                    const cover = article.cover_image || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200';
                     const dateStr = formatDate(article.published_at || article.created_at);
                     const readTime = article.reading_time || Math.max(3, Math.ceil((article.content || '').split(/\s+/).length / 200));
 
                     return `
-                    <div class="hero-slide ${idx === 0 ? 'active' : ''}">
-                      <div class="hero-slide-bg">
+                    <div class="top-story-slide ${idx === 0 ? 'active' : ''}">
+                      <div class="top-story-bg">
                         <img src="${escapeHtml(cover)}" alt="${escapeHtml(article.title)}" loading="${idx === 0 ? 'eager' : 'lazy'}">
-                        <div class="hero-slide-overlay"></div>
+                        <div class="top-story-overlay"></div>
                       </div>
-                      <div class="hero-slide-content">
-                        <span class="card-category ${escapeHtml(categorySlug)}">${escapeHtml(categoryName)}</span>
-                        <h2 class="hero-slide-title">
+                      
+                      <div class="top-story-badges">
+                        <span class="badge-top-story">TOP STORY</span>
+                        <span class="badge-cat ${escapeHtml(categorySlug)}">${escapeHtml(categoryName)}</span>
+                      </div>
+
+                      <div class="top-story-content">
+                        <h2 class="top-story-title">
                           <a href="article.html?slug=${encodeURIComponent(article.slug)}">${escapeHtml(article.title)}</a>
                         </h2>
-                        <p class="hero-slide-excerpt">${escapeHtml(article.excerpt || '')}</p>
-                        <div class="hero-slide-meta">
-                          <div class="slide-author">
-                            <span class="author-avatar-chip">EG</span>
-                            <span>Everygyan</span>
-                          </div>
-                          <span class="meta-dot">•</span>
-                          <span>${dateStr}</span>
-                          <span class="meta-dot">•</span>
-                          <span>${readTime} min read</span>
-                          <a href="article.html?slug=${encodeURIComponent(article.slug)}" class="slide-read-btn">
-                            Read Story <i data-lucide="arrow-up-right"></i>
-                          </a>
+                        <p class="top-story-excerpt">${escapeHtml(article.excerpt || '')}</p>
+                        <div class="top-story-meta">
+                          <span class="meta-item"><i data-lucide="user"></i> STAFF</span>
+                          <span class="meta-item"><i data-lucide="clock"></i> ${readTime} MIN READ</span>
+                          <span class="meta-item"><i data-lucide="calendar"></i> ${dateStr}</span>
                         </div>
                       </div>
                     </div>`;
                 }).join('');
 
-                if (dots) {
-                    dots.innerHTML = carouselArticles.map((_, idx) => `
-                        <button class="carousel-dot ${idx === 0 ? 'active' : ''}" data-index="${idx}" aria-label="Slide ${idx + 1}"></button>
+                if (dashes) {
+                    dashes.innerHTML = carouselArticles.map((_, idx) => `
+                        <button class="card-dash ${idx === 0 ? 'active' : ''}" data-index="${idx}" aria-label="Slide ${idx + 1}"></button>
                     `).join('');
                 }
 
                 initHeroCarousel();
             }
 
-            // 2. Right Half: Latest Stories List (top 4 latest)
-            const latestListContainer = document.getElementById('heroLatestList');
-            if (latestListContainer && articles.length > 0) {
-                const latestFour = articles.slice(0, 4);
-                latestListContainer.innerHTML = latestFour.map(article => {
-                    const categorySlug = (article.category_slug || (article.category && article.category.slug) || 'blog').toLowerCase();
-                    const categoryName = article.category_name || (article.category && article.category.name) || 'Blog';
-                    const cover = article.cover_image || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=300';
+            // 2. Right Half: Trending Now (5 ranked stories)
+            const trendingListContainer = document.getElementById('heroTrendingList');
+            if (trendingListContainer && articles.length > 0) {
+                const trendingFive = articles.slice(0, 5);
+                trendingListContainer.innerHTML = trendingFive.map((article, idx) => {
+                    const cover = article.cover_image || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=160';
                     const dateStr = formatDate(article.published_at || article.created_at);
                     const readTime = article.reading_time || Math.max(3, Math.ceil((article.content || '').split(/\s+/).length / 200));
+                    const rankStr = String(idx + 1).padStart(2, '0');
 
                     return `
-                    <a href="article.html?slug=${encodeURIComponent(article.slug)}" class="latest-feed-item">
-                      <div class="latest-feed-thumb">
-                        <img src="${escapeHtml(cover)}" alt="${escapeHtml(article.title)}" loading="lazy">
+                    <a href="article.html?slug=${encodeURIComponent(article.slug)}" class="trending-story-row">
+                      <span class="trending-story-rank">${rankStr}</span>
+                      <div class="trending-story-details">
+                        <h4 class="trending-story-headline">${escapeHtml(article.title)}</h4>
+                        <span class="trending-story-timestamp">${dateStr} • ${readTime} MIN</span>
                       </div>
-                      <div class="latest-feed-body">
-                        <div class="latest-feed-tag-row">
-                          <span class="card-category ${escapeHtml(categorySlug)}">${escapeHtml(categoryName)}</span>
-                          <span class="latest-feed-time">${dateStr}</span>
-                        </div>
-                        <h4 class="latest-feed-title">${escapeHtml(article.title)}</h4>
-                        <div class="latest-feed-meta">
-                          <span><i data-lucide="clock"></i> ${readTime} min read</span>
-                        </div>
+                      <div class="trending-story-thumb">
+                        <img src="${escapeHtml(cover)}" alt="${escapeHtml(article.title)}" loading="lazy">
                       </div>
                     </a>`;
                 }).join('');

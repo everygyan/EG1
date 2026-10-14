@@ -10,124 +10,127 @@
   <!-- Google Fonts & CDN Dependencies -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <!-- Top Navigation Bar with Interactive Dropdown Submenus -->
-  <nav class="navbar" id="navbar">
-    <div class="container flex-between">
-      <a href="index.html" class="navbar-brand">
-        <div class="navbar-brand-icon">
-          <i data-lucide="sparkles"></i>
-        </div>
-        <span class="navbar-brand-text">Every<span class="gradient-text">gyan</span></span>
+  <!-- Newspaper Editorial Top Navigation Bar (EveryGyan) -->
+  <nav class="navbar-editorial" id="navbar">
+    <div class="container">
+      <a href="index.html" class="brand-editorial">
+        <div class="brand-editorial-logo">E</div>
+        <span class="brand-editorial-name">EveryGyan</span>
       </a>
 
-      <div class="navbar-links" id="navLinks">
-        <a href="index.html" class="active">Home</a>
+      <ul class="nav-links-editorial" id="navLinks">
+        <li class="nav-item-editorial">
+          <a href="index.html" class="nav-link-editorial active">Latest News</a>
+        </li>
 
-        <!-- Blog Submenu Dropdown -->
-        <div class="nav-item-dropdown">
-          <a href="blog.html" class="nav-link-parent">
-            Blog <i data-lucide="chevron-down" class="chevron"></i>
+        <!-- Tech -->
+        <li class="nav-item-editorial">
+          <a href="learning-webdev.html" class="nav-link-editorial">
+            Tech <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
           </a>
-          <div class="dropdown-menu">
-            <a href="blog-essays.html" class="dropdown-item">
-              <div class="dropdown-icon blog"><i data-lucide="feather"></i></div>
-              <div class="dropdown-text">
-                <span class="dropdown-title">Essays &amp; Reflections</span>
-                <span class="dropdown-desc">Mindful perspectives &amp; life philosophy</span>
+          <div class="mega-dropdown-menu">
+            <div class="mega-grid-2col">
+              <div>
+                <a href="learning-webdev.html" class="mega-link-item">AI Agents</a>
+                <a href="learning-webdev.html" class="mega-link-item" style="margin-top: 10px;">Web Architecture</a>
+                <a href="learning-devops.html" class="mega-link-item" style="margin-top: 10px;">Cloud &amp; DevOps</a>
               </div>
-            </a>
-            <a href="blog-productivity.html" class="dropdown-item">
-              <div class="dropdown-icon blog"><i data-lucide="zap"></i></div>
-              <div class="dropdown-text">
-                <span class="dropdown-title">Productivity &amp; Habits</span>
-                <span class="dropdown-desc">Slow focus, systems &amp; deep work</span>
+              <div>
+                <a href="learning-databases.html" class="mega-link-item">Databases</a>
+                <a href="learning-webdev.html" class="mega-link-item" style="margin-top: 10px;">Open Source</a>
+                <a href="learning-devops.html" class="mega-link-item" style="margin-top: 10px;">Security</a>
               </div>
-            </a>
-            <a href="blog-books.html" class="dropdown-item">
-              <div class="dropdown-icon blog"><i data-lucide="book-open"></i></div>
-              <div class="dropdown-text">
-                <span class="dropdown-title">Book Summaries</span>
-                <span class="dropdown-desc">Key takeaways from timeless reads</span>
-              </div>
-            </a>
+            </div>
+            <a href="learning.html" class="mega-footer-link">Latest in Tech →</a>
           </div>
-        </div>
+        </li>
 
-        <!-- Travel Submenu Dropdown -->
-        <div class="nav-item-dropdown">
-          <a href="travel.html" class="nav-link-parent">
-            Travel <i data-lucide="chevron-down" class="chevron"></i>
+        <!-- Health / Wellness -->
+        <li class="nav-item-editorial">
+          <a href="blog-productivity.html" class="nav-link-editorial">
+            Health <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
           </a>
-          <div class="dropdown-menu">
-            <a href="travel-asia.html" class="dropdown-item">
-              <div class="dropdown-icon travel"><i data-lucide="compass"></i></div>
-              <div class="dropdown-text">
-                <span class="dropdown-title">Asia Adventures</span>
-                <span class="dropdown-desc">Japan, Kyoto, Southeast Asia</span>
+          <div class="mega-dropdown-menu">
+            <div class="mega-grid-2col">
+              <div>
+                <a href="blog-productivity.html" class="mega-link-item">Fitness</a>
+                <a href="blog-essays.html" class="mega-link-item" style="margin-top: 10px;">Mental Health</a>
+                <a href="blog-productivity.html" class="mega-link-item" style="margin-top: 10px;">Wellness</a>
               </div>
-            </a>
-            <a href="travel-europe.html" class="dropdown-item">
-              <div class="dropdown-icon travel"><i data-lucide="map-pin"></i></div>
-              <div class="dropdown-text">
-                <span class="dropdown-title">European Escapes</span>
-                <span class="dropdown-desc">Swiss Alps, Norway fjords, Lisbon</span>
+              <div>
+                <a href="blog-productivity.html" class="mega-link-item">Nutrition</a>
+                <a href="blog-essays.html" class="mega-link-item" style="margin-top: 10px;">Medicine</a>
+                <a href="blog-books.html" class="mega-link-item" style="margin-top: 10px;">Research</a>
               </div>
-            </a>
-            <a href="travel-hiking.html" class="dropdown-item">
-              <div class="dropdown-icon travel"><i data-lucide="mountain"></i></div>
-              <div class="dropdown-text">
-                <span class="dropdown-title">Hiking &amp; Treks</span>
-                <span class="dropdown-desc">High alpine routes &amp; wilderness trails</span>
-              </div>
-            </a>
+            </div>
+            <a href="blog.html" class="mega-footer-link">Latest in Health →</a>
           </div>
-        </div>
+        </li>
 
-        <!-- Learning Submenu Dropdown -->
-        <div class="nav-item-dropdown">
-          <a href="learning.html" class="nav-link-parent">
-            Learning <i data-lucide="chevron-down" class="chevron"></i>
+        <!-- Travel -->
+        <li class="nav-item-editorial">
+          <a href="travel.html" class="nav-link-editorial">
+            Travel <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
           </a>
-          <div class="dropdown-menu">
-            <a href="learning-webdev.html" class="dropdown-item">
-              <div class="dropdown-icon learning"><i data-lucide="code"></i></div>
-              <div class="dropdown-text">
-                <span class="dropdown-title">Web Architecture</span>
-                <span class="dropdown-desc">Fullstack engineering &amp; scale</span>
+          <div class="mega-dropdown-menu">
+            <div class="mega-grid-2col">
+              <div>
+                <a href="travel-asia.html" class="mega-link-item">Asia Adventures</a>
+                <a href="travel-europe.html" class="mega-link-item" style="margin-top: 10px;">European Escapes</a>
+                <a href="travel-hiking.html" class="mega-link-item" style="margin-top: 10px;">Mountain Treks</a>
               </div>
-            </a>
-            <a href="learning-databases.html" class="dropdown-item">
-              <div class="dropdown-icon learning"><i data-lucide="database"></i></div>
-              <div class="dropdown-text">
-                <span class="dropdown-title">Database Engineering</span>
-                <span class="dropdown-desc">SQL, indexing &amp; performance</span>
+              <div>
+                <a href="travel.html" class="mega-link-item">Solo Journeys</a>
+                <a href="travel.html" class="mega-link-item" style="margin-top: 10px;">Backpacking</a>
+                <a href="travel-hiking.html" class="mega-link-item" style="margin-top: 10px;">Expedition Gear</a>
               </div>
-            </a>
-            <a href="learning-devops.html" class="dropdown-item">
-              <div class="dropdown-icon learning"><i data-lucide="cloud"></i></div>
-              <div class="dropdown-text">
-                <span class="dropdown-title">DevOps &amp; Cloud</span>
-                <span class="dropdown-desc">Docker, Git internals &amp; CI/CD</span>
-              </div>
-            </a>
+            </div>
+            <a href="travel.html" class="mega-footer-link">Latest in Travel →</a>
           </div>
-        </div>
-      </div>
+        </li>
 
-      <div class="navbar-actions">
-        <button class="theme-toggle btn-icon" id="themeToggle" aria-label="Toggle theme">
+        <!-- Sports / Blog -->
+        <li class="nav-item-editorial">
+          <a href="blog.html" class="nav-link-editorial">
+            Sports <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
+          </a>
+          <div class="mega-dropdown-menu">
+            <div class="mega-grid-2col">
+              <div>
+                <a href="blog.html" class="mega-link-item">Cricket</a>
+                <a href="blog.html" class="mega-link-item" style="margin-top: 10px;">Football</a>
+                <a href="blog.html" class="mega-link-item" style="margin-top: 10px;">Tactical Breakdowns</a>
+              </div>
+              <div>
+                <a href="blog.html" class="mega-link-item">Endurance</a>
+                <a href="blog.html" class="mega-link-item" style="margin-top: 10px;">Athlete Mindset</a>
+                <a href="blog.html" class="mega-link-item" style="margin-top: 10px;">Tournament Recaps</a>
+              </div>
+            </div>
+            <a href="blog.html" class="mega-footer-link">Latest in Sports →</a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="nav-actions-editorial">
+        <button class="btn-nav-icon" aria-label="Search articles" onclick="document.getElementById('topics')?.scrollIntoView({behavior:'smooth'})">
+          <i data-lucide="search"></i>
+        </button>
+        <button class="btn-nav-icon" aria-label="Notifications" onclick="showToast('🔔 You are caught up with all stories.', 'info')">
+          <i data-lucide="bell"></i>
+        </button>
+        <button class="btn-nav-icon theme-toggle" id="themeToggle" aria-label="Toggle theme">
           <i data-lucide="sun" class="theme-icon-light"></i>
           <i data-lucide="moon" class="theme-icon-dark"></i>
         </button>
-        <a href="admin/login.html" class="btn btn-sm btn-outline">
-          <i data-lucide="layout-dashboard"></i> Dashboard
-        </a>
-        <button class="navbar-toggle btn-icon" id="navToggle" aria-label="Toggle navigation">
+        <a href="#newsletter" class="btn-subscribe">Subscribe</a>
+        <a href="admin/login.html" class="btn-login">Login</a>
+        <button class="navbar-toggle btn-icon" id="navToggle" aria-label="Toggle navigation" style="color: #ffffff; display: none;">
           <i data-lucide="menu"></i>
         </button>
       </div>
@@ -135,231 +138,249 @@
   </nav>
 
   <main>
-    <!-- Ultra-Modern Hero: Two-Halves Magazine Split (Left: Featured Carousel | Right: Latest Stories) -->
-    <section class="hero hero-magazine">
-      <div class="hero-glow-1"></div>
-      <div class="hero-grid-pattern"></div>
-      
+    <!-- Editorial Two-Halves Hero Section (Featured Carousel + Trending Now) -->
+    <section class="hero-editorial-section">
       <div class="container">
-        <!-- Hero Top Bar -->
-        <div class="hero-top-bar animate-on-scroll">
-          <div class="live-pill">
-            <span class="pulse-dot"></span>
-            <span>Everygyan • Digital Garden &amp; Knowledge Base</span>
-          </div>
-          <div class="hero-quick-meta">
-            <span class="hero-quick-tag"><i data-lucide="sparkles"></i> Curated Daily</span>
-            <span class="hero-quick-divider">•</span>
-            <span class="hero-quick-tag"><i data-lucide="compass"></i> Blog • Travel • Learning</span>
-          </div>
-        </div>
-
-        <!-- Two-Halves Hero Grid -->
-        <div class="hero-split-grid animate-on-scroll">
+        <div class="hero-editorial-split">
           
-          <!-- LEFT HALF: Featured Stories Carousel -->
-          <div class="hero-carousel-wrap">
-            <div class="hero-block-header">
-              <div class="hero-block-title-group">
-                <span class="section-badge"><i data-lucide="star"></i> Featured Stories</span>
-              </div>
-              <!-- Carousel Controls -->
-              <div class="carousel-nav-arrows">
-                <button class="carousel-arrow-btn" id="heroPrevBtn" aria-label="Previous Slide">
-                  <i data-lucide="chevron-left"></i>
-                </button>
-                <button class="carousel-arrow-btn" id="heroNextBtn" aria-label="Next Slide">
-                  <i data-lucide="chevron-right"></i>
-                </button>
-              </div>
-            </div>
+          <!-- LEFT COLUMN: Featured Top Story Carousel -->
+          <div class="top-story-carousel-wrap">
+            <div class="top-story-carousel" id="heroFeaturedCarousel">
 
-            <!-- Carousel Frame -->
-            <div class="hero-carousel" id="heroFeaturedCarousel">
-              <div class="hero-carousel-track" id="heroCarouselTrack">
+              <!-- Carousel Arrow Navigation Buttons -->
+              <button class="carousel-arrow-circle prev" id="heroPrevBtn" aria-label="Previous Slide">
+                <i data-lucide="chevron-left"></i>
+              </button>
+              <button class="carousel-arrow-circle next" id="heroNextBtn" aria-label="Next Slide">
+                <i data-lucide="chevron-right"></i>
+              </button>
 
-                <!-- Slide 1: Travel -->
-                <div class="hero-slide active">
-                  <div class="hero-slide-bg">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200" alt="Swiss Alps Trek" loading="eager">
-                    <div class="hero-slide-overlay"></div>
+              <!-- Slides Track -->
+              <div class="top-story-track" id="heroCarouselTrack">
+
+                <!-- Slide 1: Tech / AI (Matching Screenshot) -->
+                <div class="top-story-slide active">
+                  <div class="top-story-bg">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200" alt="AI Agent Tech Shift" loading="eager">
+                    <div class="top-story-overlay"></div>
                   </div>
-                  <div class="hero-slide-content">
-                    <span class="card-category travel">Travel Diaries</span>
-                    <h2 class="hero-slide-title">
+                  
+                  <div class="top-story-badges">
+                    <span class="badge-top-story">TOP STORY</span>
+                    <span class="badge-cat tech">TECH</span>
+                  </div>
+
+                  <div class="top-story-content">
+                    <h2 class="top-story-title">
+                      <a href="article.html?slug=ai-agents-become-the-biggest-technology-shift">AI Agents Become the Biggest Technology Shift Since Smartphones</a>
+                    </h2>
+                    <p class="top-story-excerpt">
+                      A new wave of AI-powered agents is transforming how people work, search, code, shop, and manage daily life — and industry leaders believe this could become the...
+                    </p>
+                    <div class="top-story-meta">
+                      <span class="meta-item"><i data-lucide="user"></i> STAFF</span>
+                      <span class="meta-item"><i data-lucide="clock"></i> 3 MIN READ</span>
+                      <span class="meta-item"><i data-lucide="calendar"></i> 6/18/2026</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 2: Travel -->
+                <div class="top-story-slide">
+                  <div class="top-story-bg">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200" alt="Swiss Alps High Trek" loading="lazy">
+                    <div class="top-story-overlay"></div>
+                  </div>
+                  
+                  <div class="top-story-badges">
+                    <span class="badge-top-story">TOP STORY</span>
+                    <span class="badge-cat travel">TRAVEL</span>
+                  </div>
+
+                  <div class="top-story-content">
+                    <h2 class="top-story-title">
                       <a href="article.html?slug=chasing-silence-in-the-swiss-alps">Chasing Silence in the Swiss Alps: A Solitary Trek Above the Clouds</a>
                     </h2>
-                    <p class="hero-slide-excerpt">
-                      There is an intoxicating stillness at 3,000 meters that recalibrates the human spirit. A raw chronicle of trekking through Zermatt, high glaciers, and alpine solitude.
+                    <p class="top-story-excerpt">
+                      There is an intoxicating stillness at 3,000 meters that recalibrates the human spirit. An unfiltered chronicle of hiking through Zermatt, glacial valleys, and the silence of high summits.
                     </p>
-                    <div class="hero-slide-meta">
-                      <div class="slide-author">
-                        <span class="author-avatar-chip">EG</span>
-                        <span>Everygyan</span>
-                      </div>
-                      <span class="meta-dot">•</span>
-                      <span>Oct 12, 2026</span>
-                      <span class="meta-dot">•</span>
-                      <span>8 min read</span>
-                      <a href="article.html?slug=chasing-silence-in-the-swiss-alps" class="slide-read-btn">
-                        Read Story <i data-lucide="arrow-up-right"></i>
-                      </a>
+                    <div class="top-story-meta">
+                      <span class="meta-item"><i data-lucide="user"></i> STAFF</span>
+                      <span class="meta-item"><i data-lucide="clock"></i> 6 MIN READ</span>
+                      <span class="meta-item"><i data-lucide="calendar"></i> 6/17/2026</span>
                     </div>
                   </div>
                 </div>
 
-                <!-- Slide 2: Blog -->
-                <div class="hero-slide">
-                  <div class="hero-slide-bg">
-                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200" alt="Slow Productivity" loading="lazy">
-                    <div class="hero-slide-overlay"></div>
+                <!-- Slide 3: Health & Resilience -->
+                <div class="top-story-slide">
+                  <div class="top-story-bg">
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1200" alt="Fitness and Longevity Science" loading="lazy">
+                    <div class="top-story-overlay"></div>
                   </div>
-                  <div class="hero-slide-content">
-                    <span class="card-category blog">Personal Blog</span>
-                    <h2 class="hero-slide-title">
-                      <a href="article.html?slug=the-art-of-slow-living-in-a-fast-paced-world">The Art of Slow Living &amp; Deep Productivity in a Hyperactive World</a>
+                  
+                  <div class="top-story-badges">
+                    <span class="badge-top-story">TOP STORY</span>
+                    <span class="badge-cat health">HEALTH</span>
+                  </div>
+
+                  <div class="top-story-content">
+                    <h2 class="top-story-title">
+                      <a href="article.html?slug=beyond-the-glow-cellular-resilience">Beyond the Glow: How Modern Science is Redefining Resilience</a>
                     </h2>
-                    <p class="hero-slide-excerpt">
-                      Why intentionally stepping back from relentless hustle culture dramatically elevates mental clarity, personal creativity, and daily happiness.
+                    <p class="top-story-excerpt">
+                      How modern biomarkers, circadian alignment, and zone-2 cardiovascular training are transforming human vitality and cognitive performance across every stage of adulthood.
                     </p>
-                    <div class="hero-slide-meta">
-                      <div class="slide-author">
-                        <span class="author-avatar-chip">EG</span>
-                        <span>Everygyan</span>
-                      </div>
-                      <span class="meta-dot">•</span>
-                      <span>Oct 11, 2026</span>
-                      <span class="meta-dot">•</span>
-                      <span>5 min read</span>
-                      <a href="article.html?slug=the-art-of-slow-living-in-a-fast-paced-world" class="slide-read-btn">
-                        Read Story <i data-lucide="arrow-up-right"></i>
-                      </a>
+                    <div class="top-story-meta">
+                      <span class="meta-item"><i data-lucide="user"></i> STAFF</span>
+                      <span class="meta-item"><i data-lucide="clock"></i> 4 MIN READ</span>
+                      <span class="meta-item"><i data-lucide="calendar"></i> 6/16/2026</span>
                     </div>
                   </div>
                 </div>
 
-                <!-- Slide 3: Learning -->
-                <div class="hero-slide">
-                  <div class="hero-slide-bg">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200" alt="Modern CSS Architecture" loading="lazy">
-                    <div class="hero-slide-overlay"></div>
+                <!-- Slide 4: Blog / Focus -->
+                <div class="top-story-slide">
+                  <div class="top-story-bg">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200" alt="Deep Work and Slow Productivity" loading="lazy">
+                    <div class="top-story-overlay"></div>
                   </div>
-                  <div class="hero-slide-content">
-                    <span class="card-category learning">Learning Hub</span>
-                    <h2 class="hero-slide-title">
+                  
+                  <div class="top-story-badges">
+                    <span class="badge-top-story">TOP STORY</span>
+                    <span class="badge-cat blog">BLOG</span>
+                  </div>
+
+                  <div class="top-story-content">
+                    <h2 class="top-story-title">
+                      <a href="article.html?slug=the-art-of-slow-productivity">The Art of Slow Productivity in a Distracted, Hyperactive World</a>
+                    </h2>
+                    <p class="top-story-excerpt">
+                      Why deliberately stepping back from constant busyness and working at a natural cadence produces vastly superior creative breakthroughs and inner calm.
+                    </p>
+                    <div class="top-story-meta">
+                      <span class="meta-item"><i data-lucide="user"></i> STAFF</span>
+                      <span class="meta-item"><i data-lucide="clock"></i> 5 MIN READ</span>
+                      <span class="meta-item"><i data-lucide="calendar"></i> 6/15/2026</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 5: Learning / Dev -->
+                <div class="top-story-slide">
+                  <div class="top-story-bg">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200" alt="Modern Software Architecture" loading="lazy">
+                    <div class="top-story-overlay"></div>
+                  </div>
+                  
+                  <div class="top-story-badges">
+                    <span class="badge-top-story">TOP STORY</span>
+                    <span class="badge-cat learning">LEARNING</span>
+                  </div>
+
+                  <div class="top-story-content">
+                    <h2 class="top-story-title">
                       <a href="article.html?slug=mastering-modern-css-subgrid-container-queries-and-beyond">Mastering Modern CSS: Subgrid, Container Queries, and Beyond</a>
                     </h2>
-                    <p class="hero-slide-excerpt">
-                      A comprehensive architectural breakdown of next-generation layout primitives that eliminate styling hacks and make component design intuitive.
+                    <p class="top-story-excerpt">
+                      A comprehensive engineering guide to next-generation layout primitives that eliminate fragile flexbox workarounds and make resilient responsive design second nature.
                     </p>
-                    <div class="hero-slide-meta">
-                      <div class="slide-author">
-                        <span class="author-avatar-chip">EG</span>
-                        <span>Everygyan</span>
-                      </div>
-                      <span class="meta-dot">•</span>
-                      <span>Oct 13, 2026</span>
-                      <span class="meta-dot">•</span>
-                      <span>7 min read</span>
-                      <a href="article.html?slug=mastering-modern-css-subgrid-container-queries-and-beyond" class="slide-read-btn">
-                        Read Story <i data-lucide="arrow-up-right"></i>
-                      </a>
+                    <div class="top-story-meta">
+                      <span class="meta-item"><i data-lucide="user"></i> STAFF</span>
+                      <span class="meta-item"><i data-lucide="clock"></i> 7 MIN READ</span>
+                      <span class="meta-item"><i data-lucide="calendar"></i> 6/14/2026</span>
                     </div>
                   </div>
                 </div>
 
               </div>
 
-              <!-- Carousel Indicators -->
-              <div class="hero-carousel-dots" id="heroCarouselDots">
-                <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
-                <button class="carousel-dot" data-index="1" aria-label="Slide 2"></button>
-                <button class="carousel-dot" data-index="2" aria-label="Slide 3"></button>
+              <!-- Dash Indicators (5 Horizontal Bars) -->
+              <div class="card-dash-indicators" id="heroCarouselDashes">
+                <button class="card-dash active" data-index="0" aria-label="Slide 1"></button>
+                <button class="card-dash" data-index="1" aria-label="Slide 2"></button>
+                <button class="card-dash" data-index="2" aria-label="Slide 3"></button>
+                <button class="card-dash" data-index="3" aria-label="Slide 4"></button>
+                <button class="card-dash" data-index="4" aria-label="Slide 5"></button>
               </div>
+
             </div>
           </div>
 
-          <!-- RIGHT HALF: Latest Stories List -->
-          <div class="hero-latest-wrap">
-            <div class="hero-block-header">
-              <div class="hero-block-title-group">
-                <span class="section-badge"><i data-lucide="clock"></i> Latest Stories</span>
-              </div>
-              <a href="blog.html" class="hero-view-all-link">
-                View All <i data-lucide="arrow-right"></i>
-              </a>
-            </div>
-
-            <div class="hero-latest-list" id="heroLatestList">
+          <!-- RIGHT COLUMN: Trending Now Card (Matching Screenshot) -->
+          <div class="trending-now-wrap">
+            <div class="trending-now-card">
               
-              <!-- Item 1 -->
-              <a href="article.html?slug=seven-days-in-kyoto" class="latest-feed-item">
-                <div class="latest-feed-thumb">
-                  <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=300" alt="Kyoto Temples" loading="lazy">
-                </div>
-                <div class="latest-feed-body">
-                  <div class="latest-feed-tag-row">
-                    <span class="card-category travel">Travel</span>
-                    <span class="latest-feed-time">Oct 11, 2026</span>
-                  </div>
-                  <h4 class="latest-feed-title">Seven Days in Kyoto: Temples, Matcha, and Ancient Alleys</h4>
-                  <div class="latest-feed-meta">
-                    <span><i data-lucide="clock"></i> 6 min read</span>
-                  </div>
-                </div>
-              </a>
+              <!-- Trending Header -->
+              <div class="trending-card-header">
+                <h3 class="trending-card-title">Trending Now</h3>
+                <span class="trending-red-dot"></span>
+              </div>
 
-              <!-- Item 2 -->
-              <a href="article.html?slug=demystifying-asynchronous-programming-in-typescript" class="latest-feed-item">
-                <div class="latest-feed-thumb">
-                  <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=300" alt="TypeScript Code" loading="lazy">
-                </div>
-                <div class="latest-feed-body">
-                  <div class="latest-feed-tag-row">
-                    <span class="card-category learning">Learning</span>
-                    <span class="latest-feed-time">Oct 10, 2026</span>
+              <!-- Trending 5 Items List -->
+              <div class="trending-items-list" id="heroTrendingList">
+                
+                <!-- Item 1 -->
+                <a href="article.html?slug=beyond-the-glow-cellular-resilience" class="trending-story-row">
+                  <span class="trending-story-rank">01</span>
+                  <div class="trending-story-details">
+                    <h4 class="trending-story-headline">Beyond the Glow: How Bipasha Basu is Redefining Postpartum Fitness and Resilience</h4>
+                    <span class="trending-story-timestamp">6/20/2026 • 3 MIN</span>
                   </div>
-                  <h4 class="latest-feed-title">Demystifying Asynchronous Programming &amp; Event Loop in TypeScript</h4>
-                  <div class="latest-feed-meta">
-                    <span><i data-lucide="clock"></i> 8 min read</span>
+                  <div class="trending-story-thumb">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=160" alt="Postpartum Fitness" loading="lazy">
                   </div>
-                </div>
-              </a>
+                </a>
 
-              <!-- Item 3 -->
-              <a href="article.html?slug=why-deep-work-is-the-superpower-of-the-21st-century" class="latest-feed-item">
-                <div class="latest-feed-thumb">
-                  <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702?w=300" alt="Deep Work Focus" loading="lazy">
-                </div>
-                <div class="latest-feed-body">
-                  <div class="latest-feed-tag-row">
-                    <span class="card-category blog">Blog</span>
-                    <span class="latest-feed-time">Oct 09, 2026</span>
+                <!-- Item 2 -->
+                <a href="article.html?slug=the-revolving-door-at-openai" class="trending-story-row">
+                  <span class="trending-story-rank">02</span>
+                  <div class="trending-story-details">
+                    <h4 class="trending-story-headline">The Revolving Door at OpenAI: Why Barret Zoph’s Rapid Exit Signals Growing Pains</h4>
+                    <span class="trending-story-timestamp">6/19/2026 • 3 MIN</span>
                   </div>
-                  <h4 class="latest-feed-title">Why Deep Work is the Unfair Superpower of Modern Knowledge Work</h4>
-                  <div class="latest-feed-meta">
-                    <span><i data-lucide="clock"></i> 5 min read</span>
+                  <div class="trending-story-thumb">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=160" alt="OpenAI Shift" loading="lazy">
                   </div>
-                </div>
-              </a>
+                </a>
 
-              <!-- Item 4 -->
-              <a href="article.html?slug=sailing-the-norwegian-fjords-chasing-waterfalls-and-solitude" class="latest-feed-item">
-                <div class="latest-feed-thumb">
-                  <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=300" alt="Norwegian Fjords" loading="lazy">
-                </div>
-                <div class="latest-feed-body">
-                  <div class="latest-feed-tag-row">
-                    <span class="card-category travel">Travel</span>
-                    <span class="latest-feed-time">Oct 07, 2026</span>
+                <!-- Item 3 -->
+                <a href="article.html?slug=the-telegram-dilemma-digital-freedom" class="trending-story-row">
+                  <span class="trending-story-rank">03</span>
+                  <div class="trending-story-details">
+                    <h4 class="trending-story-headline">The Telegram Dilemma: Why India’s Looming Ban Could Change Digital Freedom Forever</h4>
+                    <span class="trending-story-timestamp">6/19/2026 • 3 MIN</span>
                   </div>
-                  <h4 class="latest-feed-title">Sailing the Norwegian Fjords: Chasing Waterfalls &amp; Solitude</h4>
-                  <div class="latest-feed-meta">
-                    <span><i data-lucide="clock"></i> 7 min read</span>
+                  <div class="trending-story-thumb">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=160" alt="Telegram Ban Debate" loading="lazy">
                   </div>
-                </div>
-              </a>
+                </a>
 
+                <!-- Item 4 -->
+                <a href="article.html?slug=faf-du-plessis-shatters-records-t20" class="trending-story-row">
+                  <span class="trending-story-rank">04</span>
+                  <div class="trending-story-details">
+                    <h4 class="trending-story-headline">Faf du Plessis Shatters Records in Electrifying T20 Masterclass: A Tactical Breakdown</h4>
+                    <span class="trending-story-timestamp">6/19/2026 • 3 MIN</span>
+                  </div>
+                  <div class="trending-story-thumb">
+                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=160" alt="T20 Masterclass" loading="lazy">
+                  </div>
+                </a>
+
+                <!-- Item 5 -->
+                <a href="article.html?slug=black-caps-dominate-phillips-century" class="trending-story-row">
+                  <span class="trending-story-rank">05</span>
+                  <div class="trending-story-details">
+                    <h4 class="trending-story-headline">Black Caps Dominate: Phillips’ Century and Henry’s Spell Power New Zealand Past England</h4>
+                    <span class="trending-story-timestamp">6/18/2026 • 3 MIN</span>
+                  </div>
+                  <div class="trending-story-thumb">
+                    <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=160" alt="Cricket Match" loading="lazy">
+                  </div>
+                </a>
+
+              </div>
             </div>
           </div>
 
