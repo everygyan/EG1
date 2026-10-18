@@ -19,10 +19,13 @@ export const TrendingNow: React.FC<TrendingNowProps> = ({ articles, onSelectArti
     <div className="bg-white border border-slate-200/90 rounded-3xl p-5 sm:p-6 shadow-sm flex flex-col justify-between h-full">
       {/* Header matching screenshot: Line chart icon + "Trending Now" + Red live dot */}
       <div className="flex items-center justify-between pb-3.5 border-b border-slate-100">
-        <div className="flex items-center gap-2">
-          <TrendingUp className="w-5 h-5 text-cyan-500 stroke-[2.5]" />
-          <h2 className="font-sans font-bold text-slate-900 text-base tracking-tight">
+        <div>
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-cyan-700 bg-cyan-50 border border-cyan-200/60 px-2 py-0.5 rounded-full uppercase tracking-wider mb-1">
+            <TrendingUp className="w-3 h-3 text-cyan-600 stroke-[2.5]" />
             Trending Now
+          </span>
+          <h2 className="font-sans font-bold text-slate-900 text-base tracking-tight">
+            Top Dispatches
           </h2>
         </div>
         <div className="flex items-center gap-1.5">
@@ -41,8 +44,16 @@ export const TrendingNow: React.FC<TrendingNowProps> = ({ articles, onSelectArti
           return (
             <div
               key={article.id}
+              tabIndex={0}
+              role="button"
               onClick={() => onSelectArticle(article)}
-              className="group py-3.5 flex items-start gap-3.5 cursor-pointer hover:bg-slate-50/80 -mx-2 px-2 rounded-xl transition-all"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSelectArticle(article);
+                }
+              }}
+              className="group py-3.5 flex items-start gap-3.5 cursor-pointer hover:bg-slate-50/80 -mx-2 px-2 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500"
             >
               {/* Distinct Serif Number Counter (01, 02, etc.) */}
               <div className="flex-shrink-0 pt-0.5">

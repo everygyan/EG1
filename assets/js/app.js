@@ -1,5 +1,5 @@
 /**
- * Everygyan - Main Frontend Application Logic
+ * EveryGyan - Main Frontend Application Logic
  * Supports Theme Switcher, Mobile Navigation, API Integration, and Dynamic Article Rendering
  */
 
@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
     initSubscribeAction();
     initHeaderAuth();
+    initCardInteractions();
     initHeroCarousel();
     initScrollAnimations();
     initNewsletterForms();
@@ -414,7 +415,7 @@ function initPageContent() {
 }
 
 /* --------------------------------------------------------------------------
-   8. Article Card Template Generator
+   8. Article Card Template Generator & Keyboard Interactions
    -------------------------------------------------------------------------- */
 function renderArticleCard(article) {
     const categorySlug = (article.category_slug || (article.category && article.category.slug) || 'blog').toLowerCase();
@@ -424,9 +425,9 @@ function renderArticleCard(article) {
     const readingTime = formatReadingTime(article.reading_time || article.readTime || article.content);
 
     return `
-    <article class="card animate-on-scroll">
+    <article class="card animate-on-scroll" tabindex="0">
         <div class="card-img">
-            <img src="${escapeHtml(coverImage)}" alt="${escapeHtml(article.title)}" loading="lazy">
+            <img src="${escapeHtml(coverImage)}" alt="${escapeHtml(article.title)} - EveryGyan" loading="lazy">
             <div class="card-img-overlay"></div>
         </div>
         <div class="card-body">
@@ -450,6 +451,28 @@ function renderArticleCard(article) {
         </div>
     </article>
     `;
+}
+
+function initCardInteractions() {
+    // Click delegation: clicking anywhere on a card follows the main article link
+    document.addEventListener('click', (e) => {
+        const card = e.target.closest('.card');
+        if (card && !e.target.closest('a') && !e.target.closest('button')) {
+            const link = card.querySelector('.card-title a');
+            if (link) link.click();
+        }
+    });
+
+    // Keyboard accessibility: Enter or Space on a focused card follows the article link
+    document.addEventListener('keydown', (e) => {
+        if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.classList && e.target.classList.contains('card')) {
+            const link = e.target.querySelector('.card-title a');
+            if (link) {
+                e.preventDefault();
+                link.click();
+            }
+        }
+    });
 }
 
 /* --------------------------------------------------------------------------
@@ -783,7 +806,7 @@ async function loadSingleArticle() {
         const res = await API.getArticle(slug || id);
         if (res && res.success && res.data) {
             const article = res.data;
-            document.title = `${article.title} — Everygyan`;
+            document.title = `${article.title} — EveryGyan`;
 
             // Breadcrumb & Category
             const categorySlug = (article.category_slug || (article.category && article.category.slug) || 'blog').toLowerCase();

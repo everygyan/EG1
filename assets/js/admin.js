@@ -1,5 +1,5 @@
 /**
- * Everygyan - Admin Dashboard Management Logic
+ * EveryGyan - Admin Dashboard Management Logic
  * Handles Authentication, Articles CRUD, Media Library, Quill.js Integration, and Metrics
  */
 

@@ -1,11 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Everygyan — Personal Stories, Travel Diaries &amp; Technical Learning</title>
-  <meta name="description" content="A curated universe where personal reflections, global expeditions, and software engineering craftsmanship converge. Curated by Everygyan.">
+  <title>EveryGyan — Personal Stories, Travel Diaries &amp; Technical Learning</title>
+  <meta name="description" content="A curated universe where personal reflections, global expeditions, and software engineering craftsmanship converge. Curated by EveryGyan.">
   <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:site_name" content="EveryGyan">
+  <meta property="og:title" content="EveryGyan — Personal Stories, Travel Diaries &amp; Technical Learning">
+  <meta property="og:description" content="A curated universe where personal reflections, global expeditions, and software engineering craftsmanship converge. Curated by EveryGyan.">
+  <meta property="og:type" content="website">
 
   <!-- Google Fonts & CDN Dependencies -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -559,11 +565,23 @@
       display: flex;
       align-items: flex-start;
       gap: 14px;
-      padding: 8px 0;
+      padding: 8px 6px;
       border-bottom: 1px solid #F1F5F9;
       text-decoration: none !important;
       color: inherit;
-      transition: background 0.2s ease;
+      transition: background 0.2s ease, transform 0.2s ease;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .trending-story-row:hover {
+      background: #F8FAFC;
+    }
+
+    .trending-story-row:focus-visible {
+      outline: 2.5px solid #2563EB;
+      outline-offset: 2px;
+      background: #F8FAFC;
     }
 
     .trending-story-row:last-child {
@@ -833,7 +851,7 @@
                 <!-- Slide 1: Tech / AI (Matching Screenshot) -->
                 <div class="top-story-slide active">
                   <div class="top-story-bg">
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200" alt="AI Agent Tech Shift" loading="eager">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200" alt="AI Agents Become the Biggest Technology Shift Since Smartphones - Tech Analysis" loading="eager">
                     <div class="top-story-overlay"></div>
                   </div>
                   
@@ -860,7 +878,7 @@
                 <!-- Slide 2: Travel -->
                 <div class="top-story-slide">
                   <div class="top-story-bg">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200" alt="Swiss Alps High Trek" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200" alt="Chasing Silence in the Swiss Alps: A Solitary Trek Above the Clouds - Travel Dispatch" loading="lazy">
                     <div class="top-story-overlay"></div>
                   </div>
                   
@@ -887,7 +905,7 @@
                 <!-- Slide 3: Health & Longevity Science (Distinct from Trending Now) -->
                 <div class="top-story-slide">
                   <div class="top-story-bg">
-                    <img src="https://images.unsplash.com/photo-1511295742362-92c96b124e52?w=1200" alt="Sleep Architecture and Longevity Science" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1511295742362-92c96b124e52?w=1200" alt="The Glymphatic Reset: How Sleep Architecture and Circadian Science Dictate Cognitive Longevity" loading="lazy">
                     <div class="top-story-overlay"></div>
                   </div>
                   
@@ -914,7 +932,7 @@
                 <!-- Slide 4: Blog / Craft & Culture (Distinct from Latest Articles) -->
                 <div class="top-story-slide">
                   <div class="top-story-bg">
-                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200" alt="Handcrafted Artistry in Algorithmic Age" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200" alt="The Renaissance of the Craftsperson: Why High-Touch Human Artistry is Thriving in the Algorithmic Age" loading="lazy">
                     <div class="top-story-overlay"></div>
                   </div>
                   
@@ -941,7 +959,7 @@
                 <!-- Slide 5: Learning / Dev -->
                 <div class="top-story-slide">
                   <div class="top-story-bg">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200" alt="Modern Software Architecture" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200" alt="Mastering Modern CSS: Subgrid, Container Queries, and Beyond - Software Engineering" loading="lazy">
                     <div class="top-story-overlay"></div>
                   </div>
                   
@@ -985,70 +1003,73 @@
               
               <!-- Trending Header -->
               <div class="trending-card-header">
-                <h3 class="trending-card-title">Trending Now</h3>
-                <span class="trending-red-dot"></span>
+                <div>
+                  <span class="section-badge mb-1" style="font-size: 0.725rem;"><i data-lucide="trending-up" style="width: 12px; height: 12px;"></i> Trending Now</span>
+                  <h3 class="trending-card-title">Top Dispatches</h3>
+                </div>
+                <span class="trending-red-dot" title="Live editorial updates"></span>
               </div>
 
               <!-- Trending 5 Items List -->
               <div class="trending-items-list" id="heroTrendingList">
                 
                 <!-- Item 1 -->
-                <a href="article.html?slug=beyond-the-glow-postpartum-resilience" class="trending-story-row">
+                <a href="article.html?slug=beyond-the-glow-postpartum-resilience" class="trending-story-row" tabindex="0">
                   <span class="trending-story-rank">01</span>
                   <div class="trending-story-details">
                     <h4 class="trending-story-headline">Beyond the Glow: How Bipasha Basu is Redefining Postpartum Fitness and Resilience</h4>
                     <span class="trending-story-timestamp">Oct 18, 2026 • 3 min read</span>
                   </div>
                   <div class="trending-story-thumb">
-                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=160" alt="Postpartum Fitness" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=160" alt="Beyond the Glow: How Bipasha Basu is Redefining Postpartum Fitness and Resilience" loading="lazy">
                   </div>
                 </a>
 
                 <!-- Item 2 -->
-                <a href="article.html?slug=the-revolving-door-at-openai" class="trending-story-row">
+                <a href="article.html?slug=the-revolving-door-at-openai" class="trending-story-row" tabindex="0">
                   <span class="trending-story-rank">02</span>
                   <div class="trending-story-details">
                     <h4 class="trending-story-headline">The Revolving Door at OpenAI: Why Barret Zoph’s Rapid Exit Signals Growing Pains</h4>
                     <span class="trending-story-timestamp">Oct 17, 2026 • 3 min read</span>
                   </div>
                   <div class="trending-story-thumb">
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=160" alt="OpenAI Shift" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=160" alt="The Revolving Door at OpenAI: Why Barret Zoph’s Rapid Exit Signals Growing Pains" loading="lazy">
                   </div>
                 </a>
 
                 <!-- Item 3 -->
-                <a href="article.html?slug=the-telegram-dilemma-digital-freedom" class="trending-story-row">
+                <a href="article.html?slug=the-telegram-dilemma-digital-freedom" class="trending-story-row" tabindex="0">
                   <span class="trending-story-rank">03</span>
                   <div class="trending-story-details">
                     <h4 class="trending-story-headline">The Telegram Dilemma: Why India’s Looming Ban Could Change Digital Freedom Forever</h4>
                     <span class="trending-story-timestamp">Oct 17, 2026 • 3 min read</span>
                   </div>
                   <div class="trending-story-thumb">
-                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=160" alt="Telegram Ban Debate" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=160" alt="The Telegram Dilemma: Why India’s Looming Ban Could Change Digital Freedom Forever" loading="lazy">
                   </div>
                 </a>
 
                 <!-- Item 4 -->
-                <a href="article.html?slug=faf-du-plessis-shatters-records-t20" class="trending-story-row">
+                <a href="article.html?slug=faf-du-plessis-shatters-records-t20" class="trending-story-row" tabindex="0">
                   <span class="trending-story-rank">04</span>
                   <div class="trending-story-details">
                     <h4 class="trending-story-headline">Faf du Plessis Shatters Records in Electrifying T20 Masterclass: A Tactical Breakdown</h4>
                     <span class="trending-story-timestamp">Oct 16, 2026 • 3 min read</span>
                   </div>
                   <div class="trending-story-thumb">
-                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=160" alt="T20 Masterclass" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=160" alt="Faf du Plessis Shatters Records in Electrifying T20 Masterclass: A Tactical Breakdown" loading="lazy">
                   </div>
                 </a>
 
                 <!-- Item 5 -->
-                <a href="article.html?slug=black-caps-dominate-phillips-century" class="trending-story-row">
+                <a href="article.html?slug=black-caps-dominate-phillips-century" class="trending-story-row" tabindex="0">
                   <span class="trending-story-rank">05</span>
                   <div class="trending-story-details">
                     <h4 class="trending-story-headline">Black Caps Dominate: Phillips’ Century and Henry’s Spell Power New Zealand Past England</h4>
                     <span class="trending-story-timestamp">Oct 16, 2026 • 3 min read</span>
                   </div>
                   <div class="trending-story-thumb">
-                    <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=160" alt="Cricket Match" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=160" alt="Black Caps Dominate: Phillips’ Century and Henry’s Spell Power New Zealand Past England" loading="lazy">
                   </div>
                 </a>
 
@@ -1064,7 +1085,7 @@
     <section class="section" id="topics" style="background-color: var(--bg-alt);">
       <div class="container">
         <div class="section-header center">
-          <span class="section-badge">📂 Knowledge Pillars</span>
+          <span class="section-badge"><i data-lucide="layers" style="width: 14px; height: 14px;"></i> Knowledge Pillars</span>
           <h2 class="section-title">Explore by Channel</h2>
           <p class="section-subtitle">Navigate through focused channels curated for curious thinkers, creators, and builders.</p>
         </div>
@@ -1123,7 +1144,7 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <span class="section-badge">🔥 Fresh Perspectives</span>
+            <span class="section-badge"><i data-lucide="flame" style="width: 14px; height: 14px;"></i> Fresh Perspectives</span>
             <h2 class="section-title">Latest Articles</h2>
           </div>
           <a href="blog.html" class="btn btn-ghost">
@@ -1133,9 +1154,9 @@
 
         <div class="grid grid-3" id="latestArticlesGrid">
           <!-- Card 1 (Blog) -->
-          <article class="card animate-on-scroll">
+          <article class="card animate-on-scroll" tabindex="0">
             <div class="card-img">
-              <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600" alt="Writing on desk" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600" alt="The Art of Slow Productivity in a Hyperactive World - EveryGyan" loading="lazy">
               <div class="card-img-overlay"></div>
             </div>
             <div class="card-body">
@@ -1154,9 +1175,9 @@
           </article>
 
           <!-- Card 2 (Travel) -->
-          <article class="card animate-on-scroll">
+          <article class="card animate-on-scroll" tabindex="0">
             <div class="card-img">
-              <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600" alt="Kyoto Bamboo Forest" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600" alt="Seven Days in Kyoto: Temples, Matcha, and Ancient Alleys - Travel Diary" loading="lazy">
               <div class="card-img-overlay"></div>
             </div>
             <div class="card-body">
@@ -1175,9 +1196,9 @@
           </article>
 
           <!-- Card 3 (Learning) -->
-          <article class="card animate-on-scroll">
+          <article class="card animate-on-scroll" tabindex="0">
             <div class="card-img">
-              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600" alt="Code on modern screen" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600" alt="Building Resilient Web Architectures: From Zero to Scale - Engineering Tutorial" loading="lazy">
               <div class="card-img-overlay"></div>
             </div>
             <div class="card-body">
@@ -1196,9 +1217,9 @@
           </article>
 
           <!-- Card 4 (Blog) -->
-          <article class="card animate-on-scroll">
+          <article class="card animate-on-scroll" tabindex="0">
             <div class="card-img">
-              <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702?w=600" alt="Cozy workspace" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702?w=600" alt="Embracing Digital Minimalism: 30 Days Without Social Media - Personal Essay" loading="lazy">
               <div class="card-img-overlay"></div>
             </div>
             <div class="card-body">
@@ -1217,9 +1238,9 @@
           </article>
 
           <!-- Card 5 (Travel) -->
-          <article class="card animate-on-scroll">
+          <article class="card animate-on-scroll" tabindex="0">
             <div class="card-img">
-              <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600" alt="Norwegian fjords" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600" alt="Road Tripping the Norwegian Fjords: The Route of Waterfalls - Travel Guide" loading="lazy">
               <div class="card-img-overlay"></div>
             </div>
             <div class="card-body">
@@ -1238,9 +1259,9 @@
           </article>
 
           <!-- Card 6 (Learning) -->
-          <article class="card animate-on-scroll">
+          <article class="card animate-on-scroll" tabindex="0">
             <div class="card-img">
-              <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=600" alt="Code editor" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=600" alt="Mastering TypeScript Generics for Real-World Applications - Software Engineering" loading="lazy">
               <div class="card-img-overlay"></div>
             </div>
             <div class="card-body">
@@ -1283,7 +1304,7 @@
         <div class="footer-col">
           <a href="index.html" class="navbar-brand">
             <div class="navbar-brand-icon"><i data-lucide="sparkles"></i></div>
-            <span class="navbar-brand-text">Every<span class="gradient-text">gyan</span></span>
+            <span class="navbar-brand-text">Every<span class="gradient-text">Gyan</span></span>
           </a>
           <p class="mt-2" style="color:var(--text-secondary);font-size:0.925rem;">
             Empowering curious minds through words, world adventures, and technical craftsmanship.
@@ -1324,7 +1345,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Everygyan. All rights reserved. Built with modern web standards for fast, seamless reading.</p>
+        <p>&copy; 2026 EveryGyan. All rights reserved. Built with modern web standards for fast, seamless reading.</p>
         <div class="footer-bottom-links">
           <a href="admin/login.html" class="footer-utility-link" title="Author Dashboard &amp; CMS Login">
             <i data-lucide="lock" style="width: 12px; height: 12px;"></i>
