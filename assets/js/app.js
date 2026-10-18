@@ -375,9 +375,15 @@ async function loadHomepageData() {
         if (response && response.success && Array.isArray(response.data) && response.data.length > 0) {
             const articles = response.data;
 
+            // Track rendered article IDs/slugs to prevent duplicates across homepage sections
+            const usedKeys = new Set();
+            const getArticleKey = (a) => String(a.id || a.slug || a.title);
+
             // 1. Featured Top Story Carousel (Top 5 stories)
             const featured = articles.filter(a => a.featured == 1 || a.is_featured);
-            const carouselArticles = featured.length >= 3 ? featured.slice(0, 5) : articles.slice(0, 5);
+            const poolForCarousel = featured.length >= 3 ? featured : articles;
+            const carouselArticles = poolForCarousel.slice(0, 5);
+            carouselArticles.forEach(a => usedKeys.add(getArticleKey(a)));
             
             const track = document.getElementById('heroCarouselTrack');
             const dashes = document.getElementById('heroCarouselDashes');
@@ -424,10 +430,13 @@ async function loadHomepageData() {
                 initHeroCarousel();
             }
 
-            // 2. Right Half: Trending Now (5 ranked stories)
+            // 2. Right Half: Trending Now (5 ranked stories, deduplicated against Carousel)
             const trendingListContainer = document.getElementById('heroTrendingList');
             if (trendingListContainer && articles.length > 0) {
-                const trendingFive = articles.slice(0, 5);
+                const trendingPool = articles.filter(a => !usedKeys.has(getArticleKey(a)));
+                const trendingFive = (trendingPool.length >= 5 ? trendingPool : articles).slice(0, 5);
+                trendingFive.forEach(a => usedKeys.add(getArticleKey(a)));
+
                 trendingListContainer.innerHTML = trendingFive.map((article, idx) => {
                     const cover = article.cover_image || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=160';
                     const dateStr = formatDate(article.published_at || article.created_at);
@@ -448,10 +457,12 @@ async function loadHomepageData() {
                 }).join('');
             }
 
-            // 3. Grid: Latest Articles
+            // 3. Grid: Latest Articles (Deduplicated against Carousel & Trending)
             const articlesContainer = document.getElementById('latestArticlesGrid');
             if (articlesContainer) {
-                articlesContainer.innerHTML = articles.slice(0, 6).map(renderArticleCard).join('');
+                const latestPool = articles.filter(a => !usedKeys.has(getArticleKey(a)));
+                const latestArticles = (latestPool.length >= 6 ? latestPool : articles).slice(0, 6);
+                articlesContainer.innerHTML = latestArticles.map(renderArticleCard).join('');
             }
 
             renderLucideIcons();

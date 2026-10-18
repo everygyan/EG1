@@ -124,8 +124,22 @@ export function App() {
     }
   };
 
-  // Filtered stories for magazine grid
+  const heroArticles = articles.filter((a) => a.isTopStory);
+  const heroArticleIds = new Set(heroArticles.map((a) => a.id));
+
+  const trendingArticles = articles
+    .filter((a) => a.isTrending || a.trendingRank)
+    .sort((a, b) => (a.trendingRank || 99) - (b.trendingRank || 99))
+    .slice(0, 5);
+  const trendingArticleIds = new Set(trendingArticles.map((a) => a.id));
+
+  // Filtered stories for magazine grid (deduplicated against Hero and Trending on homepage)
   const filteredArticles = articles.filter((a) => {
+    if (activeCategory === 'ALL' && !activeSubCategory && !selectedTag) {
+      if (heroArticleIds.has(a.id) || trendingArticleIds.has(a.id)) {
+        return false;
+      }
+    }
     if (activeCategory !== 'ALL' && a.category !== activeCategory) {
       return false;
     }
@@ -138,7 +152,6 @@ export function App() {
     return true;
   });
 
-  const heroArticles = articles.filter((a) => a.isTopStory);
   const bookmarkedArticles = articles.filter((a) => bookmarkedIds.includes(a.id));
 
   // Extract all unique tags
