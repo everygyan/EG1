@@ -795,8 +795,13 @@
           <i data-lucide="sun" class="theme-icon-light"></i>
           <i data-lucide="moon" class="theme-icon-dark"></i>
         </button>
-        <a href="#newsletter" class="btn-subscribe">Subscribe</a>
-        <a href="admin/login.html" class="btn-login">Login</a>
+        <a href="#newsletter" class="btn-subscribe" id="navbarSubscribeBtn">Subscribe</a>
+        <div id="navUserMenuContainer" class="nav-user-menu-container">
+          <a href="admin/login.html" class="btn-login" id="navLoginBtn">
+            <i data-lucide="user" style="width: 14px; height: 14px; margin-right: 4px;"></i>
+            <span>Login</span>
+          </a>
+        </div>
         <button class="navbar-toggle btn-icon" id="navToggle" aria-label="Toggle navigation" style="color: #ffffff; display: none;">
           <i data-lucide="menu"></i>
         </button>
@@ -1257,13 +1262,13 @@
     </section>
 
     <!-- Modern Newsletter -->
-    <section class="container">
+    <section class="container" id="newsletter">
       <div class="newsletter animate-on-scroll">
-        <h2 class="newsletter-title">Stay Ahead with Everygyan</h2>
+        <h2 class="newsletter-title">Stay Ahead with EveryGyan</h2>
         <p class="newsletter-text">
           Join over 5,000 curious minds. Receive thoughtful essays, curated travel guides, and software engineering deep dives.
         </p>
-        <form class="newsletter-form">
+        <form class="newsletter-form" id="newsletterForm" novalidate>
           <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
           <button type="submit" class="newsletter-btn">Subscribe</button>
         </form>
@@ -1315,12 +1320,17 @@
             <a href="learning-webdev.html">Web Architecture</a>
             <a href="learning-databases.html">Database Systems</a>
             <a href="learning-devops.html">DevOps &amp; Cloud</a>
-            <a href="admin/login.html" class="text-primary" style="margin-top: 6px;">Author Dashboard →</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 Everygyan. All rights reserved. Built with modern web standards for fast, seamless reading.</p>
+        <div class="footer-bottom-links">
+          <a href="admin/login.html" class="footer-utility-link" title="Author Dashboard &amp; CMS Login">
+            <i data-lucide="lock" style="width: 12px; height: 12px;"></i>
+            <span>Author Dashboard</span>
+          </a>
+        </div>
       </div>
     </div>
   </footer>

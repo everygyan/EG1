@@ -1,3 +1,5 @@
+import React from 'react';
+import { Lock } from 'lucide-react';
 import type { Category } from '../types';
 
 
@@ -123,7 +125,18 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, onOpenSubscrib
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <p>© {new Date().getFullYear()} EveryGyan Media Group. All rights reserved.</p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p>© {new Date().getFullYear()} EveryGyan Media Group. All rights reserved.</p>
+            <span className="hidden sm:inline text-slate-700">•</span>
+            <a
+              href="admin/login.html"
+              className="inline-flex items-center gap-1.5 text-slate-400 hover:text-cyan-400 transition"
+              title="Author Dashboard Login"
+            >
+              <Lock className="w-3 h-3" />
+              <span>Author Dashboard</span>
+            </a>
+          </div>
           <div className="flex items-center gap-6">
             <span className="hover:text-slate-300 cursor-pointer">Twitter / X</span>
             <span className="hover:text-slate-300 cursor-pointer">LinkedIn</span>

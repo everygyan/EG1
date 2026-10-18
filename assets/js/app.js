@@ -6,6 +6,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initNavbar();
+    initSubscribeAction();
+    initHeaderAuth();
     initHeroCarousel();
     initScrollAnimations();
     initNewsletterForms();
@@ -177,19 +179,218 @@ function showToast(message, type = 'success') {
 }
 
 /* --------------------------------------------------------------------------
-   6. Newsletter Submissions
+   6. Newsletter Submissions (Validation, Loading State, Toast & Inline Success)
    -------------------------------------------------------------------------- */
 function initNewsletterForms() {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+
     document.querySelectorAll('.newsletter-form, #footerNewsletter').forEach(form => {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const input = form.querySelector('input[type="email"]');
-            if (input && input.value) {
+            const submitBtn = form.querySelector('button[type="submit"]');
+
+            if (!input) return;
+
+            const email = input.value.trim();
+
+            // 1. Email Validation
+            if (!email) {
+                showToast('Please enter your email address.', 'error');
+                input.classList.add('input-error');
+                input.focus();
+                setTimeout(() => input.classList.remove('input-error'), 2500);
+                return;
+            }
+
+            if (!emailRegex.test(email)) {
+                showToast('Please enter a valid email address (e.g. name@domain.com).', 'error');
+                input.classList.add('input-error');
+                input.focus();
+                setTimeout(() => input.classList.remove('input-error'), 2500);
+                return;
+            }
+
+            // 2. Loading State
+            const originalBtnHtml = submitBtn ? submitBtn.innerHTML : 'Subscribe';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.classList.add('btn-loading');
+                submitBtn.innerHTML = `
+                    <span class="spinner-sm"></span>
+                    <span>Subscribing...</span>
+                `;
+            }
+            input.disabled = true;
+
+            try {
+                // Simulate network latency / dispatch subscription
+                await new Promise((resolve) => setTimeout(resolve, 750));
+
+                // 3. Success Toast & Inline Confirmation
                 showToast('🎉 Thank you for subscribing! Check your inbox soon.', 'success');
                 form.reset();
+
+                // Inline success banner
+                let successMsg = form.parentElement.querySelector('.newsletter-success-msg');
+                if (!successMsg) {
+                    successMsg = document.createElement('div');
+                    successMsg.className = 'newsletter-success-msg';
+                    form.parentElement.appendChild(successMsg);
+                }
+                successMsg.innerHTML = `
+                    <i data-lucide="check-circle" style="width: 16px; height: 16px; color: var(--success); vertical-align: middle; margin-right: 6px;"></i>
+                    <span>You're subscribed! A confirmation note was sent to <strong>${escapeHtml(email)}</strong>.</span>
+                `;
+                successMsg.style.display = 'block';
+                renderLucideIcons();
+
+                setTimeout(() => {
+                    if (successMsg) {
+                        successMsg.style.display = 'none';
+                    }
+                }, 6000);
+
+            } catch (err) {
+                showToast('Subscription failed. Please check your connection and try again.', 'error');
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('btn-loading');
+                    submitBtn.innerHTML = originalBtnHtml;
+                    renderLucideIcons();
+                }
+                input.disabled = false;
             }
         });
     });
+}
+
+/* --------------------------------------------------------------------------
+   6a. Smooth Scrolling for Newsletter Subscribe Action
+   -------------------------------------------------------------------------- */
+function initSubscribeAction() {
+    const subscribeBtns = document.querySelectorAll('.btn-subscribe, a[href="#newsletter"]');
+    subscribeBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const target = document.getElementById('newsletter');
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                const emailInput = target.querySelector('input[type="email"]');
+                if (emailInput) {
+                    setTimeout(() => {
+                        emailInput.focus();
+                        emailInput.classList.add('newsletter-highlight');
+                        setTimeout(() => emailInput.classList.remove('newsletter-highlight'), 2200);
+                    }, 600);
+                }
+            }
+        });
+    });
+}
+
+/* --------------------------------------------------------------------------
+   6b. Header Authenticated User Menu
+   -------------------------------------------------------------------------- */
+function initHeaderAuth() {
+    const container = document.getElementById('navUserMenuContainer');
+    if (!container) return;
+
+    // Check if user is authenticated via API client or localStorage
+    const hasToken = (typeof API !== 'undefined' && API.isAuthenticated && API.isAuthenticated()) || !!localStorage.getItem('auth_token');
+    const storedUserStr = localStorage.getItem('currentUser');
+    let user = null;
+    try {
+        if (storedUserStr) user = JSON.parse(storedUserStr);
+    } catch {
+        user = null;
+    }
+
+    if (hasToken) {
+        const userName = (user && user.name) ? user.name : 'Devansh';
+        const userInitial = userName.charAt(0).toUpperCase() || 'D';
+        const userRole = (user && user.role) ? user.role : 'Author & Editor';
+
+        container.innerHTML = `
+            <div class="user-dropdown-wrapper" id="userDropdownWrapper">
+                <button type="button" class="btn-user-profile" id="userMenuBtn" aria-expanded="false" aria-label="Author Profile Menu">
+                    <span class="user-avatar-circle">${escapeHtml(userInitial)}</span>
+                    <span class="user-display-name">${escapeHtml(userName)}</span>
+                    <i data-lucide="chevron-down" style="width: 12px; height: 12px;"></i>
+                </button>
+                <div class="user-dropdown-panel" id="userDropdownPanel">
+                    <div class="user-dropdown-header">
+                        <div style="font-weight: 700; color: #ffffff; font-size: 0.8rem;">${escapeHtml(userName)}</div>
+                        <div style="font-size: 0.68rem; color: #38BDF8; font-weight: 600;">${escapeHtml(userRole)}</div>
+                    </div>
+                    <a href="admin/index.html" class="user-dropdown-item">
+                        <i data-lucide="layout-dashboard" style="width: 14px; height: 14px;"></i>
+                        <span>Author Dashboard</span>
+                    </a>
+                    <a href="admin/editor.html" class="user-dropdown-item">
+                        <i data-lucide="pen-tool" style="width: 14px; height: 14px;"></i>
+                        <span>Write Article</span>
+                    </a>
+                    <div class="user-dropdown-divider"></div>
+                    <button type="button" class="user-dropdown-item text-danger" id="userSignOutBtn">
+                        <i data-lucide="log-out" style="width: 14px; height: 14px;"></i>
+                        <span>Sign Out</span>
+                    </button>
+                </div>
+            </div>
+        `;
+
+        renderLucideIcons();
+
+        const menuBtn = document.getElementById('userMenuBtn');
+        const dropdownPanel = document.getElementById('userDropdownPanel');
+        const signOutBtn = document.getElementById('userSignOutBtn');
+
+        if (menuBtn && dropdownPanel) {
+            menuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = dropdownPanel.classList.toggle('show');
+                menuBtn.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!container.contains(e.target)) {
+                    dropdownPanel.classList.remove('show');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        if (signOutBtn) {
+            signOutBtn.addEventListener('click', async () => {
+                try {
+                    if (typeof API !== 'undefined' && API.logout) {
+                        await API.logout();
+                    }
+                } catch {
+                    // Ignore API error on logout
+                } finally {
+                    if (typeof API !== 'undefined' && API.removeToken) {
+                        API.removeToken();
+                    }
+                    localStorage.removeItem('auth_token');
+                    localStorage.removeItem('currentUser');
+                    showToast('Signed out successfully.', 'info');
+                    initHeaderAuth();
+                }
+            });
+        }
+    } else {
+        // Not authenticated: render standard Login pill link
+        container.innerHTML = `
+            <a href="admin/login.html" class="btn-login" id="navLoginBtn">
+                <i data-lucide="user" style="width: 14px; height: 14px; margin-right: 4px;"></i>
+                <span>Login</span>
+            </a>
+        `;
+        renderLucideIcons();
+    }
 }
 
 /* --------------------------------------------------------------------------

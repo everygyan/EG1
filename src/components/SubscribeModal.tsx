@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Mail, CheckCircle, Bell } from 'lucide-react';
+import { X, Mail, CheckCircle, Bell, Loader2 } from 'lucide-react';
 
 interface SubscribeModalProps {
   isOpen: boolean;
@@ -9,14 +9,33 @@ interface SubscribeModalProps {
 export const SubscribeModal: React.FC<SubscribeModalProps> = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState('');
   const [frequency, setFrequency] = useState('daily');
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
-    setIsSubmitted(true);
+    setErrorMessage('');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+    if (!email.trim()) {
+      setErrorMessage('Please enter your email address.');
+      return;
+    }
+    if (!emailRegex.test(email.trim())) {
+      setErrorMessage('Please enter a valid email address (e.g. name@domain.com).');
+      return;
+    }
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 750));
+      setIsSubmitted(true);
+    } catch {
+      setErrorMessage('Something went wrong. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -61,14 +80,24 @@ export const SubscribeModal: React.FC<SubscribeModalProps> = ({ isOpen, onClose 
               <div className="relative">
                 <input
                   type="email"
-                  required
+                  disabled={isLoading}
                   placeholder="name@company.com"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-9 pr-3.5 py-2.5 text-sm border border-slate-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:outline-none"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (errorMessage) setErrorMessage('');
+                  }}
+                  className={`w-full pl-9 pr-3.5 py-2.5 text-sm border rounded-xl focus:ring-2 focus:ring-cyan-500 focus:outline-none transition ${
+                    errorMessage ? 'border-red-500 bg-red-50/50' : 'border-slate-300'
+                  }`}
                 />
                 <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
               </div>
+              {errorMessage && (
+                <p className="text-[11px] text-red-500 font-medium mt-1">
+                  {errorMessage}
+                </p>
+              )}
             </div>
 
             <div>
@@ -78,6 +107,7 @@ export const SubscribeModal: React.FC<SubscribeModalProps> = ({ isOpen, onClose 
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <button
                   type="button"
+                  disabled={isLoading}
                   onClick={() => setFrequency('daily')}
                   className={`py-2 rounded-xl font-medium border text-center transition ${
                     frequency === 'daily'
@@ -89,6 +119,7 @@ export const SubscribeModal: React.FC<SubscribeModalProps> = ({ isOpen, onClose 
                 </button>
                 <button
                   type="button"
+                  disabled={isLoading}
                   onClick={() => setFrequency('weekly')}
                   className={`py-2 rounded-xl font-medium border text-center transition ${
                     frequency === 'weekly'
@@ -103,9 +134,17 @@ export const SubscribeModal: React.FC<SubscribeModalProps> = ({ isOpen, onClose 
 
             <button
               type="submit"
-              className="w-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold text-sm py-2.5 rounded-xl shadow-md transition cursor-pointer"
+              disabled={isLoading}
+              className="w-full bg-[#2563eb] hover:bg-[#1d4ed8] disabled:opacity-75 disabled:cursor-not-allowed text-white font-bold text-sm py-2.5 rounded-xl shadow-md transition cursor-pointer flex items-center justify-center gap-2"
             >
-              Subscribe for Free
+              {isLoading ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Subscribing...</span>
+                </>
+              ) : (
+                <span>Subscribe for Free</span>
+              )}
             </button>
             <p className="text-[11px] text-slate-400 text-center">
               Zero spam. Unsubscribe at any time with one click.
