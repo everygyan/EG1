@@ -1,6 +1,7 @@
 import React from 'react';
 import { TrendingUp } from 'lucide-react';
 import type { Article } from '../types';
+import { formatArticleDate, formatReadingTime } from '../utils/formatters';
 
 interface TrendingNowProps {
   articles: Article[];
@@ -55,10 +56,10 @@ export const TrendingNow: React.FC<TrendingNowProps> = ({ articles, onSelectArti
                 <h3 className="font-serif-display font-bold text-[13px] sm:text-[14px] leading-snug text-slate-900 group-hover:text-cyan-700 transition-colors line-clamp-2">
                   {article.title}
                 </h3>
-                <div className="flex items-center gap-2 mt-1.5 text-[11px] font-medium text-slate-400">
-                  <span>{article.date}</span>
-                  <span>·</span>
-                  <span className="uppercase">{article.readTime}</span>
+                <div className="flex items-center gap-1.5 mt-1.5 text-[11px] font-medium text-slate-400">
+                  <span>{formatArticleDate(article.date)}</span>
+                  <span>•</span>
+                  <span>{formatReadingTime(article.readTime)}</span>
                 </div>
               </div>
 

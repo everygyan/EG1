@@ -1,6 +1,7 @@
 import React from 'react';
 import { Bookmark, Clock, MessageSquare, ThumbsUp } from 'lucide-react';
 import type { Article } from '../types';
+import { formatArticleDate, formatReadingTime } from '../utils/formatters';
 
 interface ArticleCardProps {
   article: Article;
@@ -58,11 +59,11 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       <div className="p-5 flex-1 flex flex-col justify-between">
         <div>
           <div className="flex items-center gap-2 text-[11px] text-slate-400 font-medium mb-2">
-            <span>{article.date}</span>
-            <span>·</span>
+            <span>{formatArticleDate(article.date)}</span>
+            <span>•</span>
             <span className="flex items-center gap-1">
               <Clock className="w-3 h-3 text-slate-400" />
-              {article.readTime}
+              {formatReadingTime(article.readTime)}
             </span>
           </div>
 

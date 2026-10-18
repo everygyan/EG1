@@ -14,6 +14,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import type { Article, Comment } from '../types';
+import { formatArticleDate, formatReadingTime } from '../utils/formatters';
 
 interface ArticleModalProps {
   article: Article | null;
@@ -139,12 +140,12 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
             <div className="flex items-center gap-4 text-xs font-medium text-slate-500">
               <span className="flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5 text-cyan-600" />
-                {article.date}
+                {formatArticleDate(article.date)}
               </span>
-              <span>·</span>
+              <span>•</span>
               <span className="flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-cyan-600" />
-                {article.readTime}
+                {formatReadingTime(article.readTime)}
               </span>
             </div>
           </div>

@@ -219,8 +219,8 @@ function renderArticleCard(article) {
     const categorySlug = (article.category_slug || (article.category && article.category.slug) || 'blog').toLowerCase();
     const categoryName = article.category_name || (article.category && article.category.name) || 'Blog';
     const coverImage = article.cover_image || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800';
-    const dateStr = formatDate(article.published_at || article.created_at);
-    const readingTime = article.reading_time || Math.max(3, Math.ceil((article.content || '').split(/\s+/).length / 200));
+    const dateStr = formatDate(article.published_at || article.created_at || article.date);
+    const readingTime = formatReadingTime(article.reading_time || article.readTime || article.content);
 
     return `
     <article class="card animate-on-scroll">
@@ -242,7 +242,7 @@ function renderArticleCard(article) {
                 </div>
                 <div class="card-meta-right">
                     <span class="card-meta-item">
-                        <i data-lucide="clock"></i> ${readingTime} min read
+                        <i data-lucide="clock"></i> ${readingTime}
                     </span>
                 </div>
             </div>
@@ -392,8 +392,9 @@ async function loadHomepageData() {
                     const categorySlug = (article.category_slug || (article.category && article.category.slug) || 'tech').toLowerCase();
                     const categoryName = (article.category_name || (article.category && article.category.name) || 'Tech').toUpperCase();
                     const cover = article.cover_image || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200';
-                    const dateStr = formatDate(article.published_at || article.created_at);
-                    const readTime = article.reading_time || Math.max(3, Math.ceil((article.content || '').split(/\s+/).length / 200));
+                    const dateStr = formatDate(article.published_at || article.created_at || article.date);
+                    const readTime = formatReadingTime(article.reading_time || article.readTime || article.content);
+                    const authorName = (article.author && article.author.name) || article.author_name || 'Devansh';
 
                     return `
                     <div class="top-story-slide ${idx === 0 ? 'active' : ''}">
@@ -413,8 +414,8 @@ async function loadHomepageData() {
                         </h2>
                         <p class="top-story-excerpt">${escapeHtml(article.excerpt || '')}</p>
                         <div class="top-story-meta">
-                          <span class="meta-item"><i data-lucide="user"></i> STAFF</span>
-                          <span class="meta-item"><i data-lucide="clock"></i> ${readTime} MIN READ</span>
+                          <span class="meta-item"><i data-lucide="user"></i> ${escapeHtml(authorName)}</span>
+                          <span class="meta-item"><i data-lucide="clock"></i> ${readTime}</span>
                           <span class="meta-item"><i data-lucide="calendar"></i> ${dateStr}</span>
                         </div>
                       </div>
@@ -439,8 +440,8 @@ async function loadHomepageData() {
 
                 trendingListContainer.innerHTML = trendingFive.map((article, idx) => {
                     const cover = article.cover_image || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=160';
-                    const dateStr = formatDate(article.published_at || article.created_at);
-                    const readTime = article.reading_time || Math.max(3, Math.ceil((article.content || '').split(/\s+/).length / 200));
+                    const dateStr = formatDate(article.published_at || article.created_at || article.date);
+                    const readTime = formatReadingTime(article.reading_time || article.readTime || article.content);
                     const rankStr = String(idx + 1).padStart(2, '0');
 
                     return `
@@ -448,7 +449,7 @@ async function loadHomepageData() {
                       <span class="trending-story-rank">${rankStr}</span>
                       <div class="trending-story-details">
                         <h4 class="trending-story-headline">${escapeHtml(article.title)}</h4>
-                        <span class="trending-story-timestamp">${dateStr} • ${readTime} MIN</span>
+                        <span class="trending-story-timestamp">${dateStr} • ${readTime}</span>
                       </div>
                       <div class="trending-story-thumb">
                         <img src="${escapeHtml(cover)}" alt="${escapeHtml(article.title)}" loading="lazy">
@@ -607,13 +608,13 @@ async function loadSingleArticle() {
             if (titleEl) titleEl.textContent = article.title;
 
             const authorName = document.getElementById('articleAuthor');
-            if (authorName) authorName.textContent = article.author_name || (article.author && article.author.full_name) || 'Devansh';
+            if (authorName) authorName.textContent = article.author_name || (article.author && (article.author.full_name || article.author.name)) || 'Devansh';
 
             const dateEl = document.getElementById('articleDate');
-            if (dateEl) dateEl.textContent = formatDate(article.published_at || article.created_at);
+            if (dateEl) dateEl.textContent = formatDate(article.published_at || article.created_at || article.date);
 
             const readingEl = document.getElementById('articleReadingTime');
-            if (readingEl) readingEl.textContent = `${article.reading_time || 5} min read`;
+            if (readingEl) readingEl.textContent = formatReadingTime(article.reading_time || article.readTime || 5);
 
             const viewsEl = document.getElementById('articleViews');
             if (viewsEl) viewsEl.textContent = `${article.views || 1} views`;
@@ -731,14 +732,35 @@ function renderPagination(pagination, onPageChange) {
 /* --------------------------------------------------------------------------
    14. Format Helpers
    -------------------------------------------------------------------------- */
-function formatDate(dateStr) {
-    if (!dateStr) return 'Recent';
+function formatDate(dateInput) {
+    if (!dateInput) return 'Recent';
+    if (typeof dateInput === 'string') {
+        const trimmed = dateInput.trim();
+        if (/^[A-Za-z]{3}\s+\d{1,2},\s+\d{4}$/.test(trimmed)) {
+            return trimmed;
+        }
+    }
     try {
-        const d = new Date(dateStr);
+        const d = new Date(dateInput);
+        if (isNaN(d.getTime())) return typeof dateInput === 'string' ? dateInput : 'Recent';
         return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
     } catch {
-        return dateStr;
+        return typeof dateInput === 'string' ? dateInput : 'Recent';
     }
+}
+
+function formatReadingTime(readTimeInput) {
+    if (readTimeInput === undefined || readTimeInput === null || readTimeInput === '') {
+        return '3 min read';
+    }
+    if (typeof readTimeInput === 'number') {
+        return `${Math.max(1, Math.round(readTimeInput))} min read`;
+    }
+    const match = String(readTimeInput).match(/\d+/);
+    if (match) {
+        return `${match[0]} min read`;
+    }
+    return '3 min read';
 }
 
 function escapeHtml(str) {

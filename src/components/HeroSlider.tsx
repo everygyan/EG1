@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, User, Clock, Calendar, Bookmark, Share2 } from 'lucide-react';
 import type { Article } from '../types';
+import { formatArticleDate, formatReadingTime } from '../utils/formatters';
 
 interface HeroSliderProps {
   articles: Article[];
@@ -133,19 +134,27 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
           </p>
         )}
 
-        {/* Metadata Row (matches screenshot: STAFF, 3 MIN READ, 6/18/2026) */}
+        {/* Metadata Row: Standardized Author, Reading Time, and Human-Readable Date */}
         <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-300 pt-2 tracking-wide">
-          <div className="flex items-center gap-1.5 uppercase">
-            <User className="w-3.5 h-3.5 text-cyan-400" />
-            <span>{current.author.name}</span>
+          <div className="flex items-center gap-2">
+            {current.author.avatar ? (
+              <img
+                src={current.author.avatar}
+                alt={current.author.name}
+                className="w-5 h-5 rounded-full object-cover ring-1 ring-cyan-400/50"
+              />
+            ) : (
+              <User className="w-3.5 h-3.5 text-cyan-400" />
+            )}
+            <span className="text-white font-medium">{current.author.name}</span>
           </div>
           <div className="flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5 text-cyan-400" />
-            <span>{current.readTime}</span>
+            <span>{formatReadingTime(current.readTime)}</span>
           </div>
-          <div className="flex items-center gap-1.5 font-mono text-[11px] text-slate-400">
+          <div className="flex items-center gap-1.5 font-mono text-[11px] text-slate-300">
             <Calendar className="w-3.5 h-3.5 text-cyan-400" />
-            <span>{current.date}</span>
+            <span>{formatArticleDate(current.date)}</span>
           </div>
         </div>
 

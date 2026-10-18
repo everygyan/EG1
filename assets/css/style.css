@@ -995,11 +995,9 @@ body.dark-mode .live-pill {
   display: flex;
   align-items: center;
   gap: 16px;
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  color: rgba(203, 213, 225, 0.85);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  color: rgba(203, 213, 225, 0.9);
   margin-top: 4px;
 }
 
@@ -1173,11 +1171,9 @@ body.dark-mode .trending-story-row:hover .trending-story-headline {
 }
 
 .trending-story-timestamp {
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   color: #64748B;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-weight: 500;
 }
 
 body.dark-mode .trending-story-timestamp {
